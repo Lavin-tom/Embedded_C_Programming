@@ -1,0 +1,3 @@
+-embedded c program for showing 0-255 (8-bit) in 8 LEDs
+-Load hex file into mc before run the play button
+-muliple file compilation is used.
