@@ -1,0 +1,2 @@
+- write ECP for displaying the binary equalent of keyvalue on the LEDs
+- display the equalent no in display 
