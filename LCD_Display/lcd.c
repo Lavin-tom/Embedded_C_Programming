@@ -95,7 +95,7 @@ void write_float_LCD(float f)
 		s[i]=(a%10)+48;			//to get exact digit add zero ascii value 48
 		a=a/10;
 	}
-	//s[count]='\0';
+	
 	s[count_d]='.';				//add decimal symbol next to decimal 
 	
 	
@@ -107,7 +107,7 @@ void write_float_LCD(float f)
 		ff=ff-b;		//7.5-7=.5
 	}
 	s[count_d+6]='\0';
-	//printf("%s\n",s);
+	
 		i=0;
 	while(s[i]!='\0')
 	{
