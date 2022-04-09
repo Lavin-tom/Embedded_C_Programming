@@ -52,3 +52,67 @@ void write_str_LCD(char *ptr)
 	while(*ptr!='\0')
 		write_dat_LCD(*ptr++);
 }
+void write_int_LCD(signed int num)
+{
+	int i,count=0;
+	char s[3];
+	int temp=num;
+	while(num>0)
+	{
+		 count++;
+		num=num/10;
+	}
+	//char s[count];
+	for(i=count-1;i>=0;i--)
+	{	
+		int k=temp%10;
+		s[i]=k+48;				//to get the correct ascii value add 48 ascii of zero
+		temp=temp/10;
+	}
+	s[count]='\0';
+	i=0;
+	while(s[i]!='\0')
+	{
+		write_dat_LCD(s[i]);
+		i++;
+	}
+}
+void write_float_LCD(float f)
+{
+	int a,b,count_d=0,tempd,i=0;
+	char s[30];
+	float ff;
+	a=f;
+	ff=f-a;
+	tempd=a;
+	while(tempd>0)				//to count the decimal value
+	{
+		count_d++;
+		tempd=tempd/10;
+	}
+	for(i=count_d-1;i>=0;i--)		//add decimal value to the string
+	{
+		s[i]=(a%10)+48;			//to get exact digit add zero ascii value 48
+		a=a/10;
+	}
+	//s[count]='\0';
+	s[count_d]='.';				//add decimal symbol next to decimal 
+	
+	
+	for(i=1;i<6;i++)			//for add fraction value, precision is set to 5 points only  
+	{
+		ff=ff*10; 		//.75*10=7.5
+		b=ff;			//b=7
+		s[count_d+i]=b+48;		//to get exact decimal value add zero ascii value 48
+		ff=ff-b;		//7.5-7=.5
+	}
+	s[count_d+6]='\0';
+	//printf("%s\n",s);
+		i=0;
+	while(s[i]!='\0')
+	{
+		write_dat_LCD(s[i]);
+		i++;
+	}
+	
+}
