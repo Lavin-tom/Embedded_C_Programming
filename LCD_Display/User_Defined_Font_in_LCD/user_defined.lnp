@@ -1,0 +1,4 @@
+"F:\ubuntu\embedded_c_programming\LCD_Display\User_Defined_Font_in_LCD\segment_common_anode.obj",
+"F:\ubuntu\embedded_c_programming\LCD_Display\User_Defined_Font_in_LCD\delay.obj" 
+TO "F:\ubuntu\embedded_c_programming\LCD_Display\User_Defined_Font_in_LCD\user_defined" 
+PRINT(".\Listings\user_defined.m51") RAMSIZE(256) 
