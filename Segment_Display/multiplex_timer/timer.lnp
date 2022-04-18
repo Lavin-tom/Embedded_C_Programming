@@ -1,0 +1,3 @@
+"F:\ubuntu\embedded_c_programming\Segment_Display\multiplex_timer\T0_M0_1ms.obj" 
+TO "F:\ubuntu\embedded_c_programming\Segment_Display\multiplex_timer\timer" 
+PRINT(".\Listings\timer.m51") RAMSIZE(256) 
