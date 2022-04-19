@@ -1,4 +1,5 @@
 //write an ECP for measuring 500usec time interval using timer0 in m1 with Fosc=6mhz
+//not completed
 
 #include<reg51.h>
 void delay_500us(void);
