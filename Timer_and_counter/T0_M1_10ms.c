@@ -1,5 +1,15 @@
 //write an ECP for measuring 10ms time interval using timer0 in mode 1 with fosc 12mhz.
 
+/*solution
+mode 1-16
+Tdelay=(2^16-x)*mct
+mct=12/fosc
+mct=12/12=1usec
+10ms=(65536-x)*1usec
+10000usec=(65536-x)*1usec
+x=55536
+*/
+
 #include<reg51.h>
 void delay_10ms(void);
 main()
