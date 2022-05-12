@@ -1,0 +1,13 @@
+#include"header.h"
+main()
+{
+	lcd_init();
+	lcd_data('A');
+	lcd_data('B');
+	lcd_data(97);
+	lcd_data(100);
+	lcd_cmd(0xc0);
+	lcd_data('#');
+	lcd_data('$');
+	while(1);
+}
