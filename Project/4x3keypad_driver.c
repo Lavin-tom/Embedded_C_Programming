@@ -14,7 +14,7 @@ sbit C3=P3^7;
 
 //lookup table 2x3 keypad matrix//
 u8 kpd_tbl[4][4]={49,50,51,8,
-									52,53,54,48,
+									52,53,54,10,
 									55,56,57,48,
 									42,48,35,13};
 u8 keyscan(void)  
