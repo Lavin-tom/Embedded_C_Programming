@@ -28,18 +28,5 @@ extern u8 i2c_read(void);
 extern bit i2c_ack(void);
 extern void i2c_noack(void);
 
-extern void i2c_start_eeprom(void);
-extern void i2c_stop_eeprom(void);
-extern void i2c_write_eeprom(u8 d);
-extern u8 i2c_read_eeprom(void);
-extern bit i2c_ack_eeprom(void);
-extern void i2c_noack_eeprom(void);
-
-
 extern void i2c_byte_write_frame(u8 sa,u8 mr,u8 d);
 extern u8 i2c_byte_read_frame(u8 sa,u8 mr);
-
-extern void i2c_byte_write_frame_eeprom(u8 sa,u8 mr,u8 d);
-extern u8 i2c_byte_read_frame_eeprom(u8 sa,u8 mr);
-
-extern void rtc(u8 h,u8 m);

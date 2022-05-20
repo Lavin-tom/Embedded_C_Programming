@@ -1,7 +1,8 @@
+"F:\ubuntu\embedded_c_programming\RTC\4x3keypad_driver.obj",
+"F:\ubuntu\embedded_c_programming\RTC\delay.obj",
 "F:\ubuntu\embedded_c_programming\RTC\i2c_fields.obj",
 "F:\ubuntu\embedded_c_programming\RTC\i2c_frames.obj",
 "F:\ubuntu\embedded_c_programming\RTC\lcd8bit_driver.obj",
-"F:\ubuntu\embedded_c_programming\RTC\rtc.obj",
-"F:\ubuntu\embedded_c_programming\RTC\delay.obj" 
+"F:\ubuntu\embedded_c_programming\RTC\lcdmain.obj" 
 TO "F:\ubuntu\embedded_c_programming\RTC\RTC" 
 PRINT(".\Listings\RTC.m51") RAMSIZE(256) 

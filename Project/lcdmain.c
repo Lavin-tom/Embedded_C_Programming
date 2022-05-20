@@ -1,124 +1,91 @@
 //lcd main.c//
 
 #include "header.h"
-#include<string.h>
 main()
 {
-	u8 temp,i=0,j,temp1,flag=0,pwd[4],op,default_pwd[4]={49,50,51,52};
+	u8 i,j=0;
+	u8 h,m,s,temp,pass,pass_[4]={49,50,51,52},default_pass;
+	u8 temp1,temp2,count=0;
+	//eeprom
 	lcd_init();
-	lcd_string("Enter Passcode");
-	lcd_cmd(0xc0);
+	
+	//RTC function for real time clock	
+	//setting time to 11.59.50PM
+	i2c_byte_write_frame(0xD0,0x2,0x23); //setting hour
+	i2c_byte_write_frame(0xD0,0x1,0x59); //setting mins			
+	
+	lcd_cmd(0xC);	//cursor off
 	while(1)
 	{
 	temp=keyscan();
-		//option start
-			if(temp==10 && flag==1)
-			{
-				i=0;
-				lcd_string("1.PASSWORD CHANGE");
-				while(1)
-				{
-				temp1=keyscan();
-				//while(1)
-				//{
-				
-				
-				if(temp1!=13 && temp1!=8)
-				{
-				lcd_cmd(0xc0);	
-				default_pwd[i]=temp1+48;
-				
-				//show star instend of actual integer
-				lcd_data(temp1);
-				//lcd_data(42);
-				i++;
-				}
-				if(temp1==13)
-				{
-				lcd_cmd(0x1);
-				lcd_string("PASSWORD");
-				lcd_cmd(0xc0);
-				lcd_string("UPDATED");
-				delay_ms(500);
-				lcd_cmd(0x1);
-				break;
-				}
-				}
-				/*if(temp1==13)
-				{
-				op=temp1;
-				lcd_data(op);
-				}*/
-			}
-		temp=keyscan();	
-		if(temp==8)
-		{
-		//cmd for backspace
-		lcd_cmd(0x04);
-			i--;
-		}
-		//lcd_data(temp);	
-		
-		//cmd for increment the curson after shifting the cursor to left    
-		lcd_cmd(0x06);
 		if(temp==13)
-			{
-			//pwd[i]='\0';
+		{
 			lcd_cmd(0x1);
-			lcd_cmd(0xc);
-			//lcd_string(pwd);
-			lcd_string("CHECKING..");
-			delay_ms(1000);
-			lcd_cmd(0x80);	
+			lcd_string("CURRENT TIME");
+			lcd_cmd(0xc0);
+			rtc(h,m);
+		}
+		else if(temp==8)
+		{
+			lcd_cmd(0x1);
+			lcd_string("LOGIN");
+			delay_ms(500);
+			lcd_cmd(0x1); //clear the display
+			lcd_string("ENTER");
+			delay_ms(500);
+			lcd_cmd(0x1);
+			lcd_string("PASSWORD");
+			delay_ms(500);
+			lcd_cmd(0xC0);
+			delay_ms(500);
+			//lcd_string("****");
+			//pass=keyscan();
+			//lcd_data(pass);
+			delay_ms(500);
+			lcd_cmd(0x1);
 				
+			i2c_byte_write_frame_eeprom(0xa0,0x0,'1');
+			delay_ms(500);
+			i2c_byte_write_frame_eeprom(0xa0,0x1,'2');
+			delay_ms(500);
+			i2c_byte_write_frame_eeprom(0xa0,0x2,'3');
+			delay_ms(500);
+			i2c_byte_write_frame_eeprom(0xa0,0x3,'4');
+			delay_ms(500);
 			
-			//pwd authentication
-			for(j=0;j<4;j++)
-			{
-			if(pwd[j]!=default_pwd[j])
-				break;
-			}
+			//reading from eeprom
+			/*
+			temp=i2c_byte_read_frame_eeprom(0xa0,0x0);
+			lcd_data(temp);
+			delay_ms(500);
+			temp=i2c_byte_read_frame_eeprom(0xa0,0x1);
+			lcd_data(temp);
+			delay_ms(500);
+			temp=i2c_byte_read_frame_eeprom(0xa0,0x2);
+			lcd_data(temp);
+			delay_ms(500);
+			temp=i2c_byte_read_frame_eeprom(0xa0,0x3);
+			lcd_data(temp);
+			delay_ms(500);
+			*/
 			
-			if(j==4)
+			
+			for(i=0x0;i<=0x3;i++)
 			{
-				flag=1;
-				lcd_cmd(0x1);
-				lcd_string("PASSCODE"); 
-				lcd_cmd(0xc0);
-				lcd_string("IS RIGHT");
-				delay_ms(1000);
-				lcd_cmd(0x1);
-				lcd_string("WELCOME");
-				delay_ms(1000);
-				lcd_cmd(0x1);
-				//option(temp,op);
+				temp=i2c_byte_read_frame_eeprom(0xa0,i);
+				lcd_data(temp);
+				delay_ms(500);
+				if(temp==pass_[j])
+				{
+				count++;
+				}
+				j++;
 			}
+			lcd_cmd(0x1);
+			if(count==4)
+				lcd_string("SUCESS");
 			else
-			{
-				flag=0;
-				lcd_cmd(0x1);
-				lcd_string("PASSCODE"); 
-				lcd_cmd(0xc0);
-				lcd_string("IS WRONG");
-				delay_ms(500);
-				lcd_cmd(0x1);
-				lcd_string("TRY AGAIN");
-				delay_ms(500);
-				lcd_cmd(0x1);
-				i=0;
-				lcd_string("Enter Passcode");
-				lcd_cmd(0xc0);
-				
-			}
-			}
-			//entered data into array when not press backspace and enter
-		if(temp!=13 && temp!=8)
-			{
-				pwd[i]=temp;
-				//show star instend of actual integer
-				lcd_data(42);
-				i++;
-			}
-			
+				lcd_string("FAILED");
+		}
 	}
-}
+	}

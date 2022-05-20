@@ -1,12 +1,12 @@
-/*i2c_fields.c*/
+/*i2c_fields_eeprom.c*/
 #include<reg51.h>
 #include "header.h"
 #include <intrins.h>
-sbit SDA=P2^0;
-sbit SCL=P2^1;
+sbit SDA=P1^0;
+sbit SCL=P1^1;
 
 //i2c_start condition
-void i2c_start(void)
+void i2c_start_eeprom(void)
 {
 	//upon reset 8051 both pins are one 
 	SCL=1; //optional
@@ -17,7 +17,7 @@ void i2c_start(void)
 	SDA=0;
 }
 
-void i2c_stop(void)
+void i2c_stop_eeprom(void)
 {
 	SCL=0;
 	SDA=0;  
@@ -25,7 +25,7 @@ void i2c_stop(void)
 	SDA=1;	
 }
 
-void i2c_write(u8 d)
+void i2c_write_eeprom(u8 d)
 {
 	s8 i;
 	for(i=7;i>=0;i--)
@@ -36,7 +36,7 @@ void i2c_write(u8 d)
 	}
 }
 
-u8 i2c_read(void)
+u8 i2c_read_eeprom(void)
 {
 	u8 temp=0x0;
 	s8 i;
@@ -53,7 +53,7 @@ u8 i2c_read(void)
 }
 
 
-bit i2c_ack(void)
+bit i2c_ack_eeprom(void)
 {
 	SCL=0;
 	SDA=1;
@@ -74,7 +74,7 @@ else
 }
 }
 
-void i2c_noack(void)
+void i2c_noack_eeprom(void)
 {
 	SCL=0;
 	SDA=1;
