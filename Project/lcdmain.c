@@ -9,15 +9,16 @@ main()
 	u8 i,j=0,k=0,n;
 	u8 h,m,temp=0,pass,pass_[4];
 	u8 count=0,flag=0;
-	u8 on_time,off_time;
 	u8 hh,HH,mm,MM,hh_eeprom,mm_eeprom,MM_eeprom,HH_eeprom;
+	u8 hh_off_eeprom,mm_off_eeprom,MM_off_eeprom,HH_off_eeprom;
 	//eeprom
 	lcd_init();
 	
 	//RTC function for real time clock	
 	//setting on rtc to 12.25.00AM
 	i2c_byte_write_frame(0xD0,0x2,0x00); //setting hour
-	i2c_byte_write_frame(0xD0,0x1,0x28); //setting mins			
+	i2c_byte_write_frame(0xD0,0x1,0x10); //setting mins			
+	//i2c_byte_write_frame(0xD0,0x3,0x15); //setting secs
 	
 	lcd_cmd(0xC);	//cursor off
 	//temp=keyscan();
@@ -30,6 +31,7 @@ main()
 			lcd_string("WELCOME");
 			delay_ms(700);
 			lcd_cmd(0x1);
+			/*
 			lcd_string("LOGIN TO");
 			delay_ms(500);
 			lcd_cmd(0xc0);
@@ -40,6 +42,8 @@ main()
 			delay_ms(500);
 			lcd_cmd(0xc0);
 			lcd_string("PRESS / TO LOGIN");
+			
+			*/
 			}
 	
 		//eeprom HH:hh : MM:mm
@@ -55,35 +59,49 @@ main()
 		
 		mm=(m%16+48);
 		
-		hh_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x4);
+		//read on time from eeprom
+		hh_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x5);
 		delay_ms(100);
 		//lcd_data(hh_eeprom);
-		HH_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x5);
+		HH_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x4);
 		delay_ms(100);
 		//lcd_data(HH_eeprom);
-		mm_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x6);
+		mm_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x7);
 		delay_ms(100);
 		//lcd_data(mm_eeprom);
-		MM_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x7);
+		MM_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x6);
 		delay_ms(100);
-		//lcd_data(MM_eeprom);
-		delay_ms(500);
+
+		//read off time from eeprom
+		hh_off_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x9);
+		delay_ms(100);
+		//lcd_data(hh_eeprom);
+		HH_off_eeprom=i2c_byte_read_frame_eeprom(0xa0,0x8);
+		delay_ms(100);
+		//lcd_data(HH_eeprom);
+		mm_off_eeprom=i2c_byte_read_frame_eeprom(0xa0,0xB);
+		delay_ms(100);
+		//lcd_data(mm_eeprom);
+		MM_off_eeprom=i2c_byte_read_frame_eeprom(0xa0,0xA);
+		delay_ms(100);
 		
 		//if(hh >= hh_eeprom && HH >=HH_eeprom && mm >= mm_eeprom && MM >=MM_eeprom)
-		if( mm==56)
-			light=1;
+		//if((HH_eeprom < HH < HH_off_eeprom)&& (hh_eeprom < hh < hh_off_eeprom)&& (MM_eeprom < MM < MM_off_eeprom)&& (mm_eeprom < mm < mm_off_eeprom))
+		if(mm < mm_off_eeprom)  //mm_off_eeprom)
+				light=1;
 		else
 				light=0;
 		
 
 		temp=keyscan();
+		
 		if(temp==13)
 		{
 			lcd_cmd(0x1);
 			lcd_string("CURRENT TIME");
 			rtc(h,m);
 		}
-		else if(temp==8)
+		 else if(temp==8)
 		{
 			lcd_cmd(0x1);
 			lcd_string("LOGIN");
@@ -129,8 +147,8 @@ main()
 				}
 				j++;
 			}
-			lcd_cmd(0x1);
-			lcd_string("VALIDATING..");
+			//lcd_cmd(0x1);
+			//lcd_string("VALIDATING..");
 			if(count==4){
 				flag=1;
 				lcd_cmd(0x1);
