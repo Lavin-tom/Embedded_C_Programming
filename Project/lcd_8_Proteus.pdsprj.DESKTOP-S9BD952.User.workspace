@@ -54,7 +54,7 @@
      <ITEM name="TopLineAddress">00000080</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="156" x="280" flags="00008001" y="195" h="72" pid="1" iid="5">
+   <POPUP w="156" x="1185" flags="00000001" y="235" h="72" pid="1" iid="5">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="872" flags="00000008" y="277" h="8" pid="2" iid="5">
@@ -67,7 +67,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="8" x="763" flags="0000000b" y="301" h="32" pid="101" iid="6">
+   <POPUP w="8" x="235" flags="0000800b" y="264" h="32" pid="101" iid="6">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>

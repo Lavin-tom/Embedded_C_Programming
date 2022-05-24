@@ -1,6 +1,7 @@
 /*i2c_fields.c*/
 #include<reg51.h>
 #include "header.h"
+//header file where _nop_ defined
 #include <intrins.h>
 sbit SDA=P2^0;
 sbit SCL=P2^1;
