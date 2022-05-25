@@ -1,6 +1,0 @@
-"F:\ubuntu\embedded_c_programming\Project\4x3keypad_driver.obj",
-"F:\ubuntu\embedded_c_programming\Project\delay.obj",
-"F:\ubuntu\embedded_c_programming\Project\lcd8bit_driver.obj",
-"F:\ubuntu\embedded_c_programming\Project\lcdmain.obj" 
-TO "F:\ubuntu\embedded_c_programming\Project\LCD" 
-PRINT(".\Listings\LCD.m51") RAMSIZE(256) 

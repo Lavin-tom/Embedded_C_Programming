@@ -101,6 +101,7 @@ main()
 			}
 			else{
 				flag=0;
+				lcd_cmd(0x1);
 				lcd_string("FAILED");
 				delay_ms(300);
 				pass_light=0;
@@ -109,6 +110,8 @@ main()
 			
 	case 10:
 		//set custom on_time to eeprom
+			if(flag==1)
+			{
 			lcd_cmd(0x1);
 			lcd_string("ADD ON_TIME");
 			delay_ms(500);
@@ -130,10 +133,17 @@ main()
 			lcd_string("ON_TIME");
 			lcd_cmd(0xc0);
 			lcd_string("UPDATED");
+			}
+			else{
+			lcd_cmd(0x1);
+			lcd_string("LOGIN FIRST");
+			}
 		break;
 			
 		case 48:
 		//set custom off_time to eeprom
+			if(flag==1)
+			{
 			lcd_cmd(0x1);
 			lcd_string("ADD OFF_TIME");
 			delay_ms(500);
@@ -155,17 +165,23 @@ main()
 			lcd_string("OFF_TIME");
 			lcd_cmd(0xc0);
 			lcd_string("UPDATED");
+			}
+			else{
+			lcd_cmd(0x1);
+			lcd_string("LOGIN FIRST");
+			}	
 			break;
 	case 4:
 		//to show the current time
 			lcd_cmd(0x1);
-			//lcd_cmd(0xc0);
 			rtc(h,m,s);
 			break; 
 	}
 	//again get data from keypad
 	temp=keyscan();
-}	
+}
+	pass_light=0;	//pass light turn off when turn on the device even after the login
+	lcd_cmd(0x1);
 	while(1)
 	{
 		//rtc function
@@ -210,13 +226,9 @@ main()
 		
 		//light on or off condtion
 		//if current time b/w on and off time light turn on otherwise turn off
-		//for better execution and debuging, consider only minutes 
-		if((mm>=mm_eeprom)&&(MM>=MM_eeprom))
-			{
-				if(mm<mm_off_eeprom)
-					light=1;
-				else
-					light=0;
-			}	
-	}
+			if((HH_eeprom == HH)&&(hh_eeprom==hh)&&(MM_eeprom==MM)&&(mm_eeprom==mm))
+				light=1;
+			if((HH_off_eeprom == HH)&&(hh_off_eeprom==hh)&&(MM_off_eeprom==MM)&&(mm_off_eeprom==mm))
+				light=0;
+	}	
 }
