@@ -8,7 +8,7 @@ main()
 {
 	u8 i,j=0,k=0,n;
 	u8 h,m,s,temp=0,pass,pass_[4];
-	u8 count=0,flag=0;
+	u8 count=0,flag=0,status=0;
 	u8 hh,HH,mm,MM,hh_eeprom,mm_eeprom,MM_eeprom,HH_eeprom;
 	u8 hh_off_eeprom,mm_off_eeprom,MM_off_eeprom,HH_off_eeprom;
 	//time device initially turned off
@@ -18,20 +18,24 @@ main()
 	lcd_init();		//lcd initialization
 	//RTC function for real time clock	
 	//setting on rtc to 00.10.00
-	i2c_byte_write_frame(0xD0,0x2,0x00); //setting hour
-	i2c_byte_write_frame(0xD0,0x1,0x10); //setting mins			
-	i2c_byte_write_frame(0xD0,0x0,0x55); //setting secs
+	//i2c_write_frame(0xD0,0x2,0x00); //setting hour
+	//i2c_write_frame(0xD0,0x1,0x10); //setting mins			
+	//i2c_write_frame(0xD0,0x0,0x45); //setting secs
+	
+	//i2c_write_frame(0xD0,0x4,0x13); //setting day
+	//i2c_write_frame(0xD0,0x5,0x8); //setting month
+	//i2c_write_frame(0xD0,0x6,0x20); //setting year
 				
 	//eeprom	
 	//default password saved to the eeprom
 	//default password set as 1234
-	i2c_byte_write_frame(0xa0,0x0,'1');
+	i2c_write_frame(0xa0,0x0,'1');
 	delay_ms(100);
-	i2c_byte_write_frame(0xa0,0x1,'2');
+	i2c_write_frame(0xa0,0x1,'2');
 	delay_ms(100);
-	i2c_byte_write_frame(0xa0,0x2,'3');
+	i2c_write_frame(0xa0,0x2,'3');
 	delay_ms(100);
-	i2c_byte_write_frame(0xa0,0x3,'4');
+	i2c_write_frame(0xa0,0x3,'4');
 	delay_ms(100);
 	
 	//welcome notes repeat every time turn on the device
@@ -85,7 +89,7 @@ main()
 
 			for(i=0x0;i<=0x3;i++)
 			{
-				temp=i2c_byte_read_frame(0xa0,i);
+				temp=i2c_read_frame(0xa0,i);
 				delay_ms(300);
 				if(temp==pass_[j])
 				{
@@ -126,7 +130,7 @@ main()
 				n=keyscan();
 				lcd_data(n);
 				delay_ms(500);
-				i2c_byte_write_frame(0xa0,i,n);
+				i2c_write_frame(0xa0,i,n);
 				delay_ms(500);
 			}
 			lcd_cmd(0x1);
@@ -158,7 +162,7 @@ main()
 				n=keyscan();
 				lcd_data(n);
 				delay_ms(500);
-				i2c_byte_write_frame(0xa0,i,n);
+				i2c_write_frame(0xa0,i,n);
 				delay_ms(500);
 			}
 			lcd_cmd(0x1);
@@ -174,7 +178,7 @@ main()
 	case 4:
 		//to show the current time
 			lcd_cmd(0x1);
-			rtc(h,m,s);
+			rtc(h,m,s,status);
 			break; 
 	}
 	//again get data from keypad
@@ -185,10 +189,10 @@ main()
 	while(1)
 	{
 		//rtc function
-		h=i2c_byte_read_frame(0xD0,0x2);
+		h=i2c_read_frame(0xD0,0x2);
 		
-		m=i2c_byte_read_frame(0xD0,0x1);
-		rtc(h,m,s);
+		m=i2c_read_frame(0xD0,0x1);
+		rtc(h,m,s,status);
 		
 		HH=(h/16+48);		//0	0	0
 		
@@ -199,36 +203,40 @@ main()
 		mm=(m%16+48);		//0	1	2
 		
 		//read on time from eeprom
-		HH_eeprom=i2c_byte_read_frame(0xa0,0x4);
+		HH_eeprom=i2c_read_frame(0xa0,0x4);
 		delay_ms(100);
 
-		hh_eeprom=i2c_byte_read_frame(0xa0,0x5);
+		hh_eeprom=i2c_read_frame(0xa0,0x5);
 		delay_ms(100);
 
-		MM_eeprom=i2c_byte_read_frame(0xa0,0x6);
+		MM_eeprom=i2c_read_frame(0xa0,0x6);
 		delay_ms(100);
 
-		mm_eeprom=i2c_byte_read_frame(0xa0,0x7);
+		mm_eeprom=i2c_read_frame(0xa0,0x7);
 		delay_ms(100);
 		
 		//read off time from eeprom
-		hh_off_eeprom=i2c_byte_read_frame(0xa0,0x9);
+		hh_off_eeprom=i2c_read_frame(0xa0,0x9);
 		delay_ms(100);
 	
-		HH_off_eeprom=i2c_byte_read_frame(0xa0,0x8);
+		HH_off_eeprom=i2c_read_frame(0xa0,0x8);
 		delay_ms(100);
 		
-		mm_off_eeprom=i2c_byte_read_frame(0xa0,0xB);
+		mm_off_eeprom=i2c_read_frame(0xa0,0xB);
 		delay_ms(100);
 
-		MM_off_eeprom=i2c_byte_read_frame(0xa0,0xA);
+		MM_off_eeprom=i2c_read_frame(0xa0,0xA);
 		delay_ms(100);
 		
 		//light on or off condtion
 		//if current time b/w on and off time light turn on otherwise turn off
-			if((HH_eeprom == HH)&&(hh_eeprom==hh)&&(MM_eeprom==MM)&&(mm_eeprom==mm))
+			if((HH_eeprom == HH)&&(hh_eeprom==hh)&&(MM_eeprom==MM)&&(mm_eeprom==mm)){
 				light=1;
-			if((HH_off_eeprom == HH)&&(hh_off_eeprom==hh)&&(MM_off_eeprom==MM)&&(mm_off_eeprom==mm))
+				status=1;
+			}
+			if((HH_off_eeprom == HH)&&(hh_off_eeprom==hh)&&(MM_off_eeprom==MM)&&(mm_off_eeprom==mm)){
 				light=0;
+				status=0;
+			}
 	}	
 }

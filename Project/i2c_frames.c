@@ -1,6 +1,6 @@
 /*i2c_frames.c*/
 #include "header.h"
-void i2c_byte_write_frame(u8 sa,u8 mr,u8 d)
+void i2c_write_frame(u8 sa,u8 mr,u8 d)
 {
 	bit ret;
 	i2c_start();
@@ -23,7 +23,7 @@ void i2c_byte_write_frame(u8 sa,u8 mr,u8 d)
 				i2c_stop();
 }
 
-u8 i2c_byte_read_frame(u8 sa,u8 mr)
+u8 i2c_read_frame(u8 sa,u8 mr)
 {
 	u8 temp;
 	bit ret;

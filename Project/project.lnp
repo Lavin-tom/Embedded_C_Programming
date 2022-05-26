@@ -1,0 +1,9 @@
+"F:\ubuntu\embedded_c_programming\Project\4x3keypad_driver.obj",
+"F:\ubuntu\embedded_c_programming\Project\delay.obj",
+"F:\ubuntu\embedded_c_programming\Project\i2c_fields.obj",
+"F:\ubuntu\embedded_c_programming\Project\i2c_frames.obj",
+"F:\ubuntu\embedded_c_programming\Project\lcd8bit_driver.obj",
+"F:\ubuntu\embedded_c_programming\Project\project_main.obj",
+"F:\ubuntu\embedded_c_programming\Project\rtc real function.obj" 
+TO "F:\ubuntu\embedded_c_programming\Project\project" 
+PRINT(".\Listings\project.m51") RAMSIZE(256) 
