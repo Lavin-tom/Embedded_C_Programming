@@ -1,6 +1,0 @@
-"F:\ubuntu\embedded_c_programming\Keypad\keypad_4x3_status_on_LCD\2x3keypad_driver.obj",
-"F:\ubuntu\embedded_c_programming\Keypad\keypad_4x3_status_on_LCD\delay.obj",
-"F:\ubuntu\embedded_c_programming\Keypad\keypad_4x3_status_on_LCD\lcd8bit_driver.obj",
-"F:\ubuntu\embedded_c_programming\Keypad\keypad_4x3_status_on_LCD\lcdmain.obj" 
-TO "F:\ubuntu\embedded_c_programming\Keypad\keypad_4x3_status_on_LCD\LCD" 
-PRINT(".\Listings\LCD.m51") RAMSIZE(256) 
