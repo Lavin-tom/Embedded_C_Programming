@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\UART_and_LED.X.production.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>28669</length>
+      <used>401</used>
+      <free>28268</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>1536</length>
+      <used>73</used>
+      <free>1463</free>
+    </memory>
+  </executable>
+</project>
