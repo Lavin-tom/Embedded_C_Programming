@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\Keypad.X.production.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>28669</length>
+      <used>913</used>
+      <free>27756</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>1536</length>
+      <used>22</used>
+      <free>1514</free>
+    </memory>
+  </executable>
+</project>
