@@ -1,0 +1,1416 @@
+
+
+Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
+                                                                                               Sat Dec 17 12:43:03 2022
+
+Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1 
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    18                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    19                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    20                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    21                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    22   000000                     
+    23                           ; Version 2.40
+    24                           ; Generated 17/11/2021 GMT
+    25                           ; 
+    26                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    27                           ; All rights reserved.
+    28                           ; 
+    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    30                           ; 
+    31                           ; Redistribution and use in source and binary forms, with or without modification, are
+    32                           ; permitted provided that the following conditions are met:
+    33                           ; 
+    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    35                           ;        conditions and the following disclaimer.
+    36                           ; 
+    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    38                           ;        of conditions and the following disclaimer in the documentation and/or other
+    39                           ;        materials provided with the distribution. Publication is not required when
+    40                           ;        this file is used in an embedded application.
+    41                           ; 
+    42                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    43                           ;        software without specific prior written permission.
+    44                           ; 
+    45                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    46                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    47                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    48                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    49                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    50                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    51                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    52                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    53                           ; 
+    54                           ; 
+    55                           ; Code-generator required, PIC18F4520 Definitions
+    56                           ; 
+    57                           ; SFR Addresses
+    58   000000                     
+    59                           	psect	idataCOMRAM
+    60   006DA0                     __pidataCOMRAM:
+    61                           	callstack 0
+    62                           
+    63                           ;initializer for _msg
+    64   006DA0  53                 	db	83
+    65   006DA1  50                 	db	80
+    66   006DA2  49                 	db	73
+    67   006DA3  20                 	db	32
+    68   006DA4  45                 	db	69
+    69   006DA5  45                 	db	69
+    70   006DA6  50                 	db	80
+    71   006DA7  52                 	db	82
+    72   006DA8  4F                 	db	79
+    73   006DA9  4D                 	db	77
+    74   006DAA  20                 	db	32
+    75   006DAB  69                 	db	105
+    76   006DAC  73                 	db	115
+    77   006DAD  20                 	db	32
+    78   006DAE  77                 	db	119
+    79   006DAF  6F                 	db	111
+    80   006DB0  72                 	db	114
+    81   006DB1  6B                 	db	107
+    82   006DB2  69                 	db	105
+    83   006DB3  6E                 	db	110
+    84   006DB4  67                 	db	103
+    85   006DB5  00                 	db	0
+    86   000000                     _PORTCbits	set	3970
+    87   000000                     _LATCbits	set	3979
+    88   000000                     _LATD	set	3980
+    89   000000                     _TRISCbits	set	3988
+    90   000000                     _TRISD	set	3989
+    91   000000                     _PIR1bits	set	3998
+    92   000000                     _SSPCON1bits	set	4038
+    93   000000                     _SSPBUF	set	4041
+    94   000000                     _SSPSTATbits	set	4039
+    95                           
+    96                           ; #config settings
+    97                           
+    98                           	psect	cinit
+    99   006E4A                     __pcinit:
+   100                           	callstack 0
+   101   006E4A                     start_initialization:
+   102                           	callstack 0
+   103   006E4A                     __initialization:
+   104                           	callstack 0
+   105                           
+   106                           ; Initialize objects allocated to COMRAM (22 bytes)
+   107                           ; load TBLPTR registers with __pidataCOMRAM
+   108   006E4A  0EA0               	movlw	low __pidataCOMRAM
+   109   006E4C  6EF6               	movwf	tblptrl,c
+   110   006E4E  0E6D               	movlw	high __pidataCOMRAM
+   111   006E50  6EF7               	movwf	tblptrh,c
+   112   006E52  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   113   006E54  6EF8               	movwf	tblptru,c
+   114   006E56  EE00  F001         	lfsr	0,__pdataCOMRAM
+   115   006E5A  EE10 F016          	lfsr	1,22
+   116   006E5E                     copy_data0:
+   117   006E5E  0009               	tblrd		*+
+   118   006E60  CFF5 FFEE          	movff	tablat,postinc0
+   119   006E64  50E5               	movf	postdec1,w,c
+   120   006E66  50E1               	movf	fsr1l,w,c
+   121   006E68  E1FA               	bnz	copy_data0
+   122   006E6A                     end_of_initialization:
+   123                           	callstack 0
+   124   006E6A                     __end_of__initialization:
+   125                           	callstack 0
+   126   006E6A  0100               	movlb	0
+   127   006E6C  EFBB  F037         	goto	_main	;jump to C main() function
+   128                           
+   129                           	psect	dataCOMRAM
+   130   000001                     __pdataCOMRAM:
+   131                           	callstack 0
+   132   000001                     _msg:
+   133                           	callstack 0
+   134   000001                     	ds	22
+   135                           
+   136                           	psect	cstackCOMRAM
+   137   000017                     __pcstackCOMRAM:
+   138                           	callstack 0
+   139   000017                     ??_LCD_Command:
+   140   000017                     ??_LCD_Data:
+   141   000017                     SPI_Read_Write@val:
+   142                           	callstack 0
+   143                           
+   144                           ; 1 bytes @ 0x0
+   145   000017                     	ds	1
+   146   000018                     LCD_Command@cmd:
+   147                           	callstack 0
+   148   000018                     LCD_Data@data:
+   149                           	callstack 0
+   150   000018                     SPI_EEPROM_writebyte@addr:
+   151                           	callstack 0
+   152   000018                     SPI_EEPROM_readbyte@addr:
+   153                           	callstack 0
+   154                           
+   155                           ; 2 bytes @ 0x1
+   156   000018                     	ds	1
+   157   000019                     ??_LCD_Init:
+   158   000019                     LCD_ROM_String@str:
+   159                           	callstack 0
+   160                           
+   161                           ; 2 bytes @ 0x2
+   162   000019                     	ds	1
+   163   00001A                     SPI_EEPROM_writebyte@data:
+   164                           	callstack 0
+   165   00001A                     SPI_EEPROM_readbyte@Higher_byte:
+   166                           	callstack 0
+   167                           
+   168                           ; 1 bytes @ 0x3
+   169   00001A                     	ds	1
+   170   00001B                     ??_LCD_ROM_String:
+   171   00001B                     ??_SPI_EEPROM_writebyte:
+   172   00001B                     SPI_EEPROM_readbyte@Lower_byte:
+   173                           	callstack 0
+   174                           
+   175                           ; 1 bytes @ 0x4
+   176   00001B                     	ds	1
+   177   00001C                     SPI_EEPROM_writebyte@Lower_byte:
+   178                           	callstack 0
+   179   00001C                     SPI_EEPROM_readbyte@Read_val:
+   180                           	callstack 0
+   181   00001C                     LCD_ROM_String@i:
+   182                           	callstack 0
+   183                           
+   184                           ; 2 bytes @ 0x5
+   185   00001C                     	ds	2
+   186   00001E                     main@read_val:
+   187                           	callstack 0
+   188                           
+   189                           ; 1 bytes @ 0x7
+   190   00001E                     	ds	1
+   191                           
+   192 ;;
+   193 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   194 ;;
+   195 ;; *************** function _main *****************
+   196 ;; Defined at:
+   197 ;;		line 80 in file "EEPROM_SPI_main.c"
+   198 ;; Parameters:    Size  Location     Type
+   199 ;;		None
+   200 ;; Auto vars:     Size  Location     Type
+   201 ;;  read_val        1    7[COMRAM] unsigned char 
+   202 ;; Return value:  Size  Location     Type
+   203 ;;                  1    wreg      void 
+   204 ;; Registers used:
+   205 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   206 ;; Tracked objects:
+   207 ;;		On entry : 0/0
+   208 ;;		On exit  : 0/0
+   209 ;;		Unchanged: 0/0
+   210 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   211 ;;      Params:         0       0       0       0       0       0       0
+   212 ;;      Locals:         1       0       0       0       0       0       0
+   213 ;;      Temps:          0       0       0       0       0       0       0
+   214 ;;      Totals:         1       0       0       0       0       0       0
+   215 ;;Total ram usage:        1 bytes
+   216 ;; Hardware stack levels required when called: 2
+   217 ;; This function calls:
+   218 ;;		_LCD_Command
+   219 ;;		_LCD_Data
+   220 ;;		_LCD_Init
+   221 ;;		_LCD_ROM_String
+   222 ;;		_SPI_EEPROM_readbyte
+   223 ;;		_SPI_EEPROM_writebyte
+   224 ;;		_SPI_Init
+   225 ;; This function is called by:
+   226 ;;		Startup code after reset
+   227 ;; This function uses a non-reentrant model
+   228 ;;
+   229                           
+   230                           	psect	text0
+   231   006F76                     __ptext0:
+   232                           	callstack 0
+   233   006F76                     _main:
+   234                           	callstack 29
+   235   006F76                     
+   236                           ;EEPROM_SPI_main.c: 82:     LCD_Init();
+   237   006F76  EC83  F037         	call	_LCD_Init	;wreg free
+   238   006F7A                     
+   239                           ;EEPROM_SPI_main.c: 83:     LCD_ROM_String(msg);
+   240   006F7A  0E01               	movlw	low _msg
+   241   006F7C  6E19               	movwf	LCD_ROM_String@str^0,c
+   242   006F7E  0E00               	movlw	high _msg
+   243   006F80  6E1A               	movwf	(LCD_ROM_String@str+1)^0,c
+   244   006F82  EC5C  F037         	call	_LCD_ROM_String	;wreg free
+   245   006F86                     
+   246                           ;EEPROM_SPI_main.c: 84:     LCD_Command(0xc0);
+   247   006F86  0EC0               	movlw	192
+   248   006F88  ECF6  F036         	call	_LCD_Command
+   249   006F8C                     
+   250                           ;EEPROM_SPI_main.c: 85:     SPI_Init();
+   251   006F8C  ECE8  F036         	call	_SPI_Init	;wreg free
+   252   006F90                     
+   253                           ;EEPROM_SPI_main.c: 87:     SPI_EEPROM_writebyte(0x123, 'O');
+   254   006F90  0E01               	movlw	1
+   255   006F92  6E19               	movwf	(SPI_EEPROM_writebyte@addr+1)^0,c
+   256   006F94  0E23               	movlw	35
+   257   006F96  6E18               	movwf	SPI_EEPROM_writebyte@addr^0,c
+   258   006F98  0E4F               	movlw	79
+   259   006F9A  6E1A               	movwf	SPI_EEPROM_writebyte@data^0,c
+   260   006F9C  EC38  F037         	call	_SPI_EEPROM_writebyte	;wreg free
+   261   006FA0                     
+   262                           ;EEPROM_SPI_main.c: 88:     SPI_EEPROM_writebyte(0x200, 'T');
+   263   006FA0  0E02               	movlw	2
+   264   006FA2  6E19               	movwf	(SPI_EEPROM_writebyte@addr+1)^0,c
+   265   006FA4  0E00               	movlw	0
+   266   006FA6  6E18               	movwf	SPI_EEPROM_writebyte@addr^0,c
+   267   006FA8  0E54               	movlw	84
+   268   006FAA  6E1A               	movwf	SPI_EEPROM_writebyte@data^0,c
+   269   006FAC  EC38  F037         	call	_SPI_EEPROM_writebyte	;wreg free
+   270   006FB0                     
+   271                           ;EEPROM_SPI_main.c: 89:     SPI_EEPROM_writebyte(0x300, 'L');
+   272   006FB0  0E03               	movlw	3
+   273   006FB2  6E19               	movwf	(SPI_EEPROM_writebyte@addr+1)^0,c
+   274   006FB4  0E00               	movlw	0
+   275   006FB6  6E18               	movwf	SPI_EEPROM_writebyte@addr^0,c
+   276   006FB8  0E4C               	movlw	76
+   277   006FBA  6E1A               	movwf	SPI_EEPROM_writebyte@data^0,c
+   278   006FBC  EC38  F037         	call	_SPI_EEPROM_writebyte	;wreg free
+   279   006FC0                     
+   280                           ;EEPROM_SPI_main.c: 91:     read_val = SPI_EEPROM_readbyte(0x123);
+   281   006FC0  0E01               	movlw	1
+   282   006FC2  6E19               	movwf	(SPI_EEPROM_readbyte@addr+1)^0,c
+   283   006FC4  0E23               	movlw	35
+   284   006FC6  6E18               	movwf	SPI_EEPROM_readbyte@addr^0,c
+   285   006FC8  EC14  F037         	call	_SPI_EEPROM_readbyte	;wreg free
+   286   006FCC  6E1E               	movwf	main@read_val^0,c
+   287   006FCE                     
+   288                           ;EEPROM_SPI_main.c: 92:     LCD_Data(read_val);
+   289   006FCE  501E               	movf	main@read_val^0,w,c
+   290   006FD0  EC05  F037         	call	_LCD_Data
+   291   006FD4                     
+   292                           ;EEPROM_SPI_main.c: 93:     read_val = SPI_EEPROM_readbyte(0x200);
+   293   006FD4  0E02               	movlw	2
+   294   006FD6  6E19               	movwf	(SPI_EEPROM_readbyte@addr+1)^0,c
+   295   006FD8  0E00               	movlw	0
+   296   006FDA  6E18               	movwf	SPI_EEPROM_readbyte@addr^0,c
+   297   006FDC  EC14  F037         	call	_SPI_EEPROM_readbyte	;wreg free
+   298   006FE0  6E1E               	movwf	main@read_val^0,c
+   299   006FE2                     
+   300                           ;EEPROM_SPI_main.c: 94:     LCD_Data(read_val);
+   301   006FE2  501E               	movf	main@read_val^0,w,c
+   302   006FE4  EC05  F037         	call	_LCD_Data
+   303   006FE8                     
+   304                           ;EEPROM_SPI_main.c: 95:     read_val = SPI_EEPROM_readbyte(0x300);
+   305   006FE8  0E03               	movlw	3
+   306   006FEA  6E19               	movwf	(SPI_EEPROM_readbyte@addr+1)^0,c
+   307   006FEC  0E00               	movlw	0
+   308   006FEE  6E18               	movwf	SPI_EEPROM_readbyte@addr^0,c
+   309   006FF0  EC14  F037         	call	_SPI_EEPROM_readbyte	;wreg free
+   310   006FF4  6E1E               	movwf	main@read_val^0,c
+   311   006FF6                     
+   312                           ;EEPROM_SPI_main.c: 96:     LCD_Data(read_val);
+   313   006FF6  501E               	movf	main@read_val^0,w,c
+   314   006FF8  EC05  F037         	call	_LCD_Data
+   315   006FFC  EF00  F000         	goto	start
+   316   007000                     __end_of_main:
+   317                           	callstack 0
+   318                           
+   319 ;; *************** function _SPI_Init *****************
+   320 ;; Defined at:
+   321 ;;		line 17 in file "EEPROM_SPI_main.c"
+   322 ;; Parameters:    Size  Location     Type
+   323 ;;		None
+   324 ;; Auto vars:     Size  Location     Type
+   325 ;;		None
+   326 ;; Return value:  Size  Location     Type
+   327 ;;                  1    wreg      void 
+   328 ;; Registers used:
+   329 ;;		wreg, status,2
+   330 ;; Tracked objects:
+   331 ;;		On entry : 0/0
+   332 ;;		On exit  : 0/0
+   333 ;;		Unchanged: 0/0
+   334 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   335 ;;      Params:         0       0       0       0       0       0       0
+   336 ;;      Locals:         0       0       0       0       0       0       0
+   337 ;;      Temps:          0       0       0       0       0       0       0
+   338 ;;      Totals:         0       0       0       0       0       0       0
+   339 ;;Total ram usage:        0 bytes
+   340 ;; Hardware stack levels used: 1
+   341 ;; This function calls:
+   342 ;;		Nothing
+   343 ;; This function is called by:
+   344 ;;		_main
+   345 ;; This function uses a non-reentrant model
+   346 ;;
+   347                           
+   348                           	psect	text1
+   349   006DD0                     __ptext1:
+   350                           	callstack 0
+   351   006DD0                     _SPI_Init:
+   352                           	callstack 30
+   353   006DD0                     
+   354                           ;EEPROM_SPI_main.c: 19:     SSPCON1bits.SSPM = 0b001;
+   355   006DD0  50C6               	movf	198,w,c	;volatile
+   356   006DD2  0BF0               	andlw	-16
+   357   006DD4  0901               	iorlw	1
+   358   006DD6  6EC6               	movwf	198,c	;volatile
+   359   006DD8                     
+   360                           ;EEPROM_SPI_main.c: 20:     SSPCON1bits.CKP = 0;
+   361   006DD8  98C6               	bcf	198,4,c	;volatile
+   362   006DDA                     
+   363                           ;EEPROM_SPI_main.c: 21:     SSPSTATbits.SMP = 1;
+   364   006DDA  8EC7               	bsf	199,7,c	;volatile
+   365   006DDC                     
+   366                           ;EEPROM_SPI_main.c: 22:     SSPSTATbits.CKE = 1;
+   367   006DDC  8CC7               	bsf	199,6,c	;volatile
+   368   006DDE                     
+   369                           ;EEPROM_SPI_main.c: 24:     TRISCbits.RC2 =0;
+   370   006DDE  9494               	bcf	148,2,c	;volatile
+   371   006DE0                     
+   372                           ;EEPROM_SPI_main.c: 25:     PORTCbits.RC2 = 1;;
+   373   006DE0  8482               	bsf	130,2,c	;volatile
+   374   006DE2                     
+   375                           ;EEPROM_SPI_main.c: 26:     TRISCbits.RC5 = 0;
+   376   006DE2  9A94               	bcf	148,5,c	;volatile
+   377   006DE4                     
+   378                           ;EEPROM_SPI_main.c: 27:     TRISCbits.RC4 = 1;
+   379   006DE4  8894               	bsf	148,4,c	;volatile
+   380   006DE6                     
+   381                           ;EEPROM_SPI_main.c: 28:     TRISCbits.RC3 = 0;
+   382   006DE6  9694               	bcf	148,3,c	;volatile
+   383   006DE8                     
+   384                           ;EEPROM_SPI_main.c: 29:     SSPCON1bits.SSPEN = 1;
+   385   006DE8  8AC6               	bsf	198,5,c	;volatile
+   386   006DEA  0012               	return		;funcret
+   387   006DEC                     __end_of_SPI_Init:
+   388                           	callstack 0
+   389                           
+   390 ;; *************** function _SPI_EEPROM_writebyte *****************
+   391 ;; Defined at:
+   392 ;;		line 38 in file "EEPROM_SPI_main.c"
+   393 ;; Parameters:    Size  Location     Type
+   394 ;;  addr            2    1[COMRAM] unsigned int 
+   395 ;;  data            1    3[COMRAM] unsigned char 
+   396 ;; Auto vars:     Size  Location     Type
+   397 ;;  Lower_byte      1    5[COMRAM] unsigned char 
+   398 ;;  Higher_byte     1    0        unsigned char 
+   399 ;; Return value:  Size  Location     Type
+   400 ;;                  1    wreg      void 
+   401 ;; Registers used:
+   402 ;;		wreg, status,2, cstack
+   403 ;; Tracked objects:
+   404 ;;		On entry : 0/0
+   405 ;;		On exit  : 0/0
+   406 ;;		Unchanged: 0/0
+   407 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   408 ;;      Params:         3       0       0       0       0       0       0
+   409 ;;      Locals:         1       0       0       0       0       0       0
+   410 ;;      Temps:          1       0       0       0       0       0       0
+   411 ;;      Totals:         5       0       0       0       0       0       0
+   412 ;;Total ram usage:        5 bytes
+   413 ;; Hardware stack levels used: 1
+   414 ;; Hardware stack levels required when called: 1
+   415 ;; This function calls:
+   416 ;;		_SPI_Read_Write
+   417 ;; This function is called by:
+   418 ;;		_main
+   419 ;; This function uses a non-reentrant model
+   420 ;;
+   421                           
+   422                           	psect	text2
+   423   006E70                     __ptext2:
+   424                           	callstack 0
+   425   006E70                     _SPI_EEPROM_writebyte:
+   426                           	callstack 29
+   427   006E70                     
+   428                           ;EEPROM_SPI_main.c: 44:     Lower_byte = (unsigned char) addr;
+   429   006E70  C018  F01C         	movff	SPI_EEPROM_writebyte@addr,SPI_EEPROM_writebyte@Lower_byte
+   430   006E74                     
+   431                           ;EEPROM_SPI_main.c: 46:     PORTCbits.RC2 = 0;;
+   432   006E74  9482               	bcf	130,2,c	;volatile
+   433   006E76                     
+   434                           ;EEPROM_SPI_main.c: 47:     SPI_Read_Write((unsigned)0b00000110);
+   435   006E76  0E06               	movlw	6
+   436   006E78  ECDB  F036         	call	_SPI_Read_Write
+   437   006E7C                     
+   438                           ;EEPROM_SPI_main.c: 48:     PORTCbits.RC2 = 1;;
+   439   006E7C  8482               	bsf	130,2,c	;volatile
+   440   006E7E                     
+   441                           ;EEPROM_SPI_main.c: 50:     _delay((unsigned long)((100)*(20000000/4000000.0)));
+   442   006E7E  0EA6               	movlw	166
+   443   006E80                     u57:
+   444   006E80  2EE8               	decfsz	wreg,f,c
+   445   006E82  D7FE               	bra	u57
+   446   006E84  D000               	nop2	
+   447   006E86                     
+   448                           ;EEPROM_SPI_main.c: 52:     PORTCbits.RC2 = 0;;
+   449   006E86  9482               	bcf	130,2,c	;volatile
+   450   006E88                     
+   451                           ;EEPROM_SPI_main.c: 53:     SPI_Read_Write((unsigned)0b00000010);
+   452   006E88  0E02               	movlw	2
+   453   006E8A  ECDB  F036         	call	_SPI_Read_Write
+   454   006E8E                     
+   455                           ;EEPROM_SPI_main.c: 54:     SPI_Read_Write(Higher_byte);
+   456   006E8E  0E00               	movlw	0
+   457   006E90  ECDB  F036         	call	_SPI_Read_Write
+   458   006E94                     
+   459                           ;EEPROM_SPI_main.c: 55:     SPI_Read_Write(Lower_byte);
+   460   006E94  501C               	movf	SPI_EEPROM_writebyte@Lower_byte^0,w,c
+   461   006E96  ECDB  F036         	call	_SPI_Read_Write
+   462   006E9A                     
+   463                           ;EEPROM_SPI_main.c: 57:     SPI_Read_Write(data);
+   464   006E9A  501A               	movf	SPI_EEPROM_writebyte@data^0,w,c
+   465   006E9C  ECDB  F036         	call	_SPI_Read_Write
+   466   006EA0                     
+   467                           ;EEPROM_SPI_main.c: 59:     PORTCbits.RC2 = 1;;
+   468   006EA0  8482               	bsf	130,2,c	;volatile
+   469   006EA2                     
+   470                           ;EEPROM_SPI_main.c: 61:     _delay((unsigned long)((20)*(20000000/4000.0)));
+   471   006EA2  0E82               	movlw	130
+   472   006EA4  6E1B               	movwf	??_SPI_EEPROM_writebyte^0,c
+   473   006EA6  0EDE               	movlw	222
+   474   006EA8                     u67:
+   475   006EA8  2EE8               	decfsz	wreg,f,c
+   476   006EAA  D7FE               	bra	u67
+   477   006EAC  2E1B               	decfsz	??_SPI_EEPROM_writebyte^0,f,c
+   478   006EAE  D7FC               	bra	u67
+   479   006EB0                     
+   480                           ;EEPROM_SPI_main.c: 63:     SPI_Read_Write((unsigned)0b00000100);
+   481   006EB0  0E04               	movlw	4
+   482   006EB2  ECDB  F036         	call	_SPI_Read_Write
+   483   006EB6  0012               	return		;funcret
+   484   006EB8                     __end_of_SPI_EEPROM_writebyte:
+   485                           	callstack 0
+   486                           
+   487 ;; *************** function _SPI_EEPROM_readbyte *****************
+   488 ;; Defined at:
+   489 ;;		line 65 in file "EEPROM_SPI_main.c"
+   490 ;; Parameters:    Size  Location     Type
+   491 ;;  addr            2    1[COMRAM] unsigned int 
+   492 ;; Auto vars:     Size  Location     Type
+   493 ;;  Read_val        1    5[COMRAM] unsigned char 
+   494 ;;  Lower_byte      1    4[COMRAM] unsigned char 
+   495 ;;  Higher_byte     1    3[COMRAM] unsigned char 
+   496 ;; Return value:  Size  Location     Type
+   497 ;;                  1    wreg      unsigned char 
+   498 ;; Registers used:
+   499 ;;		wreg, status,2, cstack
+   500 ;; Tracked objects:
+   501 ;;		On entry : 0/0
+   502 ;;		On exit  : 0/0
+   503 ;;		Unchanged: 0/0
+   504 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   505 ;;      Params:         2       0       0       0       0       0       0
+   506 ;;      Locals:         3       0       0       0       0       0       0
+   507 ;;      Temps:          0       0       0       0       0       0       0
+   508 ;;      Totals:         5       0       0       0       0       0       0
+   509 ;;Total ram usage:        5 bytes
+   510 ;; Hardware stack levels used: 1
+   511 ;; Hardware stack levels required when called: 1
+   512 ;; This function calls:
+   513 ;;		_SPI_Read_Write
+   514 ;; This function is called by:
+   515 ;;		_main
+   516 ;; This function uses a non-reentrant model
+   517 ;;
+   518                           
+   519                           	psect	text3
+   520   006E28                     __ptext3:
+   521                           	callstack 0
+   522   006E28                     _SPI_EEPROM_readbyte:
+   523                           	callstack 29
+   524   006E28                     
+   525                           ;EEPROM_SPI_main.c: 65: unsigned char SPI_EEPROM_readbyte(unsigned int addr);EEPROM_SPI_
+      +                          main.c: 66: {;EEPROM_SPI_main.c: 67:     unsigned char Higher_byte, Lower_byte, Read_val
+      +                          ;;EEPROM_SPI_main.c: 69:     PORTCbits.RC2 = 0;;
+   526   006E28  9482               	bcf	130,2,c	;volatile
+   527   006E2A                     
+   528                           ;EEPROM_SPI_main.c: 70:     SPI_Read_Write((unsigned)0b00000011);
+   529   006E2A  0E03               	movlw	3
+   530   006E2C  ECDB  F036         	call	_SPI_Read_Write
+   531                           
+   532                           ;EEPROM_SPI_main.c: 71:     SPI_Read_Write(Higher_byte);
+   533   006E30  501A               	movf	SPI_EEPROM_readbyte@Higher_byte^0,w,c
+   534   006E32  ECDB  F036         	call	_SPI_Read_Write
+   535                           
+   536                           ;EEPROM_SPI_main.c: 72:     SPI_Read_Write(Lower_byte);
+   537   006E36  501B               	movf	SPI_EEPROM_readbyte@Lower_byte^0,w,c
+   538   006E38  ECDB  F036         	call	_SPI_Read_Write
+   539                           
+   540                           ;EEPROM_SPI_main.c: 74:     Read_val = SPI_Read_Write(0xff);
+   541   006E3C  0EFF               	movlw	255
+   542   006E3E  ECDB  F036         	call	_SPI_Read_Write
+   543   006E42  6E1C               	movwf	SPI_EEPROM_readbyte@Read_val^0,c
+   544   006E44                     
+   545                           ;EEPROM_SPI_main.c: 75:     PORTCbits.RC2 = 1;;
+   546   006E44  8482               	bsf	130,2,c	;volatile
+   547   006E46                     
+   548                           ;EEPROM_SPI_main.c: 77:     return Read_val;
+   549   006E46  501C               	movf	SPI_EEPROM_readbyte@Read_val^0,w,c
+   550   006E48  0012               	return		;funcret
+   551   006E4A                     __end_of_SPI_EEPROM_readbyte:
+   552                           	callstack 0
+   553                           
+   554 ;; *************** function _SPI_Read_Write *****************
+   555 ;; Defined at:
+   556 ;;		line 31 in file "EEPROM_SPI_main.c"
+   557 ;; Parameters:    Size  Location     Type
+   558 ;;  val             1    wreg     unsigned char 
+   559 ;; Auto vars:     Size  Location     Type
+   560 ;;  val             1    0[COMRAM] unsigned char 
+   561 ;; Return value:  Size  Location     Type
+   562 ;;                  1    wreg      unsigned char 
+   563 ;; Registers used:
+   564 ;;		wreg, status,2
+   565 ;; Tracked objects:
+   566 ;;		On entry : 0/0
+   567 ;;		On exit  : 0/0
+   568 ;;		Unchanged: 0/0
+   569 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   570 ;;      Params:         0       0       0       0       0       0       0
+   571 ;;      Locals:         1       0       0       0       0       0       0
+   572 ;;      Temps:          0       0       0       0       0       0       0
+   573 ;;      Totals:         1       0       0       0       0       0       0
+   574 ;;Total ram usage:        1 bytes
+   575 ;; Hardware stack levels used: 1
+   576 ;; This function calls:
+   577 ;;		Nothing
+   578 ;; This function is called by:
+   579 ;;		_SPI_EEPROM_writebyte
+   580 ;;		_SPI_EEPROM_readbyte
+   581 ;; This function uses a non-reentrant model
+   582 ;;
+   583                           
+   584                           	psect	text4
+   585   006DB6                     __ptext4:
+   586                           	callstack 0
+   587   006DB6                     _SPI_Read_Write:
+   588                           	callstack 29
+   589                           
+   590                           ;incstack = 0
+   591                           ;SPI_Read_Write@val stored from wreg
+   592   006DB6  6E17               	movwf	SPI_Read_Write@val^0,c
+   593   006DB8                     
+   594                           ;EEPROM_SPI_main.c: 31: unsigned char SPI_Read_Write(unsigned char val);EEPROM_SPI_main.
+      +                          c: 32: {;EEPROM_SPI_main.c: 33:     SSPBUF = val;
+   595   006DB8  C017  FFC9         	movff	SPI_Read_Write@val,4041	;volatile
+   596   006DBC                     l61:
+   597   006DBC  A69E               	btfss	158,3,c	;volatile
+   598   006DBE  EFE3  F036         	goto	u11
+   599   006DC2  EFE5  F036         	goto	u10
+   600   006DC6                     u11:
+   601   006DC6  EFDE  F036         	goto	l61
+   602   006DCA                     u10:
+   603   006DCA                     
+   604                           ;EEPROM_SPI_main.c: 35:     PIR1bits.SSPIF=0;
+   605   006DCA  969E               	bcf	158,3,c	;volatile
+   606                           
+   607                           ;EEPROM_SPI_main.c: 36:     return SSPBUF;
+   608   006DCC  50C9               	movf	201,w,c	;volatile
+   609   006DCE  0012               	return		;funcret
+   610   006DD0                     __end_of_SPI_Read_Write:
+   611                           	callstack 0
+   612                           
+   613 ;; *************** function _LCD_ROM_String *****************
+   614 ;; Defined at:
+   615 ;;		line 63 in file "../PIC18F_Library/LCD.c"
+   616 ;; Parameters:    Size  Location     Type
+   617 ;;  str             2    2[COMRAM] PTR const unsigned char 
+   618 ;;		 -> msg(22), 
+   619 ;; Auto vars:     Size  Location     Type
+   620 ;;  i               2    5[COMRAM] int 
+   621 ;; Return value:  Size  Location     Type
+   622 ;;                  1    wreg      void 
+   623 ;; Registers used:
+   624 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   625 ;; Tracked objects:
+   626 ;;		On entry : 0/0
+   627 ;;		On exit  : 0/0
+   628 ;;		Unchanged: 0/0
+   629 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   630 ;;      Params:         2       0       0       0       0       0       0
+   631 ;;      Locals:         2       0       0       0       0       0       0
+   632 ;;      Temps:          1       0       0       0       0       0       0
+   633 ;;      Totals:         5       0       0       0       0       0       0
+   634 ;;Total ram usage:        5 bytes
+   635 ;; Hardware stack levels used: 1
+   636 ;; Hardware stack levels required when called: 1
+   637 ;; This function calls:
+   638 ;;		_LCD_Data
+   639 ;; This function is called by:
+   640 ;;		_main
+   641 ;; This function uses a non-reentrant model
+   642 ;;
+   643                           
+   644                           	psect	text5
+   645   006EB8                     __ptext5:
+   646                           	callstack 0
+   647   006EB8                     _LCD_ROM_String:
+   648                           	callstack 29
+   649   006EB8                     
+   650                           ;../PIC18F_Library/LCD.c: 63: void LCD_ROM_String(const char *str);../PIC18F_Library/LCD
+      +                          .c: 64: {;../PIC18F_Library/LCD.c: 65:     int i = 0;
+   651   006EB8  0E00               	movlw	0
+   652   006EBA  6E1D               	movwf	(LCD_ROM_String@i+1)^0,c
+   653   006EBC  0E00               	movlw	0
+   654   006EBE  6E1C               	movwf	LCD_ROM_String@i^0,c
+   655                           
+   656                           ;../PIC18F_Library/LCD.c: 66:     while (str[i] != 0)
+   657   006EC0  EF74  F037         	goto	l923
+   658   006EC4                     l917:
+   659                           
+   660                           ;../PIC18F_Library/LCD.c: 67:     {;../PIC18F_Library/LCD.c: 68:         LCD_Data(str[i]
+      +                          );
+   661   006EC4  501C               	movf	LCD_ROM_String@i^0,w,c
+   662   006EC6  2419               	addwf	LCD_ROM_String@str^0,w,c
+   663   006EC8  6ED9               	movwf	fsr2l,c
+   664   006ECA  501D               	movf	(LCD_ROM_String@i+1)^0,w,c
+   665   006ECC  201A               	addwfc	(LCD_ROM_String@str+1)^0,w,c
+   666   006ECE  6EDA               	movwf	fsr2h,c
+   667   006ED0  50DF               	movf	indf2,w,c
+   668   006ED2  EC05  F037         	call	_LCD_Data
+   669   006ED6                     
+   670                           ;../PIC18F_Library/LCD.c: 69:         _delay((unsigned long)((15)*(20000000/4000.0)));
+   671   006ED6  0E62               	movlw	98
+   672   006ED8  6E1B               	movwf	??_LCD_ROM_String^0,c
+   673   006EDA  0E66               	movlw	102
+   674   006EDC                     u77:
+   675   006EDC  2EE8               	decfsz	wreg,f,c
+   676   006EDE  D7FE               	bra	u77
+   677   006EE0  2E1B               	decfsz	??_LCD_ROM_String^0,f,c
+   678   006EE2  D7FC               	bra	u77
+   679   006EE4                     
+   680                           ;../PIC18F_Library/LCD.c: 70:         i++;
+   681   006EE4  4A1C               	infsnz	LCD_ROM_String@i^0,f,c
+   682   006EE6  2A1D               	incf	(LCD_ROM_String@i+1)^0,f,c
+   683   006EE8                     l923:
+   684                           
+   685                           ;../PIC18F_Library/LCD.c: 66:     while (str[i] != 0)
+   686   006EE8  501C               	movf	LCD_ROM_String@i^0,w,c
+   687   006EEA  2419               	addwf	LCD_ROM_String@str^0,w,c
+   688   006EEC  6ED9               	movwf	fsr2l,c
+   689   006EEE  501D               	movf	(LCD_ROM_String@i+1)^0,w,c
+   690   006EF0  201A               	addwfc	(LCD_ROM_String@str+1)^0,w,c
+   691   006EF2  6EDA               	movwf	fsr2h,c
+   692   006EF4  50DF               	movf	indf2,w,c
+   693   006EF6  A4D8               	btfss	status,2,c
+   694   006EF8  EF80  F037         	goto	u41
+   695   006EFC  EF82  F037         	goto	u40
+   696   006F00                     u41:
+   697   006F00  EF62  F037         	goto	l917
+   698   006F04                     u40:
+   699   006F04  0012               	return		;funcret
+   700   006F06                     __end_of_LCD_ROM_String:
+   701                           	callstack 0
+   702                           
+   703 ;; *************** function _LCD_Data *****************
+   704 ;; Defined at:
+   705 ;;		line 42 in file "../PIC18F_Library/LCD.c"
+   706 ;; Parameters:    Size  Location     Type
+   707 ;;  data            1    wreg     unsigned char 
+   708 ;; Auto vars:     Size  Location     Type
+   709 ;;  data            1    1[COMRAM] unsigned char 
+   710 ;; Return value:  Size  Location     Type
+   711 ;;                  1    wreg      void 
+   712 ;; Registers used:
+   713 ;;		wreg, status,2, cstack
+   714 ;; Tracked objects:
+   715 ;;		On entry : 0/0
+   716 ;;		On exit  : 0/0
+   717 ;;		Unchanged: 0/0
+   718 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   719 ;;      Params:         0       0       0       0       0       0       0
+   720 ;;      Locals:         1       0       0       0       0       0       0
+   721 ;;      Temps:          1       0       0       0       0       0       0
+   722 ;;      Totals:         2       0       0       0       0       0       0
+   723 ;;Total ram usage:        2 bytes
+   724 ;; Hardware stack levels used: 1
+   725 ;; This function calls:
+   726 ;;		Nothing
+   727 ;; This function is called by:
+   728 ;;		_LCD_ROM_String
+   729 ;;		_main
+   730 ;;		_LCD_RAM_String
+   731 ;; This function uses a non-reentrant model
+   732 ;;
+   733                           
+   734                           	psect	text6
+   735   006E0A                     __ptext6:
+   736                           	callstack 0
+   737   006E0A                     _LCD_Data:
+   738                           	callstack 29
+   739                           
+   740                           ;incstack = 0
+   741                           ;LCD_Data@data stored from wreg
+   742   006E0A  6E18               	movwf	LCD_Data@data^0,c
+   743   006E0C                     
+   744                           ;../PIC18F_Library/LCD.c: 42: void LCD_Data(unsigned char data);../PIC18F_Library/LCD.c:
+      +                           43: {;../PIC18F_Library/LCD.c: 44:     LATD = data;
+   745   006E0C  C018  FF8C         	movff	LCD_Data@data,3980	;volatile
+   746   006E10                     
+   747                           ;../PIC18F_Library/LCD.c: 45:     LATCbits.LATC1 = 1;
+   748   006E10  828B               	bsf	139,1,c	;volatile
+   749   006E12                     
+   750                           ;../PIC18F_Library/LCD.c: 46:     LATCbits.LATC0 = 0;
+   751   006E12  908B               	bcf	139,0,c	;volatile
+   752   006E14                     
+   753                           ;../PIC18F_Library/LCD.c: 47:     LATCbits.LATC2 = 1;
+   754   006E14  848B               	bsf	139,2,c	;volatile
+   755   006E16                     
+   756                           ;../PIC18F_Library/LCD.c: 48:    _delay((unsigned long)((15)*(20000000/4000.0)));
+   757   006E16  0E62               	movlw	98
+   758   006E18  6E17               	movwf	??_LCD_Data^0,c
+   759   006E1A  0E66               	movlw	102
+   760   006E1C                     u87:
+   761   006E1C  2EE8               	decfsz	wreg,f,c
+   762   006E1E  D7FE               	bra	u87
+   763   006E20  2E17               	decfsz	??_LCD_Data^0,f,c
+   764   006E22  D7FC               	bra	u87
+   765   006E24                     
+   766                           ;../PIC18F_Library/LCD.c: 49:     LATCbits.LATC2 = 0;
+   767   006E24  948B               	bcf	139,2,c	;volatile
+   768   006E26  0012               	return		;funcret
+   769   006E28                     __end_of_LCD_Data:
+   770                           	callstack 0
+   771                           
+   772 ;; *************** function _LCD_Init *****************
+   773 ;; Defined at:
+   774 ;;		line 13 in file "../PIC18F_Library/LCD.c"
+   775 ;; Parameters:    Size  Location     Type
+   776 ;;		None
+   777 ;; Auto vars:     Size  Location     Type
+   778 ;;		None
+   779 ;; Return value:  Size  Location     Type
+   780 ;;                  1    wreg      void 
+   781 ;; Registers used:
+   782 ;;		wreg, status,2, cstack
+   783 ;; Tracked objects:
+   784 ;;		On entry : 0/0
+   785 ;;		On exit  : 0/0
+   786 ;;		Unchanged: 0/0
+   787 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   788 ;;      Params:         0       0       0       0       0       0       0
+   789 ;;      Locals:         0       0       0       0       0       0       0
+   790 ;;      Temps:          1       0       0       0       0       0       0
+   791 ;;      Totals:         1       0       0       0       0       0       0
+   792 ;;Total ram usage:        1 bytes
+   793 ;; Hardware stack levels used: 1
+   794 ;; Hardware stack levels required when called: 1
+   795 ;; This function calls:
+   796 ;;		_LCD_Command
+   797 ;; This function is called by:
+   798 ;;		_main
+   799 ;; This function uses a non-reentrant model
+   800 ;;
+   801                           
+   802                           	psect	text7
+   803   006F06                     __ptext7:
+   804                           	callstack 0
+   805   006F06                     _LCD_Init:
+   806                           	callstack 29
+   807   006F06                     
+   808                           ;../PIC18F_Library/LCD.c: 15:     TRISD = 0;
+   809   006F06  0E00               	movlw	0
+   810   006F08  6E95               	movwf	149,c	;volatile
+   811   006F0A                     
+   812                           ;../PIC18F_Library/LCD.c: 16:     TRISCbits.RC1 = 0;
+   813   006F0A  9294               	bcf	148,1,c	;volatile
+   814   006F0C                     
+   815                           ;../PIC18F_Library/LCD.c: 17:     TRISCbits.RC0 = 0;
+   816   006F0C  9094               	bcf	148,0,c	;volatile
+   817   006F0E                     
+   818                           ;../PIC18F_Library/LCD.c: 18:     TRISCbits.RC2 = 0;
+   819   006F0E  9494               	bcf	148,2,c	;volatile
+   820   006F10                     
+   821                           ;../PIC18F_Library/LCD.c: 20:     LCD_Command(0x38);
+   822   006F10  0E38               	movlw	56
+   823   006F12  ECF6  F036         	call	_LCD_Command
+   824   006F16                     
+   825                           ;../PIC18F_Library/LCD.c: 21:     _delay((unsigned long)((15)*(20000000/4000.0)));
+   826   006F16  0E62               	movlw	98
+   827   006F18  6E19               	movwf	??_LCD_Init^0,c
+   828   006F1A  0E66               	movlw	102
+   829   006F1C                     u97:
+   830   006F1C  2EE8               	decfsz	wreg,f,c
+   831   006F1E  D7FE               	bra	u97
+   832   006F20  2E19               	decfsz	??_LCD_Init^0,f,c
+   833   006F22  D7FC               	bra	u97
+   834   006F24                     
+   835                           ;../PIC18F_Library/LCD.c: 22:     LCD_Command(0x06);
+   836   006F24  0E06               	movlw	6
+   837   006F26  ECF6  F036         	call	_LCD_Command
+   838   006F2A                     
+   839                           ;../PIC18F_Library/LCD.c: 23:     _delay((unsigned long)((15)*(20000000/4000.0)));
+   840   006F2A  0E62               	movlw	98
+   841   006F2C  6E19               	movwf	??_LCD_Init^0,c
+   842   006F2E  0E66               	movlw	102
+   843   006F30                     u107:
+   844   006F30  2EE8               	decfsz	wreg,f,c
+   845   006F32  D7FE               	bra	u107
+   846   006F34  2E19               	decfsz	??_LCD_Init^0,f,c
+   847   006F36  D7FC               	bra	u107
+   848   006F38                     
+   849                           ;../PIC18F_Library/LCD.c: 24:     LCD_Command(0x0C);
+   850   006F38  0E0C               	movlw	12
+   851   006F3A  ECF6  F036         	call	_LCD_Command
+   852   006F3E                     
+   853                           ;../PIC18F_Library/LCD.c: 25:     _delay((unsigned long)((15)*(20000000/4000.0)));
+   854   006F3E  0E62               	movlw	98
+   855   006F40  6E19               	movwf	??_LCD_Init^0,c
+   856   006F42  0E66               	movlw	102
+   857   006F44                     u117:
+   858   006F44  2EE8               	decfsz	wreg,f,c
+   859   006F46  D7FE               	bra	u117
+   860   006F48  2E19               	decfsz	??_LCD_Init^0,f,c
+   861   006F4A  D7FC               	bra	u117
+   862   006F4C                     
+   863                           ;../PIC18F_Library/LCD.c: 26:     LCD_Command(0x01);
+   864   006F4C  0E01               	movlw	1
+   865   006F4E  ECF6  F036         	call	_LCD_Command
+   866   006F52                     
+   867                           ;../PIC18F_Library/LCD.c: 27:     _delay((unsigned long)((15)*(20000000/4000.0)));
+   868   006F52  0E62               	movlw	98
+   869   006F54  6E19               	movwf	??_LCD_Init^0,c
+   870   006F56  0E66               	movlw	102
+   871   006F58                     u127:
+   872   006F58  2EE8               	decfsz	wreg,f,c
+   873   006F5A  D7FE               	bra	u127
+   874   006F5C  2E19               	decfsz	??_LCD_Init^0,f,c
+   875   006F5E  D7FC               	bra	u127
+   876   006F60                     
+   877                           ;../PIC18F_Library/LCD.c: 28:     LCD_Command(0x80);
+   878   006F60  0E80               	movlw	128
+   879   006F62  ECF6  F036         	call	_LCD_Command
+   880   006F66                     
+   881                           ;../PIC18F_Library/LCD.c: 29:     _delay((unsigned long)((15)*(20000000/4000.0)));
+   882   006F66  0E62               	movlw	98
+   883   006F68  6E19               	movwf	??_LCD_Init^0,c
+   884   006F6A  0E66               	movlw	102
+   885   006F6C                     u137:
+   886   006F6C  2EE8               	decfsz	wreg,f,c
+   887   006F6E  D7FE               	bra	u137
+   888   006F70  2E19               	decfsz	??_LCD_Init^0,f,c
+   889   006F72  D7FC               	bra	u137
+   890   006F74  0012               	return		;funcret
+   891   006F76                     __end_of_LCD_Init:
+   892                           	callstack 0
+   893                           
+   894 ;; *************** function _LCD_Command *****************
+   895 ;; Defined at:
+   896 ;;		line 32 in file "../PIC18F_Library/LCD.c"
+   897 ;; Parameters:    Size  Location     Type
+   898 ;;  cmd             1    wreg     unsigned char 
+   899 ;; Auto vars:     Size  Location     Type
+   900 ;;  cmd             1    1[COMRAM] unsigned char 
+   901 ;; Return value:  Size  Location     Type
+   902 ;;                  1    wreg      void 
+   903 ;; Registers used:
+   904 ;;		wreg, status,2, cstack
+   905 ;; Tracked objects:
+   906 ;;		On entry : 0/0
+   907 ;;		On exit  : 0/0
+   908 ;;		Unchanged: 0/0
+   909 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   910 ;;      Params:         0       0       0       0       0       0       0
+   911 ;;      Locals:         1       0       0       0       0       0       0
+   912 ;;      Temps:          1       0       0       0       0       0       0
+   913 ;;      Totals:         2       0       0       0       0       0       0
+   914 ;;Total ram usage:        2 bytes
+   915 ;; Hardware stack levels used: 1
+   916 ;; This function calls:
+   917 ;;		Nothing
+   918 ;; This function is called by:
+   919 ;;		_LCD_Init
+   920 ;;		_main
+   921 ;; This function uses a non-reentrant model
+   922 ;;
+   923                           
+   924                           	psect	text8
+   925   006DEC                     __ptext8:
+   926                           	callstack 0
+   927   006DEC                     _LCD_Command:
+   928                           	callstack 29
+   929                           
+   930                           ;incstack = 0
+   931                           ;LCD_Command@cmd stored from wreg
+   932   006DEC  6E18               	movwf	LCD_Command@cmd^0,c
+   933   006DEE                     
+   934                           ;../PIC18F_Library/LCD.c: 32: void LCD_Command(unsigned char cmd);../PIC18F_Library/LCD.
+      +                          c: 33: {;../PIC18F_Library/LCD.c: 34:     LATD = cmd;
+   935   006DEE  C018  FF8C         	movff	LCD_Command@cmd,3980	;volatile
+   936   006DF2                     
+   937                           ;../PIC18F_Library/LCD.c: 35:     LATCbits.LATC1 = 0;
+   938   006DF2  928B               	bcf	139,1,c	;volatile
+   939   006DF4                     
+   940                           ;../PIC18F_Library/LCD.c: 36:     LATCbits.LATC0 = 0;
+   941   006DF4  908B               	bcf	139,0,c	;volatile
+   942   006DF6                     
+   943                           ;../PIC18F_Library/LCD.c: 37:     LATCbits.LATC2 = 1;
+   944   006DF6  848B               	bsf	139,2,c	;volatile
+   945   006DF8                     
+   946                           ;../PIC18F_Library/LCD.c: 38:     _delay((unsigned long)((15)*(20000000/4000.0)));
+   947   006DF8  0E62               	movlw	98
+   948   006DFA  6E17               	movwf	??_LCD_Command^0,c
+   949   006DFC  0E66               	movlw	102
+   950   006DFE                     u147:
+   951   006DFE  2EE8               	decfsz	wreg,f,c
+   952   006E00  D7FE               	bra	u147
+   953   006E02  2E17               	decfsz	??_LCD_Command^0,f,c
+   954   006E04  D7FC               	bra	u147
+   955   006E06                     
+   956                           ;../PIC18F_Library/LCD.c: 39:     LATCbits.LATC2 = 0;
+   957   006E06  948B               	bcf	139,2,c	;volatile
+   958   006E08  0012               	return		;funcret
+   959   006E0A                     __end_of_LCD_Command:
+   960                           	callstack 0
+   961   000000                     
+   962                           	psect	rparam
+   963   000000                     
+   964                           	psect	idloc
+   965                           
+   966                           ;Config register IDLOC0 @ 0x200000
+   967                           ;	unspecified, using default values
+   968   200000                     	org	2097152
+   969   200000  FF                 	db	255
+   970                           
+   971                           ;Config register IDLOC1 @ 0x200001
+   972                           ;	unspecified, using default values
+   973   200001                     	org	2097153
+   974   200001  FF                 	db	255
+   975                           
+   976                           ;Config register IDLOC2 @ 0x200002
+   977                           ;	unspecified, using default values
+   978   200002                     	org	2097154
+   979   200002  FF                 	db	255
+   980                           
+   981                           ;Config register IDLOC3 @ 0x200003
+   982                           ;	unspecified, using default values
+   983   200003                     	org	2097155
+   984   200003  FF                 	db	255
+   985                           
+   986                           ;Config register IDLOC4 @ 0x200004
+   987                           ;	unspecified, using default values
+   988   200004                     	org	2097156
+   989   200004  FF                 	db	255
+   990                           
+   991                           ;Config register IDLOC5 @ 0x200005
+   992                           ;	unspecified, using default values
+   993   200005                     	org	2097157
+   994   200005  FF                 	db	255
+   995                           
+   996                           ;Config register IDLOC6 @ 0x200006
+   997                           ;	unspecified, using default values
+   998   200006                     	org	2097158
+   999   200006  FF                 	db	255
+  1000                           
+  1001                           ;Config register IDLOC7 @ 0x200007
+  1002                           ;	unspecified, using default values
+  1003   200007                     	org	2097159
+  1004   200007  FF                 	db	255
+  1005                           
+  1006                           	psect	config
+  1007                           
+  1008                           ; Padding undefined space
+  1009   300000                     	org	3145728
+  1010   300000  FF                 	db	255
+  1011                           
+  1012                           ;Config register CONFIG1H @ 0x300001
+  1013                           ;	Oscillator Selection bits
+  1014                           ;	OSC = HS, HS oscillator
+  1015                           ;	Fail-Safe Clock Monitor Enable bit
+  1016                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  1017                           ;	Internal/External Oscillator Switchover bit
+  1018                           ;	IESO = OFF, Oscillator Switchover mode disabled
+  1019   300001                     	org	3145729
+  1020   300001  02                 	db	2
+  1021                           
+  1022                           ;Config register CONFIG2L @ 0x300002
+  1023                           ;	Power-up Timer Enable bit
+  1024                           ;	PWRT = OFF, PWRT disabled
+  1025                           ;	Brown-out Reset Enable bits
+  1026                           ;	BOREN = SBORDIS, Brown-out Reset enabled in hardware only (SBOREN is disabled)
+  1027                           ;	Brown Out Reset Voltage bits
+  1028                           ;	BORV = 3, Minimum setting
+  1029   300002                     	org	3145730
+  1030   300002  1F                 	db	31
+  1031                           
+  1032                           ;Config register CONFIG2H @ 0x300003
+  1033                           ;	Watchdog Timer Enable bit
+  1034                           ;	WDT = ON, WDT enabled
+  1035                           ;	Watchdog Timer Postscale Select bits
+  1036                           ;	WDTPS = 32768, 1:32768
+  1037   300003                     	org	3145731
+  1038   300003  1F                 	db	31
+  1039                           
+  1040                           ; Padding undefined space
+  1041   300004                     	org	3145732
+  1042   300004  FF                 	db	255
+  1043                           
+  1044                           ;Config register CONFIG3H @ 0x300005
+  1045                           ;	CCP2 MUX bit
+  1046                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+  1047                           ;	PORTB A/D Enable bit
+  1048                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+  1049                           ;	Low-Power Timer1 Oscillator Enable bit
+  1050                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  1051                           ;	MCLR Pin Enable bit
+  1052                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+  1053   300005                     	org	3145733
+  1054   300005  81                 	db	129
+  1055                           
+  1056                           ;Config register CONFIG4L @ 0x300006
+  1057                           ;	Stack Full/Underflow Reset Enable bit
+  1058                           ;	STVREN = ON, Stack full/underflow will cause Reset
+  1059                           ;	Single-Supply ICSP Enable bit
+  1060                           ;	LVP = OFF, Single-Supply ICSP disabled
+  1061                           ;	Extended Instruction Set Enable bit
+  1062                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+  1063                           ;	Background Debugger Enable bit
+  1064                           ;	DEBUG = 0x1, unprogrammed default
+  1065   300006                     	org	3145734
+  1066   300006  81                 	db	129
+  1067                           
+  1068                           ; Padding undefined space
+  1069   300007                     	org	3145735
+  1070   300007  FF                 	db	255
+  1071                           
+  1072                           ;Config register CONFIG5L @ 0x300008
+  1073                           ;	Code Protection bit
+  1074                           ;	CP0 = OFF, Block 0 (000800-001FFFh) not code-protected
+  1075                           ;	Code Protection bit
+  1076                           ;	CP1 = OFF, Block 1 (002000-003FFFh) not code-protected
+  1077                           ;	Code Protection bit
+  1078                           ;	CP2 = OFF, Block 2 (004000-005FFFh) not code-protected
+  1079                           ;	Code Protection bit
+  1080                           ;	CP3 = OFF, Block 3 (006000-007FFFh) not code-protected
+  1081   300008                     	org	3145736
+  1082   300008  0F                 	db	15
+  1083                           
+  1084                           ;Config register CONFIG5H @ 0x300009
+  1085                           ;	Boot Block Code Protection bit
+  1086                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+  1087                           ;	Data EEPROM Code Protection bit
+  1088                           ;	CPD = OFF, Data EEPROM not code-protected
+  1089   300009                     	org	3145737
+  1090   300009  C0                 	db	192
+  1091                           
+  1092                           ;Config register CONFIG6L @ 0x30000A
+  1093                           ;	Write Protection bit
+  1094                           ;	WRT0 = OFF, Block 0 (000800-001FFFh) not write-protected
+  1095                           ;	Write Protection bit
+  1096                           ;	WRT1 = OFF, Block 1 (002000-003FFFh) not write-protected
+  1097                           ;	Write Protection bit
+  1098                           ;	WRT2 = OFF, Block 2 (004000-005FFFh) not write-protected
+  1099                           ;	Write Protection bit
+  1100                           ;	WRT3 = OFF, Block 3 (006000-007FFFh) not write-protected
+  1101   30000A                     	org	3145738
+  1102   30000A  0F                 	db	15
+  1103                           
+  1104                           ;Config register CONFIG6H @ 0x30000B
+  1105                           ;	Configuration Register Write Protection bit
+  1106                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  1107                           ;	Boot Block Write Protection bit
+  1108                           ;	WRTB = OFF, Boot block (000000-0007FFh) not write-protected
+  1109                           ;	Data EEPROM Write Protection bit
+  1110                           ;	WRTD = OFF, Data EEPROM not write-protected
+  1111   30000B                     	org	3145739
+  1112   30000B  E0                 	db	224
+  1113                           
+  1114                           ;Config register CONFIG7L @ 0x30000C
+  1115                           ;	Table Read Protection bit
+  1116                           ;	EBTR0 = OFF, Block 0 (000800-001FFFh) not protected from table reads executed in other
+      +                           blocks
+  1117                           ;	Table Read Protection bit
+  1118                           ;	EBTR1 = OFF, Block 1 (002000-003FFFh) not protected from table reads executed in other
+      +                           blocks
+  1119                           ;	Table Read Protection bit
+  1120                           ;	EBTR2 = OFF, Block 2 (004000-005FFFh) not protected from table reads executed in other
+      +                           blocks
+  1121                           ;	Table Read Protection bit
+  1122                           ;	EBTR3 = OFF, Block 3 (006000-007FFFh) not protected from table reads executed in other
+      +                           blocks
+  1123   30000C                     	org	3145740
+  1124   30000C  0F                 	db	15
+  1125                           
+  1126                           ;Config register CONFIG7H @ 0x30000D
+  1127                           ;	Boot Block Table Read Protection bit
+  1128                           ;	EBTRB = OFF, Boot block (000000-0007FFh) not protected from table reads executed in ot
+      +                          her blocks
+  1129   30000D                     	org	3145741
+  1130   30000D  40                 	db	64
+  1131                           tosu	equ	0xFFF
+  1132                           tosh	equ	0xFFE
+  1133                           tosl	equ	0xFFD
+  1134                           stkptr	equ	0xFFC
+  1135                           pclatu	equ	0xFFB
+  1136                           pclath	equ	0xFFA
+  1137                           pcl	equ	0xFF9
+  1138                           tblptru	equ	0xFF8
+  1139                           tblptrh	equ	0xFF7
+  1140                           tblptrl	equ	0xFF6
+  1141                           tablat	equ	0xFF5
+  1142                           prodh	equ	0xFF4
+  1143                           prodl	equ	0xFF3
+  1144                           indf0	equ	0xFEF
+  1145                           postinc0	equ	0xFEE
+  1146                           postdec0	equ	0xFED
+  1147                           preinc0	equ	0xFEC
+  1148                           plusw0	equ	0xFEB
+  1149                           fsr0h	equ	0xFEA
+  1150                           fsr0l	equ	0xFE9
+  1151                           wreg	equ	0xFE8
+  1152                           indf1	equ	0xFE7
+  1153                           postinc1	equ	0xFE6
+  1154                           postdec1	equ	0xFE5
+  1155                           preinc1	equ	0xFE4
+  1156                           plusw1	equ	0xFE3
+  1157                           fsr1h	equ	0xFE2
+  1158                           fsr1l	equ	0xFE1
+  1159                           bsr	equ	0xFE0
+  1160                           indf2	equ	0xFDF
+  1161                           postinc2	equ	0xFDE
+  1162                           postdec2	equ	0xFDD
+  1163                           preinc2	equ	0xFDC
+  1164                           plusw2	equ	0xFDB
+  1165                           fsr2h	equ	0xFDA
+  1166                           fsr2l	equ	0xFD9
+  1167                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        22
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127      8      30
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    LCD_ROM_String@str	PTR const unsigned char  size(2) Largest target is 22
+		 -> msg(COMRAM[22]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_LCD_ROM_String
+    _SPI_EEPROM_writebyte->_SPI_Read_Write
+    _SPI_EEPROM_readbyte->_SPI_Read_Write
+    _LCD_ROM_String->_LCD_Data
+    _LCD_Init->_LCD_Command
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0    1167
+                                              7 COMRAM     1     1      0
+                        _LCD_Command
+                           _LCD_Data
+                           _LCD_Init
+                     _LCD_ROM_String
+                _SPI_EEPROM_readbyte
+               _SPI_EEPROM_writebyte
+                           _SPI_Init
+ ---------------------------------------------------------------------------------
+ (1) _SPI_Init                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _SPI_EEPROM_writebyte                                 6     3      3     561
+                                              1 COMRAM     5     2      3
+                     _SPI_Read_Write
+ ---------------------------------------------------------------------------------
+ (1) _SPI_EEPROM_readbyte                                  5     3      2     310
+                                              1 COMRAM     5     3      2
+                     _SPI_Read_Write
+ ---------------------------------------------------------------------------------
+ (2) _SPI_Read_Write                                       1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _LCD_ROM_String                                       5     3      2     181
+                                              2 COMRAM     5     3      2
+                           _LCD_Data
+ ---------------------------------------------------------------------------------
+ (2) _LCD_Data                                             2     2      0      15
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _LCD_Init                                             1     1      0      15
+                                              2 COMRAM     1     1      0
+                        _LCD_Command
+ ---------------------------------------------------------------------------------
+ (2) _LCD_Command                                          2     2      0      15
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _LCD_Command
+   _LCD_Data
+   _LCD_Init
+     _LCD_Command
+   _LCD_ROM_String
+     _LCD_Data
+   _SPI_EEPROM_readbyte
+     _SPI_Read_Write
+   _SPI_EEPROM_writebyte
+     _SPI_Read_Write
+   _SPI_Init
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      24        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F      8      1E       1       23.6%
+BITBIGSFRhhh        36      0       0      16        0.0%
+BITBIGSFRhlh        27      0       0      18        0.0%
+BITBIGSFRllh         8      0       0      21        0.0%
+BITBIGSFRhll         8      0       0      19        0.0%
+BITBIGSFRlh          7      0       0      20        0.0%
+BITBIGSFRlll         2      0       0      22        0.0%
+BITBIGSFRhhl         1      0       0      17        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      1E      23        0.0%
+DATA                 0      0      1E       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
+Symbol Table                                                                                   Sat Dec 17 12:43:03 2022
+
+                  ?_LCD_Command 0017                     _SSPSTATbits 000FC7                              l21 6E26  
+                            l15 6F74                              l33 6F04                              l18 6E08  
+                            l61 6DBC                              l70 6E48                              l63 6DCA  
+                            l64 6DCE                              l58 6DEA                              l67 6EB6  
+                            l77 6FFC                              u10 6DCA                              u11 6DC6  
+                            u40 6F04                              u41 6F00                              u57 6E80  
+                            u67 6EA8                              u77 6EDC                              u87 6E1C  
+                            u97 6F1C            ?_SPI_EEPROM_readbyte 0018                             l801 6F52  
+                           l803 6F60                             l805 6F66                             l821 6DDA  
+                           l831 6DE4                             l823 6DDC                             l761 6DF8  
+                           l753 6DEE                             l921 6EE4                             l833 6DE6  
+                           l825 6DDE                             l817 6DD0                             l763 6E06  
+                           l755 6DF2                             l771 6E14                             l923 6EE8  
+                           l915 6EB8                             l931 6E76                             l835 6DE8  
+                           l827 6DE0                             l819 6DD8                             l757 6DF4  
+                           l781 6F0A                             l773 6E16                             l765 6E0C  
+                           l917 6EC4                             l941 6E8E                             l933 6E7C  
+                           l925 6E70                             l829 6DE2                             l759 6DF6  
+                           l791 6F24                             l783 6F0C                             l775 6E24  
+                           l767 6E10                             l919 6ED6                             l951 6EB0  
+                           l943 6E94                             l935 6E7E                             l927 6E70  
+                           l793 6F2A                             l785 6F0E                             l769 6E12  
+                           l777 6DB8                             l953 6E28                             l945 6E9A  
+                           l937 6E86                             l929 6E74                             l795 6F38  
+                           l787 6F10                             l779 6F06                             l955 6E2A  
+                           l947 6EA0                             l939 6E88                             l971 6F8C  
+                           l963 6F76                             l797 6F3E                             l789 6F16  
+                           l957 6E44                             l949 6EA2                             l981 6FCE  
+                           l973 6F90                             l965 6F76                             l799 6F4C  
+                           l959 6E46                             l983 6FD4                             l975 6FA0  
+                           l967 6F7A                             l985 6FE2                             l977 6FB0  
+                           l969 6F86                             l987 6FE8                             l979 6FC0  
+                           l989 6FF6                             u107 6F30                             u117 6F44  
+                           u127 6F58                             u137 6F6C                             u147 6DFE  
+                           _msg 0001                             wreg 000FE8            _SPI_EEPROM_writebyte 6E70  
+                          _LATD 000F8C                            _main 6F76                            indf2 000FDF  
+                          fsr1l 000FE1                            fsr2l 000FD9                            start 0000  
+        __end_of_SPI_Read_Write 6DD0                    ___param_bank 000000                __end_of_LCD_Data 6E28  
+              __end_of_LCD_Init 6F76                    LCD_Data@data 0018           ??_SPI_EEPROM_readbyte 001A  
+                         ?_main 0017                           _TRISD 000F95                    main@read_val 001E  
+         ?_SPI_EEPROM_writebyte 0018                __end_of_SPI_Init 6DEC                           tablat 000FF5  
+                         status 000FD8                 ?_SPI_Read_Write 0017                 __initialization 6E4A  
+                  __end_of_main 7000               LCD_ROM_String@str 0019                          ??_main 001E  
+                 __activetblptr 000000         SPI_EEPROM_readbyte@addr 0018                          _SSPBUF 000FC9  
+SPI_EEPROM_writebyte@Lower_byte 001C                          isa$std 000001                    __pdataCOMRAM 0001  
+                        tblptrh 000FF7          ??_SPI_EEPROM_writebyte 001B                          tblptrl 000FF6  
+                        tblptru 000FF8                ??_LCD_ROM_String 001B                       ?_LCD_Data 0017  
+                    __accesstop 0080         __end_of__initialization 6E6A                       ?_LCD_Init 0017  
+                 ___rparam_used 000001                  __pcstackCOMRAM 0017                       ?_SPI_Init 0017  
+                    ??_LCD_Data 0017                      ??_LCD_Init 0019               SPI_Read_Write@val 0017  
+                    ??_SPI_Init 0017                ??_SPI_Read_Write 0017                         __Hparam 0000  
+                       __Lparam 0000     __end_of_SPI_EEPROM_readbyte 6E4A                         __pcinit 6E4A  
+                       __ramtop 0600                         __ptext0 6F76                         __ptext1 6DD0  
+                       __ptext2 6E70                         __ptext3 6E28                         __ptext4 6DB6  
+                       __ptext5 6EB8                         __ptext6 6E0A                         __ptext7 6F06  
+                       __ptext8 6DEC        SPI_EEPROM_writebyte@addr 0018        SPI_EEPROM_writebyte@data 001A  
+          end_of_initialization 6E6A                  LCD_Command@cmd 0018                         postdec1 000FE5  
+                       postinc0 000FEE                       _PORTCbits 000F82                       _TRISCbits 000F94  
+ SPI_EEPROM_readbyte@Lower_byte 001B                 LCD_ROM_String@i 001C                   ??_LCD_Command 0017  
+                 __pidataCOMRAM 6DA0             start_initialization 6E4A             __end_of_LCD_Command 6E0A  
+                      _LCD_Data 6E0A                        _LCD_Init 6F06                        _LATCbits 000F8B  
+                      _PIR1bits 000F9E                     _LCD_Command 6DEC                        _SPI_Init 6DD0  
+                     copy_data0 6E5E                        __Hrparam 0000                        __Lrparam 0000  
+SPI_EEPROM_readbyte@Higher_byte 001A                  _LCD_ROM_String 6EB8     SPI_EEPROM_readbyte@Read_val 001C  
+                      isa$xinst 000000    __end_of_SPI_EEPROM_writebyte 6EB8          __end_of_LCD_ROM_String 6F06  
+                   _SSPCON1bits 000FC6             _SPI_EEPROM_readbyte 6E28                 ?_LCD_ROM_String 0019  
+                _SPI_Read_Write 6DB6  
