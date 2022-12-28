@@ -1,0 +1,2824 @@
+
+
+Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
+                                                                                               Sun Dec 18 13:58:45 2022
+
+Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1 
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    25                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    26                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    27                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    28                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    29                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    30   000000                     
+    31                           ; Version 2.40
+    32                           ; Generated 17/11/2021 GMT
+    33                           ; 
+    34                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    35                           ; All rights reserved.
+    36                           ; 
+    37                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    38                           ; 
+    39                           ; Redistribution and use in source and binary forms, with or without modification, are
+    40                           ; permitted provided that the following conditions are met:
+    41                           ; 
+    42                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    43                           ;        conditions and the following disclaimer.
+    44                           ; 
+    45                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    46                           ;        of conditions and the following disclaimer in the documentation and/or other
+    47                           ;        materials provided with the distribution. Publication is not required when
+    48                           ;        this file is used in an embedded application.
+    49                           ; 
+    50                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    51                           ;        software without specific prior written permission.
+    52                           ; 
+    53                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    54                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    55                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    56                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    57                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    58                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    59                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    60                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    61                           ; 
+    62                           ; 
+    63                           ; Code-generator required, PIC18F4520 Definitions
+    64                           ; 
+    65                           ; SFR Addresses
+    66   000000                     
+    67                           	psect	idataCOMRAM
+    68   0068DD                     __pidataCOMRAM:
+    69                           	callstack 0
+    70                           
+    71                           ;initializer for _KeyVal
+    72   0068DD  4E                 	db	78
+    73   0068DE  31                 	db	49
+    74   0068DF  32                 	db	50
+    75   0068E0  33                 	db	51
+    76   0068E1  34                 	db	52
+    77   0068E2  35                 	db	53
+    78   0068E3  36                 	db	54
+    79   0068E4  37                 	db	55
+    80   0068E5  38                 	db	56
+    81   0068E6  39                 	db	57
+    82   0068E7  41                 	db	65
+    83   0068E8  42                 	db	66
+    84   0068E9  43                 	db	67
+    85                           
+    86                           ;initializer for _month
+    87   0068EA  4D                 	db	77
+    88   0068EB  6F                 	db	111
+    89   0068EC  6E                 	db	110
+    90   0068ED  74                 	db	116
+    91   0068EE  68                 	db	104
+    92   0068EF  3A                 	db	58
+    93   0068F0  00                 	db	0
+    94                           
+    95                           ;initializer for _userTime
+    96   0068F1  01                 	db	1
+    97   0068F2  10                 	db	16
+    98   0068F3  18                 	db	24
+    99   0068F4  06                 	db	6
+   100   0068F5  16                 	db	22
+   101   0068F6  12                 	db	18
+   102   0068F7  22                 	db	34
+   103                           
+   104                           ;initializer for _time
+   105   0068F8  54                 	db	84
+   106   0068F9  69                 	db	105
+   107   0068FA  6D                 	db	109
+   108   0068FB  65                 	db	101
+   109   0068FC  3A                 	db	58
+   110   0068FD  00                 	db	0
+   111                           
+   112                           ;initializer for _date
+   113   0068FE  44                 	db	68
+   114   0068FF  61                 	db	97
+   115   006900  74                 	db	116
+   116   006901  65                 	db	101
+   117   006902  3A                 	db	58
+   118   006903  00                 	db	0
+   119   000000                     _PORTB	set	3969
+   120   000000                     _LATB	set	3978
+   121   000000                     _LATCbits	set	3979
+   122   000000                     _LATD	set	3980
+   123   000000                     _TRISCbits	set	3988
+   124   000000                     _TRISD	set	3989
+   125   000000                     _PIR1bits	set	3998
+   126   000000                     _SSPCON2bits	set	4037
+   127   000000                     _SSPCON1bits	set	4038
+   128   000000                     _SSPADD	set	4040
+   129   000000                     _INTCON2bits	set	4081
+   130   000000                     _SSPBUF	set	4041
+   131   000000                     _ADCON1	set	4033
+   132   000000                     _TRISB	set	3987
+   133                           
+   134                           ; #config settings
+   135                           
+   136                           	psect	cinit
+   137   006936                     __pcinit:
+   138                           	callstack 0
+   139   006936                     start_initialization:
+   140                           	callstack 0
+   141   006936                     __initialization:
+   142                           	callstack 0
+   143                           
+   144                           ; Initialize objects allocated to COMRAM (39 bytes)
+   145                           ; load TBLPTR registers with __pidataCOMRAM
+   146   006936  0EDD               	movlw	low __pidataCOMRAM
+   147   006938  6EF6               	movwf	tblptrl,c
+   148   00693A  0E68               	movlw	high __pidataCOMRAM
+   149   00693C  6EF7               	movwf	tblptrh,c
+   150   00693E  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   151   006940  6EF8               	movwf	tblptru,c
+   152   006942  EE00  F001         	lfsr	0,__pdataCOMRAM
+   153   006946  EE10 F027          	lfsr	1,39
+   154   00694A                     copy_data0:
+   155   00694A  0009               	tblrd		*+
+   156   00694C  CFF5 FFEE          	movff	tablat,postinc0
+   157   006950  50E5               	movf	postdec1,w,c
+   158   006952  50E1               	movf	fsr1l,w,c
+   159   006954  E1FA               	bnz	copy_data0
+   160                           
+   161                           ; Clear objects allocated to COMRAM (9 bytes)
+   162   006956  EE00  F035         	lfsr	0,__pbssCOMRAM
+   163   00695A  0E09               	movlw	9
+   164   00695C                     clear_0:
+   165   00695C  6AEE               	clrf	postinc0,c
+   166   00695E  06E8               	decf	wreg,f,c
+   167   006960  E1FD               	bnz	clear_0
+   168   006962                     end_of_initialization:
+   169                           	callstack 0
+   170   006962                     __end_of__initialization:
+   171                           	callstack 0
+   172   006962  0100               	movlb	0
+   173   006964  EF40  F036         	goto	_main	;jump to C main() function
+   174                           
+   175                           	psect	bssCOMRAM
+   176   000035                     __pbssCOMRAM:
+   177                           	callstack 0
+   178   000035                     _RTC_start:
+   179                           	callstack 0
+   180   000035                     	ds	1
+   181   000036                     _RTC_flag:
+   182                           	callstack 0
+   183   000036                     	ds	1
+   184   000037                     _RTCTime:
+   185                           	callstack 0
+   186   000037                     	ds	7
+   187                           
+   188                           	psect	dataCOMRAM
+   189   000001                     __pdataCOMRAM:
+   190                           	callstack 0
+   191   000001                     _KeyVal:
+   192                           	callstack 0
+   193   000001                     	ds	13
+   194   00000E                     _month:
+   195                           	callstack 0
+   196   00000E                     	ds	7
+   197   000015                     _userTime:
+   198                           	callstack 0
+   199   000015                     	ds	7
+   200   00001C                     _time:
+   201                           	callstack 0
+   202   00001C                     	ds	6
+   203   000022                     _date:
+   204                           	callstack 0
+   205   000022                     	ds	6
+   206                           
+   207                           	psect	cstackCOMRAM
+   208   000028                     __pcstackCOMRAM:
+   209                           	callstack 0
+   210   000028                     ??_LCD_Command:
+   211   000028                     ??_LCD_Data:
+   212   000028                     I2C_Byte_Write@RegAddr:
+   213                           	callstack 0
+   214   000028                     I2C_Byte_Read@RegAddr:
+   215                           	callstack 0
+   216   000028                     I2C_Page_Write@RegAddr:
+   217                           	callstack 0
+   218   000028                     I2C_Page_Read@RegAddr:
+   219                           	callstack 0
+   220   000028                     Keypad_Scan@button:
+   221                           	callstack 0
+   222                           
+   223                           ; 1 bytes @ 0x0
+   224   000028                     	ds	1
+   225   000029                     ??_Get_Key:
+   226   000029                     I2C_Byte_Write@data:
+   227                           	callstack 0
+   228   000029                     I2C_Byte_Read@data:
+   229                           	callstack 0
+   230   000029                     LCD_Command@cmd:
+   231                           	callstack 0
+   232   000029                     LCD_Data@data:
+   233                           	callstack 0
+   234   000029                     I2C_Page_Write@data:
+   235                           	callstack 0
+   236   000029                     I2C_Page_Read@data:
+   237                           	callstack 0
+   238                           
+   239                           ; 2 bytes @ 0x1
+   240   000029                     	ds	1
+   241   00002A                     ??_LCD_Init:
+   242   00002A                     I2C_Byte_Write@DevAddr:
+   243                           	callstack 0
+   244   00002A                     I2C_Byte_Read@DevAddr:
+   245                           	callstack 0
+   246   00002A                     BCD_to_ASCII_Display@Digit:
+   247                           	callstack 0
+   248   00002A                     LCD_ROM_String@str:
+   249                           	callstack 0
+   250                           
+   251                           ; 2 bytes @ 0x2
+   252   00002A                     	ds	1
+   253   00002B                     I2C_Page_Write@no_bytes:
+   254                           	callstack 0
+   255   00002B                     I2C_Page_Read@no_bytes:
+   256                           	callstack 0
+   257   00002B                     BCD_to_ASCII_Display@temp:
+   258                           	callstack 0
+   259   00002B                     Get_Key@Key:
+   260                           	callstack 0
+   261                           
+   262                           ; 1 bytes @ 0x3
+   263   00002B                     	ds	1
+   264   00002C                     ??_I2C_Page_Read:
+   265   00002C                     ??_LCD_ROM_String:
+   266   00002C                     I2C_Page_Write@DevAddr:
+   267                           	callstack 0
+   268   00002C                     Get_Key@but1:
+   269                           	callstack 0
+   270                           
+   271                           ; 1 bytes @ 0x4
+   272   00002C                     	ds	1
+   273   00002D                     I2C_Page_Write@i:
+   274                           	callstack 0
+   275   00002D                     LCD_ROM_String@i:
+   276                           	callstack 0
+   277                           
+   278                           ; 2 bytes @ 0x5
+   279   00002D                     	ds	1
+   280   00002E                     ??_RTC_init:
+   281                           
+   282                           ; 1 bytes @ 0x6
+   283   00002E                     	ds	3
+   284   000031                     I2C_Page_Read@DevAddr:
+   285                           	callstack 0
+   286                           
+   287                           ; 1 bytes @ 0x9
+   288   000031                     	ds	1
+   289   000032                     I2C_Page_Read@i:
+   290                           	callstack 0
+   291                           
+   292                           ; 1 bytes @ 0xA
+   293   000032                     	ds	1
+   294   000033                     main@Key:
+   295                           	callstack 0
+   296                           
+   297                           ; 1 bytes @ 0xB
+   298   000033                     	ds	1
+   299   000034                     main@i:
+   300                           	callstack 0
+   301                           
+   302                           ; 1 bytes @ 0xC
+   303   000034                     	ds	1
+   304                           
+   305 ;;
+   306 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   307 ;;
+   308 ;; *************** function _main *****************
+   309 ;; Defined at:
+   310 ;;		line 91 in file "RTC_main.c"
+   311 ;; Parameters:    Size  Location     Type
+   312 ;;		None
+   313 ;; Auto vars:     Size  Location     Type
+   314 ;;  i               1   12[COMRAM] unsigned char 
+   315 ;;  Key             1   11[COMRAM] unsigned char 
+   316 ;; Return value:  Size  Location     Type
+   317 ;;                  1    wreg      void 
+   318 ;; Registers used:
+   319 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   320 ;; Tracked objects:
+   321 ;;		On entry : 0/0
+   322 ;;		On exit  : 0/0
+   323 ;;		Unchanged: 0/0
+   324 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   325 ;;      Params:         0       0       0       0       0       0       0
+   326 ;;      Locals:         2       0       0       0       0       0       0
+   327 ;;      Temps:          0       0       0       0       0       0       0
+   328 ;;      Totals:         2       0       0       0       0       0       0
+   329 ;;Total ram usage:        2 bytes
+   330 ;; Hardware stack levels required when called: 3
+   331 ;; This function calls:
+   332 ;;		_Get_Key
+   333 ;;		_I2C_Byte_Read
+   334 ;;		_I2C_Init
+   335 ;;		_I2C_Page_Read
+   336 ;;		_Keypad_Init
+   337 ;;		_LCD_Command
+   338 ;;		_LCD_Data
+   339 ;;		_LCD_Init
+   340 ;;		_LCD_ROM_String
+   341 ;;		_RTC_init
+   342 ;;		_RTC_read
+   343 ;; This function is called by:
+   344 ;;		Startup code after reset
+   345 ;; This function uses a non-reentrant model
+   346 ;;
+   347                           
+   348                           	psect	text0
+   349   006C80                     __ptext0:
+   350                           	callstack 0
+   351   006C80                     _main:
+   352                           	callstack 28
+   353   006C80                     
+   354                           ;RTC_main.c: 93:     I2C_Init();
+   355   006C80  EC46  F034         	call	_I2C_Init	;wreg free
+   356                           
+   357                           ;RTC_main.c: 94:     LCD_Init();
+   358   006C84  EC78  F035         	call	_LCD_Init	;wreg free
+   359   006C88                     
+   360                           ;RTC_main.c: 96:     RTC_start = I2C_Byte_Read(0xD0, 0x00);
+   361   006C88  0E00               	movlw	0
+   362   006C8A  6E28               	movwf	I2C_Byte_Read@RegAddr^0,c
+   363   006C8C  0ED0               	movlw	208
+   364   006C8E  ECF7  F035         	call	_I2C_Byte_Read
+   365   006C92  6E35               	movwf	_RTC_start^0,c
+   366   006C94                     
+   367                           ;RTC_main.c: 97:     RTC_start = RTC_start & 0x80;
+   368   006C94  5035               	movf	_RTC_start^0,w,c
+   369   006C96  0B80               	andlw	128
+   370   006C98  6E35               	movwf	_RTC_start^0,c
+   371   006C9A                     
+   372                           ;RTC_main.c: 98:     RTC_flag= I2C_Byte_Read(0xA0,0x10);
+   373   006C9A  0E10               	movlw	16
+   374   006C9C  6E28               	movwf	I2C_Byte_Read@RegAddr^0,c
+   375   006C9E  0EA0               	movlw	160
+   376   006CA0  ECF7  F035         	call	_I2C_Byte_Read
+   377   006CA4  6E36               	movwf	_RTC_flag^0,c
+   378   006CA6                     
+   379                           ;RTC_main.c: 102:     if((RTC_flag != 1) || (RTC_start != 0))
+   380   006CA6  0436               	decf	_RTC_flag^0,w,c
+   381   006CA8  A4D8               	btfss	status,2,c
+   382   006CAA  EF59  F036         	goto	u861
+   383   006CAE  EF5B  F036         	goto	u860
+   384   006CB2                     u861:
+   385   006CB2  EF63  F036         	goto	l1370
+   386   006CB6                     u860:
+   387   006CB6  5035               	movf	_RTC_start^0,w,c
+   388   006CB8  B4D8               	btfsc	status,2,c
+   389   006CBA  EF61  F036         	goto	u871
+   390   006CBE  EF63  F036         	goto	u870
+   391   006CC2                     u871:
+   392   006CC2  EF65  F036         	goto	l221
+   393   006CC6                     u870:
+   394   006CC6                     l1370:
+   395                           
+   396                           ;RTC_main.c: 103:         RTC_init();
+   397   006CC6  ECCE  F034         	call	_RTC_init	;wreg free
+   398   006CCA                     l221:
+   399                           
+   400                           ;RTC_main.c: 105:     LCD_ROM_String(date);
+   401   006CCA  0E22               	movlw	low _date
+   402   006CCC  6E2A               	movwf	LCD_ROM_String@str^0,c
+   403   006CCE  0E00               	movlw	high _date
+   404   006CD0  6E2B               	movwf	(LCD_ROM_String@str+1)^0,c
+   405   006CD2  ECEB  F034         	call	_LCD_ROM_String	;wreg free
+   406   006CD6                     
+   407                           ;RTC_main.c: 106:     LCD_Command(0xC0);
+   408   006CD6  0EC0               	movlw	192
+   409   006CD8  EC50  F034         	call	_LCD_Command
+   410   006CDC                     
+   411                           ;RTC_main.c: 107:     LCD_ROM_String(time);
+   412   006CDC  0E1C               	movlw	low _time
+   413   006CDE  6E2A               	movwf	LCD_ROM_String@str^0,c
+   414   006CE0  0E00               	movlw	high _time
+   415   006CE2  6E2B               	movwf	(LCD_ROM_String@str+1)^0,c
+   416   006CE4  ECEB  F034         	call	_LCD_ROM_String	;wreg free
+   417   006CE8                     
+   418                           ;RTC_main.c: 108:     unsigned char Key;;RTC_main.c: 109:         RTC_read();
+   419   006CE8  EC45  F035         	call	_RTC_read	;wreg free
+   420   006CEC                     
+   421                           ;RTC_main.c: 110:         I2C_Page_Read(0xA0, 0x10,RTCTime,7);
+   422   006CEC  0E10               	movlw	16
+   423   006CEE  6E28               	movwf	I2C_Page_Read@RegAddr^0,c
+   424   006CF0  0E37               	movlw	low _RTCTime
+   425   006CF2  6E29               	movwf	I2C_Page_Read@data^0,c
+   426   006CF4  0E00               	movlw	high _RTCTime
+   427   006CF6  6E2A               	movwf	(I2C_Page_Read@data+1)^0,c
+   428   006CF8  0E07               	movlw	7
+   429   006CFA  6E2B               	movwf	I2C_Page_Read@no_bytes^0,c
+   430   006CFC  0EA0               	movlw	160
+   431   006CFE  ECA8  F036         	call	_I2C_Page_Read
+   432                           
+   433                           ;RTC_main.c: 111:     Keypad_Init();
+   434   006D02  EC40  F034         	call	_Keypad_Init	;wreg free
+   435   006D06                     l1380:
+   436                           
+   437                           ;RTC_main.c: 114:     {;RTC_main.c: 115:         unsigned char i;;RTC_main.c: 116:      
+      +                             RTC_read();
+   438   006D06  EC45  F035         	call	_RTC_read	;wreg free
+   439   006D0A                     
+   440                           ;RTC_main.c: 117:         for(i=0;i<20;i++)
+   441   006D0A  0E00               	movlw	0
+   442   006D0C  6E34               	movwf	main@i^0,c
+   443   006D0E                     l1388:
+   444                           
+   445                           ;RTC_main.c: 118:         {;RTC_main.c: 119:             Key = Get_Key();
+   446   006D0E  ECB4  F034         	call	_Get_Key	;wreg free
+   447   006D12  6E33               	movwf	main@Key^0,c
+   448   006D14                     
+   449                           ;RTC_main.c: 120:             if(Key != 'N')
+   450   006D14  0E4E               	movlw	78
+   451   006D16  1833               	xorwf	main@Key^0,w,c
+   452   006D18  B4D8               	btfsc	status,2,c
+   453   006D1A  EF91  F036         	goto	u881
+   454   006D1E  EF93  F036         	goto	u880
+   455   006D22                     u881:
+   456   006D22  EF9B  F036         	goto	l1394
+   457   006D26                     u880:
+   458   006D26                     
+   459                           ;RTC_main.c: 121:              {;RTC_main.c: 122:                 LCD_Command(0xCF);
+   460   006D26  0ECF               	movlw	207
+   461   006D28  EC50  F034         	call	_LCD_Command
+   462                           
+   463                           ;RTC_main.c: 123:                 LCD_Data(Key);
+   464   006D2C  5033               	movf	main@Key^0,w,c
+   465   006D2E  EC5F  F034         	call	_LCD_Data
+   466                           
+   467                           ;RTC_main.c: 124:                 break;
+   468   006D32  EF83  F036         	goto	l1380
+   469   006D36                     l1394:
+   470                           
+   471                           ;RTC_main.c: 126:         }
+   472   006D36  2A34               	incf	main@i^0,f,c
+   473   006D38  0E13               	movlw	19
+   474   006D3A  6434               	cpfsgt	main@i^0,c
+   475   006D3C  EFA2  F036         	goto	u891
+   476   006D40  EFA4  F036         	goto	u890
+   477   006D44                     u891:
+   478   006D44  EF87  F036         	goto	l1388
+   479   006D48                     u890:
+   480   006D48  EF83  F036         	goto	l1380
+   481   006D4C  EF00  F000         	goto	start
+   482   006D50                     __end_of_main:
+   483                           	callstack 0
+   484                           
+   485 ;; *************** function _RTC_read *****************
+   486 ;; Defined at:
+   487 ;;		line 60 in file "RTC_main.c"
+   488 ;; Parameters:    Size  Location     Type
+   489 ;;		None
+   490 ;; Auto vars:     Size  Location     Type
+   491 ;;		None
+   492 ;; Return value:  Size  Location     Type
+   493 ;;                  2  215[None  ] int 
+   494 ;; Registers used:
+   495 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   496 ;; Tracked objects:
+   497 ;;		On entry : 0/0
+   498 ;;		On exit  : 0/0
+   499 ;;		Unchanged: 0/0
+   500 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   501 ;;      Params:         0       0       0       0       0       0       0
+   502 ;;      Locals:         0       0       0       0       0       0       0
+   503 ;;      Temps:          0       0       0       0       0       0       0
+   504 ;;      Totals:         0       0       0       0       0       0       0
+   505 ;;Total ram usage:        0 bytes
+   506 ;; Hardware stack levels used: 1
+   507 ;; Hardware stack levels required when called: 2
+   508 ;; This function calls:
+   509 ;;		_BCD_to_ASCII_Display
+   510 ;;		_I2C_Page_Read
+   511 ;;		_LCD_Command
+   512 ;;		_LCD_Data
+   513 ;; This function is called by:
+   514 ;;		_main
+   515 ;; This function uses a non-reentrant model
+   516 ;;
+   517                           
+   518                           	psect	text1
+   519   006A8A                     __ptext1:
+   520                           	callstack 0
+   521   006A8A                     _RTC_read:
+   522                           	callstack 28
+   523   006A8A                     
+   524                           ;RTC_main.c: 62:     I2C_Page_Read(0xD0, 0x00, RTCTime, 7);
+   525   006A8A  0E00               	movlw	0
+   526   006A8C  6E28               	movwf	I2C_Page_Read@RegAddr^0,c
+   527   006A8E  0E37               	movlw	low _RTCTime
+   528   006A90  6E29               	movwf	I2C_Page_Read@data^0,c
+   529   006A92  0E00               	movlw	high _RTCTime
+   530   006A94  6E2A               	movwf	(I2C_Page_Read@data+1)^0,c
+   531   006A96  0E07               	movlw	7
+   532   006A98  6E2B               	movwf	I2C_Page_Read@no_bytes^0,c
+   533   006A9A  0ED0               	movlw	208
+   534   006A9C  ECA8  F036         	call	_I2C_Page_Read
+   535   006AA0                     
+   536                           ;RTC_main.c: 64:     LCD_Command(0x85);
+   537   006AA0  0E85               	movlw	133
+   538   006AA2  EC50  F034         	call	_LCD_Command
+   539   006AA6                     
+   540                           ;RTC_main.c: 65:     BCD_to_ASCII_Display(RTCTime[4]);
+   541   006AA6  503B               	movf	(_RTCTime+4)^0,w,c
+   542   006AA8  EC82  F034         	call	_BCD_to_ASCII_Display
+   543   006AAC                     
+   544                           ;RTC_main.c: 66:     LCD_Data('/');
+   545   006AAC  0E2F               	movlw	47
+   546   006AAE  EC5F  F034         	call	_LCD_Data
+   547   006AB2                     
+   548                           ;RTC_main.c: 67:     BCD_to_ASCII_Display(RTCTime[5]);
+   549   006AB2  503C               	movf	(_RTCTime+5)^0,w,c
+   550   006AB4  EC82  F034         	call	_BCD_to_ASCII_Display
+   551   006AB8                     
+   552                           ;RTC_main.c: 68:     LCD_Data('/');
+   553   006AB8  0E2F               	movlw	47
+   554   006ABA  EC5F  F034         	call	_LCD_Data
+   555   006ABE                     
+   556                           ;RTC_main.c: 69:     BCD_to_ASCII_Display(0x20);
+   557   006ABE  0E20               	movlw	32
+   558   006AC0  EC82  F034         	call	_BCD_to_ASCII_Display
+   559   006AC4                     
+   560                           ;RTC_main.c: 70:     BCD_to_ASCII_Display(RTCTime[6]);
+   561   006AC4  503D               	movf	(_RTCTime+6)^0,w,c
+   562   006AC6  EC82  F034         	call	_BCD_to_ASCII_Display
+   563   006ACA                     
+   564                           ;RTC_main.c: 74:     LCD_Command(0xC5);
+   565   006ACA  0EC5               	movlw	197
+   566   006ACC  EC50  F034         	call	_LCD_Command
+   567   006AD0                     
+   568                           ;RTC_main.c: 75:     BCD_to_ASCII_Display(RTCTime[2]);
+   569   006AD0  5039               	movf	(_RTCTime+2)^0,w,c
+   570   006AD2  EC82  F034         	call	_BCD_to_ASCII_Display
+   571   006AD6                     
+   572                           ;RTC_main.c: 76:     LCD_Data(':');
+   573   006AD6  0E3A               	movlw	58
+   574   006AD8  EC5F  F034         	call	_LCD_Data
+   575   006ADC                     
+   576                           ;RTC_main.c: 77:     BCD_to_ASCII_Display(RTCTime[1]);
+   577   006ADC  5038               	movf	(_RTCTime+1)^0,w,c
+   578   006ADE  EC82  F034         	call	_BCD_to_ASCII_Display
+   579   006AE2                     
+   580                           ;RTC_main.c: 78:     LCD_Data(':');
+   581   006AE2  0E3A               	movlw	58
+   582   006AE4  EC5F  F034         	call	_LCD_Data
+   583   006AE8                     
+   584                           ;RTC_main.c: 79:     BCD_to_ASCII_Display(RTCTime[0]);
+   585   006AE8  5037               	movf	_RTCTime^0,w,c
+   586   006AEA  EC82  F034         	call	_BCD_to_ASCII_Display
+   587   006AEE  0012               	return		;funcret
+   588   006AF0                     __end_of_RTC_read:
+   589                           	callstack 0
+   590                           
+   591 ;; *************** function _I2C_Page_Read *****************
+   592 ;; Defined at:
+   593 ;;		line 144 in file "C:/Users/DELL/Downloads/PIC18F_Library/I2C.c"
+   594 ;; Parameters:    Size  Location     Type
+   595 ;;  DevAddr         1    wreg     unsigned char 
+   596 ;;  RegAddr         1    0[COMRAM] unsigned char 
+   597 ;;  data            2    1[COMRAM] PTR unsigned char 
+   598 ;;		 -> RTCTime(7), 
+   599 ;;  no_bytes        1    3[COMRAM] unsigned char 
+   600 ;; Auto vars:     Size  Location     Type
+   601 ;;  DevAddr         1    9[COMRAM] unsigned char 
+   602 ;;  i               1   10[COMRAM] unsigned char 
+   603 ;; Return value:  Size  Location     Type
+   604 ;;                  1    wreg      void 
+   605 ;; Registers used:
+   606 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   607 ;; Tracked objects:
+   608 ;;		On entry : 0/0
+   609 ;;		On exit  : 0/0
+   610 ;;		Unchanged: 0/0
+   611 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   612 ;;      Params:         4       0       0       0       0       0       0
+   613 ;;      Locals:         2       0       0       0       0       0       0
+   614 ;;      Temps:          5       0       0       0       0       0       0
+   615 ;;      Totals:        11       0       0       0       0       0       0
+   616 ;;Total ram usage:       11 bytes
+   617 ;; Hardware stack levels used: 1
+   618 ;; This function calls:
+   619 ;;		Nothing
+   620 ;; This function is called by:
+   621 ;;		_RTC_read
+   622 ;;		_main
+   623 ;; This function uses a non-reentrant model
+   624 ;;
+   625                           
+   626                           	psect	text2
+   627   006D50                     __ptext2:
+   628                           	callstack 0
+   629   006D50                     _I2C_Page_Read:
+   630                           	callstack 29
+   631                           
+   632                           ;incstack = 0
+   633                           ;I2C_Page_Read@DevAddr stored from wreg
+   634   006D50  6E31               	movwf	I2C_Page_Read@DevAddr^0,c
+   635   006D52                     
+   636                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 144: void I2C_Page_Read(unsigned char Dev
+      +                          Addr,unsigned char RegAddr,unsigned char *data,unsigned char no_bytes);C:/Users/DELL/Dow
+      +                          nloads/PIC18F_Library/I2C.c: 145: {;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 146:  
+      +                             unsigned char i;;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 147:     SSPCON2bits.S
+      +                          EN=1;
+   637   006D52  80C5               	bsf	197,0,c	;volatile
+   638   006D54                     l101:
+   639   006D54  A69E               	btfss	158,3,c	;volatile
+   640   006D56  EFAF  F036         	goto	u671
+   641   006D5A  EFB1  F036         	goto	u670
+   642   006D5E                     u671:
+   643   006D5E  EFAA  F036         	goto	l101
+   644   006D62                     u670:
+   645   006D62                     
+   646                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 149:     PIR1bits.SSPIF=0;
+   647   006D62  969E               	bcf	158,3,c	;volatile
+   648   006D64                     
+   649                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 151:     SSPBUF = DevAddr&0xFE;
+   650   006D64  5031               	movf	I2C_Page_Read@DevAddr^0,w,c
+   651   006D66  0BFE               	andlw	254
+   652   006D68  6EC9               	movwf	201,c	;volatile
+   653   006D6A                     l104:
+   654   006D6A  A69E               	btfss	158,3,c	;volatile
+   655   006D6C  EFBA  F036         	goto	u681
+   656   006D70  EFBC  F036         	goto	u680
+   657   006D74                     u681:
+   658   006D74  EFB5  F036         	goto	l104
+   659   006D78                     u680:
+   660   006D78                     
+   661                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 153:     PIR1bits.SSPIF=0;
+   662   006D78  969E               	bcf	158,3,c	;volatile
+   663                           
+   664                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 155:     SSPBUF = RegAddr;
+   665   006D7A  C028  FFC9         	movff	I2C_Page_Read@RegAddr,4041	;volatile
+   666   006D7E                     l107:
+   667   006D7E  A69E               	btfss	158,3,c	;volatile
+   668   006D80  EFC4  F036         	goto	u691
+   669   006D84  EFC6  F036         	goto	u690
+   670   006D88                     u691:
+   671   006D88  EFBF  F036         	goto	l107
+   672   006D8C                     u690:
+   673   006D8C                     
+   674                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 157:     PIR1bits.SSPIF=0;
+   675   006D8C  969E               	bcf	158,3,c	;volatile
+   676                           
+   677                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 159:     SSPCON2bits.RSEN=1;
+   678   006D8E  82C5               	bsf	197,1,c	;volatile
+   679   006D90                     l110:
+   680   006D90  A69E               	btfss	158,3,c	;volatile
+   681   006D92  EFCD  F036         	goto	u701
+   682   006D96  EFCF  F036         	goto	u700
+   683   006D9A                     u701:
+   684   006D9A  EFC8  F036         	goto	l110
+   685   006D9E                     u700:
+   686   006D9E                     
+   687                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 161:     PIR1bits.SSPIF=0;
+   688   006D9E  969E               	bcf	158,3,c	;volatile
+   689   006DA0                     
+   690                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 164:     SSPBUF = DevAddr|0x01;
+   691   006DA0  5031               	movf	I2C_Page_Read@DevAddr^0,w,c
+   692   006DA2  0901               	iorlw	1
+   693   006DA4  6EC9               	movwf	201,c	;volatile
+   694   006DA6                     l113:
+   695   006DA6  A69E               	btfss	158,3,c	;volatile
+   696   006DA8  EFD8  F036         	goto	u711
+   697   006DAC  EFDA  F036         	goto	u710
+   698   006DB0                     u711:
+   699   006DB0  EFD3  F036         	goto	l113
+   700   006DB4                     u710:
+   701   006DB4                     
+   702                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 166:     PIR1bits.SSPIF=0;
+   703   006DB4  969E               	bcf	158,3,c	;volatile
+   704   006DB6                     
+   705                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 169:     for(i=0;i<(no_bytes-1);i++)
+   706   006DB6  0E00               	movlw	0
+   707   006DB8  6E32               	movwf	I2C_Page_Read@i^0,c
+   708   006DBA  EFFB  F036         	goto	l1296
+   709   006DBE                     l117:
+   710                           
+   711                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 170:     {;C:/Users/DELL/Downloads/PIC18F
+      +                          _Library/I2C.c: 171:         SSPCON2bits.RCEN=1;
+   712   006DBE  86C5               	bsf	197,3,c	;volatile
+   713   006DC0                     l118:
+   714   006DC0  A69E               	btfss	158,3,c	;volatile
+   715   006DC2  EFE5  F036         	goto	u721
+   716   006DC6  EFE7  F036         	goto	u720
+   717   006DCA                     u721:
+   718   006DCA  EFE0  F036         	goto	l118
+   719   006DCE                     u720:
+   720   006DCE                     
+   721                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 173:         PIR1bits.SSPIF=0;
+   722   006DCE  969E               	bcf	158,3,c	;volatile
+   723                           
+   724                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 175:         SSPCON2bits.ACKDT=0;
+   725   006DD0  9AC5               	bcf	197,5,c	;volatile
+   726                           
+   727                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 176:         SSPCON2bits.ACKEN=1;
+   728   006DD2  88C5               	bsf	197,4,c	;volatile
+   729   006DD4                     l121:
+   730   006DD4  A69E               	btfss	158,3,c	;volatile
+   731   006DD6  EFEF  F036         	goto	u731
+   732   006DDA  EFF1  F036         	goto	u730
+   733   006DDE                     u731:
+   734   006DDE  EFEA  F036         	goto	l121
+   735   006DE2                     u730:
+   736   006DE2                     
+   737                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 179:         PIR1bits.SSPIF=0;
+   738   006DE2  969E               	bcf	158,3,c	;volatile
+   739   006DE4                     
+   740                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 180:         data[i]=SSPBUF;
+   741   006DE4  5032               	movf	I2C_Page_Read@i^0,w,c
+   742   006DE6  2429               	addwf	I2C_Page_Read@data^0,w,c
+   743   006DE8  6ED9               	movwf	fsr2l,c
+   744   006DEA  0E00               	movlw	0
+   745   006DEC  202A               	addwfc	(I2C_Page_Read@data+1)^0,w,c
+   746   006DEE  6EDA               	movwf	fsr2h,c
+   747   006DF0  CFC9 FFDF          	movff	4041,indf2	;volatile
+   748   006DF4                     
+   749                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 181:     }
+   750   006DF4  2A32               	incf	I2C_Page_Read@i^0,f,c
+   751   006DF6                     l1296:
+   752   006DF6  0EFF               	movlw	255
+   753   006DF8  242B               	addwf	I2C_Page_Read@no_bytes^0,w,c
+   754   006DFA  6E2C               	movwf	??_I2C_Page_Read^0,c
+   755   006DFC  6A2D               	clrf	(??_I2C_Page_Read+1)^0,c
+   756   006DFE  0EFF               	movlw	255
+   757   006E00  222D               	addwfc	(??_I2C_Page_Read+1)^0,f,c
+   758   006E02  5032               	movf	I2C_Page_Read@i^0,w,c
+   759   006E04  6E2E               	movwf	(??_I2C_Page_Read+2)^0,c
+   760   006E06  6A2F               	clrf	(??_I2C_Page_Read+3)^0,c
+   761   006E08  502C               	movf	??_I2C_Page_Read^0,w,c
+   762   006E0A  5C2E               	subwf	(??_I2C_Page_Read+2)^0,w,c
+   763   006E0C  502F               	movf	(??_I2C_Page_Read+3)^0,w,c
+   764   006E0E  0A80               	xorlw	128
+   765   006E10  6E30               	movwf	(??_I2C_Page_Read+4)^0,c
+   766   006E12  502D               	movf	(??_I2C_Page_Read+1)^0,w,c
+   767   006E14  0A80               	xorlw	128
+   768   006E16  5830               	subwfb	(??_I2C_Page_Read+4)^0,w,c
+   769   006E18  A0D8               	btfss	status,0,c
+   770   006E1A  EF11  F037         	goto	u741
+   771   006E1E  EF13  F037         	goto	u740
+   772   006E22                     u741:
+   773   006E22  EFDF  F036         	goto	l117
+   774   006E26                     u740:
+   775   006E26                     
+   776                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 183:     SSPCON2bits.RCEN=1;
+   777   006E26  86C5               	bsf	197,3,c	;volatile
+   778   006E28                     l125:
+   779   006E28  A69E               	btfss	158,3,c	;volatile
+   780   006E2A  EF19  F037         	goto	u751
+   781   006E2E  EF1B  F037         	goto	u750
+   782   006E32                     u751:
+   783   006E32  EF14  F037         	goto	l125
+   784   006E36                     u750:
+   785   006E36                     
+   786                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 185:     PIR1bits.SSPIF=0;
+   787   006E36  969E               	bcf	158,3,c	;volatile
+   788                           
+   789                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 187:     SSPCON2bits.ACKDT=1;
+   790   006E38  8AC5               	bsf	197,5,c	;volatile
+   791                           
+   792                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 188:     SSPCON2bits.ACKEN=1;
+   793   006E3A  88C5               	bsf	197,4,c	;volatile
+   794   006E3C                     l128:
+   795   006E3C  A69E               	btfss	158,3,c	;volatile
+   796   006E3E  EF23  F037         	goto	u761
+   797   006E42  EF25  F037         	goto	u760
+   798   006E46                     u761:
+   799   006E46  EF1E  F037         	goto	l128
+   800   006E4A                     u760:
+   801   006E4A                     
+   802                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 191:     PIR1bits.SSPIF=0;
+   803   006E4A  969E               	bcf	158,3,c	;volatile
+   804   006E4C                     
+   805                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 192:     data[i]=SSPBUF;
+   806   006E4C  5032               	movf	I2C_Page_Read@i^0,w,c
+   807   006E4E  2429               	addwf	I2C_Page_Read@data^0,w,c
+   808   006E50  6ED9               	movwf	fsr2l,c
+   809   006E52  0E00               	movlw	0
+   810   006E54  202A               	addwfc	(I2C_Page_Read@data+1)^0,w,c
+   811   006E56  6EDA               	movwf	fsr2h,c
+   812   006E58  CFC9 FFDF          	movff	4041,indf2	;volatile
+   813   006E5C                     
+   814                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 194:     SSPCON2bits.PEN=1;
+   815   006E5C  84C5               	bsf	197,2,c	;volatile
+   816   006E5E                     l131:
+   817   006E5E  A69E               	btfss	158,3,c	;volatile
+   818   006E60  EF34  F037         	goto	u771
+   819   006E64  EF36  F037         	goto	u770
+   820   006E68                     u771:
+   821   006E68  EF2F  F037         	goto	l131
+   822   006E6C                     u770:
+   823   006E6C                     
+   824                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 196:     PIR1bits.SSPIF=0;
+   825   006E6C  969E               	bcf	158,3,c	;volatile
+   826   006E6E  0012               	return		;funcret
+   827   006E70                     __end_of_I2C_Page_Read:
+   828                           	callstack 0
+   829                           
+   830 ;; *************** function _BCD_to_ASCII_Display *****************
+   831 ;; Defined at:
+   832 ;;		line 26 in file "RTC_main.c"
+   833 ;; Parameters:    Size  Location     Type
+   834 ;;  Digit           1    wreg     unsigned char 
+   835 ;; Auto vars:     Size  Location     Type
+   836 ;;  Digit           1    2[COMRAM] unsigned char 
+   837 ;;  temp            1    3[COMRAM] unsigned char 
+   838 ;; Return value:  Size  Location     Type
+   839 ;;                  1    wreg      void 
+   840 ;; Registers used:
+   841 ;;		wreg, status,2, status,0, cstack
+   842 ;; Tracked objects:
+   843 ;;		On entry : 0/0
+   844 ;;		On exit  : 0/0
+   845 ;;		Unchanged: 0/0
+   846 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   847 ;;      Params:         0       0       0       0       0       0       0
+   848 ;;      Locals:         2       0       0       0       0       0       0
+   849 ;;      Temps:          0       0       0       0       0       0       0
+   850 ;;      Totals:         2       0       0       0       0       0       0
+   851 ;;Total ram usage:        2 bytes
+   852 ;; Hardware stack levels used: 1
+   853 ;; Hardware stack levels required when called: 1
+   854 ;; This function calls:
+   855 ;;		_LCD_Data
+   856 ;; This function is called by:
+   857 ;;		_RTC_read
+   858 ;; This function uses a non-reentrant model
+   859 ;;
+   860                           
+   861                           	psect	text3
+   862   006904                     __ptext3:
+   863                           	callstack 0
+   864   006904                     _BCD_to_ASCII_Display:
+   865                           	callstack 28
+   866                           
+   867                           ;incstack = 0
+   868                           ;BCD_to_ASCII_Display@Digit stored from wreg
+   869   006904  6E2A               	movwf	BCD_to_ASCII_Display@Digit^0,c
+   870   006906                     
+   871                           ;RTC_main.c: 26: void BCD_to_ASCII_Display(unsigned char Digit);RTC_main.c: 27: {;RTC_ma
+      +                          in.c: 28:     unsigned char temp;;RTC_main.c: 40:     temp = Digit;
+   872   006906  C02A  F02B         	movff	BCD_to_ASCII_Display@Digit,BCD_to_ASCII_Display@temp
+   873   00690A                     
+   874                           ;RTC_main.c: 41:     temp = (temp & 0xF0) >> 4;
+   875   00690A  382B               	swapf	BCD_to_ASCII_Display@temp^0,w,c
+   876   00690C  0B0F               	andlw	15
+   877   00690E  0B0F               	andlw	15
+   878   006910  6E2B               	movwf	BCD_to_ASCII_Display@temp^0,c
+   879   006912                     
+   880                           ;RTC_main.c: 42:     temp = temp | 0x30;
+   881   006912  502B               	movf	BCD_to_ASCII_Display@temp^0,w,c
+   882   006914  0930               	iorlw	48
+   883   006916  6E2B               	movwf	BCD_to_ASCII_Display@temp^0,c
+   884   006918                     
+   885                           ;RTC_main.c: 43:     LCD_Data(temp);
+   886   006918  502B               	movf	BCD_to_ASCII_Display@temp^0,w,c
+   887   00691A  EC5F  F034         	call	_LCD_Data
+   888   00691E                     
+   889                           ;RTC_main.c: 45:     temp = Digit;
+   890   00691E  C02A  F02B         	movff	BCD_to_ASCII_Display@Digit,BCD_to_ASCII_Display@temp
+   891   006922                     
+   892                           ;RTC_main.c: 46:     temp = (temp & 0x0F);
+   893   006922  502B               	movf	BCD_to_ASCII_Display@temp^0,w,c
+   894   006924  0B0F               	andlw	15
+   895   006926  6E2B               	movwf	BCD_to_ASCII_Display@temp^0,c
+   896   006928                     
+   897                           ;RTC_main.c: 47:     temp = temp| 0x30;
+   898   006928  502B               	movf	BCD_to_ASCII_Display@temp^0,w,c
+   899   00692A  0930               	iorlw	48
+   900   00692C  6E2B               	movwf	BCD_to_ASCII_Display@temp^0,c
+   901   00692E                     
+   902                           ;RTC_main.c: 48:     LCD_Data(temp);
+   903   00692E  502B               	movf	BCD_to_ASCII_Display@temp^0,w,c
+   904   006930  EC5F  F034         	call	_LCD_Data
+   905   006934  0012               	return		;funcret
+   906   006936                     __end_of_BCD_to_ASCII_Display:
+   907                           	callstack 0
+   908                           
+   909 ;; *************** function _RTC_init *****************
+   910 ;; Defined at:
+   911 ;;		line 52 in file "RTC_main.c"
+   912 ;; Parameters:    Size  Location     Type
+   913 ;;		None
+   914 ;; Auto vars:     Size  Location     Type
+   915 ;;		None
+   916 ;; Return value:  Size  Location     Type
+   917 ;;                  2  212[None  ] int 
+   918 ;; Registers used:
+   919 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   920 ;; Tracked objects:
+   921 ;;		On entry : 0/0
+   922 ;;		On exit  : 0/0
+   923 ;;		Unchanged: 0/0
+   924 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   925 ;;      Params:         0       0       0       0       0       0       0
+   926 ;;      Locals:         0       0       0       0       0       0       0
+   927 ;;      Temps:          1       0       0       0       0       0       0
+   928 ;;      Totals:         1       0       0       0       0       0       0
+   929 ;;Total ram usage:        1 bytes
+   930 ;; Hardware stack levels used: 1
+   931 ;; Hardware stack levels required when called: 1
+   932 ;; This function calls:
+   933 ;;		_I2C_Byte_Write
+   934 ;;		_I2C_Page_Write
+   935 ;; This function is called by:
+   936 ;;		_main
+   937 ;; This function uses a non-reentrant model
+   938 ;;
+   939                           
+   940                           	psect	text4
+   941   00699C                     __ptext4:
+   942                           	callstack 0
+   943   00699C                     _RTC_init:
+   944                           	callstack 29
+   945   00699C                     
+   946                           ;RTC_main.c: 54:     RTC_flag=1;
+   947   00699C  0E01               	movlw	1
+   948   00699E  6E36               	movwf	_RTC_flag^0,c
+   949   0069A0                     
+   950                           ;RTC_main.c: 55:     I2C_Byte_Write(0xA0,0x10,RTC_flag);
+   951   0069A0  0E10               	movlw	16
+   952   0069A2  6E28               	movwf	I2C_Byte_Write@RegAddr^0,c
+   953   0069A4  C036  F029         	movff	_RTC_flag,I2C_Byte_Write@data
+   954   0069A8  0EA0               	movlw	160
+   955   0069AA  EC12  F035         	call	_I2C_Byte_Write
+   956   0069AE                     
+   957                           ;RTC_main.c: 56:     I2C_Page_Write(0xD0, 0x00, userTime, 7);
+   958   0069AE  0E00               	movlw	0
+   959   0069B0  6E28               	movwf	I2C_Page_Write@RegAddr^0,c
+   960   0069B2  0E15               	movlw	low _userTime
+   961   0069B4  6E29               	movwf	I2C_Page_Write@data^0,c
+   962   0069B6  0E00               	movlw	high _userTime
+   963   0069B8  6E2A               	movwf	(I2C_Page_Write@data+1)^0,c
+   964   0069BA  0E07               	movlw	7
+   965   0069BC  6E2B               	movwf	I2C_Page_Write@no_bytes^0,c
+   966   0069BE  0ED0               	movlw	208
+   967   0069C0  ECB0  F035         	call	_I2C_Page_Write
+   968   0069C4                     
+   969                           ;RTC_main.c: 57:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   970   0069C4  0E41               	movlw	65
+   971   0069C6  6E2E               	movwf	??_RTC_init^0,c
+   972   0069C8  0EEE               	movlw	238
+   973   0069CA                     u907:
+   974   0069CA  2EE8               	decfsz	wreg,f,c
+   975   0069CC  D7FE               	bra	u907
+   976   0069CE  2E2E               	decfsz	??_RTC_init^0,f,c
+   977   0069D0  D7FC               	bra	u907
+   978   0069D2  D000               	nop2	
+   979   0069D4  0012               	return		;funcret
+   980   0069D6                     __end_of_RTC_init:
+   981                           	callstack 0
+   982                           
+   983 ;; *************** function _I2C_Page_Write *****************
+   984 ;; Defined at:
+   985 ;;		line 117 in file "C:/Users/DELL/Downloads/PIC18F_Library/I2C.c"
+   986 ;; Parameters:    Size  Location     Type
+   987 ;;  DevAddr         1    wreg     unsigned char 
+   988 ;;  RegAddr         1    0[COMRAM] unsigned char 
+   989 ;;  data            2    1[COMRAM] PTR unsigned char 
+   990 ;;		 -> userTime(7), 
+   991 ;;  no_bytes        1    3[COMRAM] unsigned char 
+   992 ;; Auto vars:     Size  Location     Type
+   993 ;;  DevAddr         1    4[COMRAM] unsigned char 
+   994 ;;  i               1    5[COMRAM] unsigned char 
+   995 ;; Return value:  Size  Location     Type
+   996 ;;                  1    wreg      void 
+   997 ;; Registers used:
+   998 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   999 ;; Tracked objects:
+  1000 ;;		On entry : 0/0
+  1001 ;;		On exit  : 0/0
+  1002 ;;		Unchanged: 0/0
+  1003 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1004 ;;      Params:         4       0       0       0       0       0       0
+  1005 ;;      Locals:         2       0       0       0       0       0       0
+  1006 ;;      Temps:          0       0       0       0       0       0       0
+  1007 ;;      Totals:         6       0       0       0       0       0       0
+  1008 ;;Total ram usage:        6 bytes
+  1009 ;; Hardware stack levels used: 1
+  1010 ;; This function calls:
+  1011 ;;		Nothing
+  1012 ;; This function is called by:
+  1013 ;;		_RTC_init
+  1014 ;; This function uses a non-reentrant model
+  1015 ;;
+  1016                           
+  1017                           	psect	text5
+  1018   006B60                     __ptext5:
+  1019                           	callstack 0
+  1020   006B60                     _I2C_Page_Write:
+  1021                           	callstack 29
+  1022                           
+  1023                           ;incstack = 0
+  1024                           ;I2C_Page_Write@DevAddr stored from wreg
+  1025   006B60  6E2C               	movwf	I2C_Page_Write@DevAddr^0,c
+  1026   006B62                     
+  1027                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 117: void I2C_Page_Write(unsigned char De
+      +                          vAddr,unsigned char RegAddr,unsigned char *data,unsigned char no_bytes);C:/Users/DELL/Do
+      +                          wnloads/PIC18F_Library/I2C.c: 118: {;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 119: 
+      +                              unsigned char i;;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 120:     SSPCON2bits.
+      +                          SEN=1;
+  1028   006B62  80C5               	bsf	197,0,c	;volatile
+  1029   006B64                     l80:
+  1030   006B64  A69E               	btfss	158,3,c	;volatile
+  1031   006B66  EFB7  F035         	goto	u611
+  1032   006B6A  EFB9  F035         	goto	u610
+  1033   006B6E                     u611:
+  1034   006B6E  EFB2  F035         	goto	l80
+  1035   006B72                     u610:
+  1036   006B72                     
+  1037                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 122:     PIR1bits.SSPIF=0;
+  1038   006B72  969E               	bcf	158,3,c	;volatile
+  1039   006B74                     
+  1040                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 124:     SSPBUF = DevAddr&0xFE;
+  1041   006B74  502C               	movf	I2C_Page_Write@DevAddr^0,w,c
+  1042   006B76  0BFE               	andlw	254
+  1043   006B78  6EC9               	movwf	201,c	;volatile
+  1044   006B7A                     l83:
+  1045   006B7A  A69E               	btfss	158,3,c	;volatile
+  1046   006B7C  EFC2  F035         	goto	u621
+  1047   006B80  EFC4  F035         	goto	u620
+  1048   006B84                     u621:
+  1049   006B84  EFBD  F035         	goto	l83
+  1050   006B88                     u620:
+  1051   006B88                     
+  1052                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 126:     PIR1bits.SSPIF=0;
+  1053   006B88  969E               	bcf	158,3,c	;volatile
+  1054                           
+  1055                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 128:     SSPBUF = RegAddr;
+  1056   006B8A  C028  FFC9         	movff	I2C_Page_Write@RegAddr,4041	;volatile
+  1057   006B8E                     l86:
+  1058   006B8E  A69E               	btfss	158,3,c	;volatile
+  1059   006B90  EFCC  F035         	goto	u631
+  1060   006B94  EFCE  F035         	goto	u630
+  1061   006B98                     u631:
+  1062   006B98  EFC7  F035         	goto	l86
+  1063   006B9C                     u630:
+  1064   006B9C                     
+  1065                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 130:     PIR1bits.SSPIF=0;
+  1066   006B9C  969E               	bcf	158,3,c	;volatile
+  1067   006B9E                     
+  1068                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 132:     for(i=0;i<no_bytes;i++)
+  1069   006B9E  0E00               	movlw	0
+  1070   006BA0  6E2D               	movwf	I2C_Page_Write@i^0,c
+  1071   006BA2  EFE4  F035         	goto	l1282
+  1072   006BA6                     l1278:
+  1073                           
+  1074                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 133:     {;C:/Users/DELL/Downloads/PIC18F
+      +                          _Library/I2C.c: 134:         SSPBUF=data[i];
+  1075   006BA6  502D               	movf	I2C_Page_Write@i^0,w,c
+  1076   006BA8  2429               	addwf	I2C_Page_Write@data^0,w,c
+  1077   006BAA  6ED9               	movwf	fsr2l,c
+  1078   006BAC  0E00               	movlw	0
+  1079   006BAE  202A               	addwfc	(I2C_Page_Write@data+1)^0,w,c
+  1080   006BB0  6EDA               	movwf	fsr2h,c
+  1081   006BB2  50DF               	movf	indf2,w,c
+  1082   006BB4  6EC9               	movwf	201,c	;volatile
+  1083   006BB6                     l91:
+  1084   006BB6  A69E               	btfss	158,3,c	;volatile
+  1085   006BB8  EFE0  F035         	goto	u641
+  1086   006BBC  EFE2  F035         	goto	u640
+  1087   006BC0                     u641:
+  1088   006BC0  EFDB  F035         	goto	l91
+  1089   006BC4                     u640:
+  1090   006BC4                     
+  1091                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 136:         PIR1bits.SSPIF=0;
+  1092   006BC4  969E               	bcf	158,3,c	;volatile
+  1093   006BC6                     
+  1094                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 137:     }
+  1095   006BC6  2A2D               	incf	I2C_Page_Write@i^0,f,c
+  1096   006BC8                     l1282:
+  1097   006BC8  502B               	movf	I2C_Page_Write@no_bytes^0,w,c
+  1098   006BCA  5C2D               	subwf	I2C_Page_Write@i^0,w,c
+  1099   006BCC  A0D8               	btfss	status,0,c
+  1100   006BCE  EFEB  F035         	goto	u651
+  1101   006BD2  EFED  F035         	goto	u650
+  1102   006BD6                     u651:
+  1103   006BD6  EFD3  F035         	goto	l1278
+  1104   006BDA                     u650:
+  1105   006BDA                     
+  1106                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 138:     SSPCON2bits.PEN=1;
+  1107   006BDA  84C5               	bsf	197,2,c	;volatile
+  1108   006BDC                     l95:
+  1109   006BDC  A69E               	btfss	158,3,c	;volatile
+  1110   006BDE  EFF3  F035         	goto	u661
+  1111   006BE2  EFF5  F035         	goto	u660
+  1112   006BE6                     u661:
+  1113   006BE6  EFEE  F035         	goto	l95
+  1114   006BEA                     u660:
+  1115   006BEA                     
+  1116                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 140:     PIR1bits.SSPIF=0;
+  1117   006BEA  969E               	bcf	158,3,c	;volatile
+  1118   006BEC  0012               	return		;funcret
+  1119   006BEE                     __end_of_I2C_Page_Write:
+  1120                           	callstack 0
+  1121                           
+  1122 ;; *************** function _I2C_Byte_Write *****************
+  1123 ;; Defined at:
+  1124 ;;		line 54 in file "C:/Users/DELL/Downloads/PIC18F_Library/I2C.c"
+  1125 ;; Parameters:    Size  Location     Type
+  1126 ;;  DevAddr         1    wreg     unsigned char 
+  1127 ;;  RegAddr         1    0[COMRAM] unsigned char 
+  1128 ;;  data            1    1[COMRAM] unsigned char 
+  1129 ;; Auto vars:     Size  Location     Type
+  1130 ;;  DevAddr         1    2[COMRAM] unsigned char 
+  1131 ;; Return value:  Size  Location     Type
+  1132 ;;                  1    wreg      void 
+  1133 ;; Registers used:
+  1134 ;;		wreg, status,2, status,0
+  1135 ;; Tracked objects:
+  1136 ;;		On entry : 0/0
+  1137 ;;		On exit  : 0/0
+  1138 ;;		Unchanged: 0/0
+  1139 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1140 ;;      Params:         2       0       0       0       0       0       0
+  1141 ;;      Locals:         1       0       0       0       0       0       0
+  1142 ;;      Temps:          0       0       0       0       0       0       0
+  1143 ;;      Totals:         3       0       0       0       0       0       0
+  1144 ;;Total ram usage:        3 bytes
+  1145 ;; Hardware stack levels used: 1
+  1146 ;; This function calls:
+  1147 ;;		Nothing
+  1148 ;; This function is called by:
+  1149 ;;		_RTC_init
+  1150 ;; This function uses a non-reentrant model
+  1151 ;;
+  1152                           
+  1153                           	psect	text6
+  1154   006A24                     __ptext6:
+  1155                           	callstack 0
+  1156   006A24                     _I2C_Byte_Write:
+  1157                           	callstack 29
+  1158                           
+  1159                           ;incstack = 0
+  1160                           ;I2C_Byte_Write@DevAddr stored from wreg
+  1161   006A24  6E2A               	movwf	I2C_Byte_Write@DevAddr^0,c
+  1162   006A26                     
+  1163                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 54: void I2C_Byte_Write(unsigned char Dev
+      +                          Addr, unsigned char RegAddr,unsigned char data);C:/Users/DELL/Downloads/PIC18F_Library/I
+      +                          2C.c: 55: {;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 56:     SSPCON2bits.SEN=1;
+  1164   006A26  80C5               	bsf	197,0,c	;volatile
+  1165   006A28                     l38:
+  1166   006A28  A69E               	btfss	158,3,c	;volatile
+  1167   006A2A  EF19  F035         	goto	u561
+  1168   006A2E  EF1B  F035         	goto	u560
+  1169   006A32                     u561:
+  1170   006A32  EF14  F035         	goto	l38
+  1171   006A36                     u560:
+  1172   006A36                     
+  1173                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 58:     PIR1bits.SSPIF=0;
+  1174   006A36  969E               	bcf	158,3,c	;volatile
+  1175   006A38                     
+  1176                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 61:     SSPBUF = DevAddr&0xFE;
+  1177   006A38  502A               	movf	I2C_Byte_Write@DevAddr^0,w,c
+  1178   006A3A  0BFE               	andlw	254
+  1179   006A3C  6EC9               	movwf	201,c	;volatile
+  1180   006A3E                     l41:
+  1181   006A3E  A69E               	btfss	158,3,c	;volatile
+  1182   006A40  EF24  F035         	goto	u571
+  1183   006A44  EF26  F035         	goto	u570
+  1184   006A48                     u571:
+  1185   006A48  EF1F  F035         	goto	l41
+  1186   006A4C                     u570:
+  1187   006A4C                     
+  1188                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 63:     PIR1bits.SSPIF=0;
+  1189   006A4C  969E               	bcf	158,3,c	;volatile
+  1190                           
+  1191                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 65:     SSPBUF = RegAddr;
+  1192   006A4E  C028  FFC9         	movff	I2C_Byte_Write@RegAddr,4041	;volatile
+  1193   006A52                     l44:
+  1194   006A52  A69E               	btfss	158,3,c	;volatile
+  1195   006A54  EF2E  F035         	goto	u581
+  1196   006A58  EF30  F035         	goto	u580
+  1197   006A5C                     u581:
+  1198   006A5C  EF29  F035         	goto	l44
+  1199   006A60                     u580:
+  1200   006A60                     
+  1201                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 67:     PIR1bits.SSPIF=0;
+  1202   006A60  969E               	bcf	158,3,c	;volatile
+  1203                           
+  1204                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 69:     SSPBUF = data;
+  1205   006A62  C029  FFC9         	movff	I2C_Byte_Write@data,4041	;volatile
+  1206   006A66                     l47:
+  1207   006A66  A69E               	btfss	158,3,c	;volatile
+  1208   006A68  EF38  F035         	goto	u591
+  1209   006A6C  EF3A  F035         	goto	u590
+  1210   006A70                     u591:
+  1211   006A70  EF33  F035         	goto	l47
+  1212   006A74                     u590:
+  1213   006A74                     
+  1214                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 71:     PIR1bits.SSPIF=0;
+  1215   006A74  969E               	bcf	158,3,c	;volatile
+  1216                           
+  1217                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 73:     SSPCON2bits.PEN=1;
+  1218   006A76  84C5               	bsf	197,2,c	;volatile
+  1219   006A78                     l50:
+  1220   006A78  A69E               	btfss	158,3,c	;volatile
+  1221   006A7A  EF41  F035         	goto	u601
+  1222   006A7E  EF43  F035         	goto	u600
+  1223   006A82                     u601:
+  1224   006A82  EF3C  F035         	goto	l50
+  1225   006A86                     u600:
+  1226   006A86                     
+  1227                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 75:     PIR1bits.SSPIF=0;
+  1228   006A86  969E               	bcf	158,3,c	;volatile
+  1229   006A88  0012               	return		;funcret
+  1230   006A8A                     __end_of_I2C_Byte_Write:
+  1231                           	callstack 0
+  1232                           
+  1233 ;; *************** function _LCD_ROM_String *****************
+  1234 ;; Defined at:
+  1235 ;;		line 63 in file "C:/Users/DELL/Downloads/PIC18F_Library/LCD.c"
+  1236 ;; Parameters:    Size  Location     Type
+  1237 ;;  str             2    2[COMRAM] PTR const unsigned char 
+  1238 ;;		 -> time(6), date(6), 
+  1239 ;; Auto vars:     Size  Location     Type
+  1240 ;;  i               2    5[COMRAM] int 
+  1241 ;; Return value:  Size  Location     Type
+  1242 ;;                  1    wreg      void 
+  1243 ;; Registers used:
+  1244 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+  1245 ;; Tracked objects:
+  1246 ;;		On entry : 0/0
+  1247 ;;		On exit  : 0/0
+  1248 ;;		Unchanged: 0/0
+  1249 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1250 ;;      Params:         2       0       0       0       0       0       0
+  1251 ;;      Locals:         2       0       0       0       0       0       0
+  1252 ;;      Temps:          1       0       0       0       0       0       0
+  1253 ;;      Totals:         5       0       0       0       0       0       0
+  1254 ;;Total ram usage:        5 bytes
+  1255 ;; Hardware stack levels used: 1
+  1256 ;; Hardware stack levels required when called: 1
+  1257 ;; This function calls:
+  1258 ;;		_LCD_Data
+  1259 ;; This function is called by:
+  1260 ;;		_main
+  1261 ;; This function uses a non-reentrant model
+  1262 ;;
+  1263                           
+  1264                           	psect	text7
+  1265   0069D6                     __ptext7:
+  1266                           	callstack 0
+  1267   0069D6                     _LCD_ROM_String:
+  1268                           	callstack 29
+  1269   0069D6                     
+  1270                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 63: void LCD_ROM_String(const char *str);
+      +                          C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 64: {;C:/Users/DELL/Downloads/PIC18F_Libra
+      +                          ry/LCD.c: 65:     int i = 0;
+  1271   0069D6  0E00               	movlw	0
+  1272   0069D8  6E2E               	movwf	(LCD_ROM_String@i+1)^0,c
+  1273   0069DA  0E00               	movlw	0
+  1274   0069DC  6E2D               	movwf	LCD_ROM_String@i^0,c
+  1275                           
+  1276                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 66:     while (str[i] != 0)
+  1277   0069DE  EF03  F035         	goto	l1320
+  1278   0069E2                     l1314:
+  1279                           
+  1280                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 67:     {;C:/Users/DELL/Downloads/PIC18F_
+      +                          Library/LCD.c: 68:         LCD_Data(str[i]);
+  1281   0069E2  502D               	movf	LCD_ROM_String@i^0,w,c
+  1282   0069E4  242A               	addwf	LCD_ROM_String@str^0,w,c
+  1283   0069E6  6ED9               	movwf	fsr2l,c
+  1284   0069E8  502E               	movf	(LCD_ROM_String@i+1)^0,w,c
+  1285   0069EA  202B               	addwfc	(LCD_ROM_String@str+1)^0,w,c
+  1286   0069EC  6EDA               	movwf	fsr2h,c
+  1287   0069EE  50DF               	movf	indf2,w,c
+  1288   0069F0  EC5F  F034         	call	_LCD_Data
+  1289   0069F4                     
+  1290                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 69:         _delay((unsigned long)((15)*(
+      +                          20000000/4000.0)));
+  1291   0069F4  0E62               	movlw	98
+  1292   0069F6  6E2C               	movwf	??_LCD_ROM_String^0,c
+  1293   0069F8  0E66               	movlw	102
+  1294   0069FA                     u917:
+  1295   0069FA  2EE8               	decfsz	wreg,f,c
+  1296   0069FC  D7FE               	bra	u917
+  1297   0069FE  2E2C               	decfsz	??_LCD_ROM_String^0,f,c
+  1298   006A00  D7FC               	bra	u917
+  1299   006A02                     
+  1300                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 70:         i++;
+  1301   006A02  4A2D               	infsnz	LCD_ROM_String@i^0,f,c
+  1302   006A04  2A2E               	incf	(LCD_ROM_String@i+1)^0,f,c
+  1303   006A06                     l1320:
+  1304                           
+  1305                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 66:     while (str[i] != 0)
+  1306   006A06  502D               	movf	LCD_ROM_String@i^0,w,c
+  1307   006A08  242A               	addwf	LCD_ROM_String@str^0,w,c
+  1308   006A0A  6ED9               	movwf	fsr2l,c
+  1309   006A0C  502E               	movf	(LCD_ROM_String@i+1)^0,w,c
+  1310   006A0E  202B               	addwfc	(LCD_ROM_String@str+1)^0,w,c
+  1311   006A10  6EDA               	movwf	fsr2h,c
+  1312   006A12  50DF               	movf	indf2,w,c
+  1313   006A14  A4D8               	btfss	status,2,c
+  1314   006A16  EF0F  F035         	goto	u851
+  1315   006A1A  EF11  F035         	goto	u850
+  1316   006A1E                     u851:
+  1317   006A1E  EFF1  F034         	goto	l1314
+  1318   006A22                     u850:
+  1319   006A22  0012               	return		;funcret
+  1320   006A24                     __end_of_LCD_ROM_String:
+  1321                           	callstack 0
+  1322                           
+  1323 ;; *************** function _LCD_Data *****************
+  1324 ;; Defined at:
+  1325 ;;		line 42 in file "C:/Users/DELL/Downloads/PIC18F_Library/LCD.c"
+  1326 ;; Parameters:    Size  Location     Type
+  1327 ;;  data            1    wreg     unsigned char 
+  1328 ;; Auto vars:     Size  Location     Type
+  1329 ;;  data            1    1[COMRAM] unsigned char 
+  1330 ;; Return value:  Size  Location     Type
+  1331 ;;                  1    wreg      void 
+  1332 ;; Registers used:
+  1333 ;;		wreg, status,2, cstack
+  1334 ;; Tracked objects:
+  1335 ;;		On entry : 0/0
+  1336 ;;		On exit  : 0/0
+  1337 ;;		Unchanged: 0/0
+  1338 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1339 ;;      Params:         0       0       0       0       0       0       0
+  1340 ;;      Locals:         1       0       0       0       0       0       0
+  1341 ;;      Temps:          1       0       0       0       0       0       0
+  1342 ;;      Totals:         2       0       0       0       0       0       0
+  1343 ;;Total ram usage:        2 bytes
+  1344 ;; Hardware stack levels used: 1
+  1345 ;; This function calls:
+  1346 ;;		Nothing
+  1347 ;; This function is called by:
+  1348 ;;		_LCD_ROM_String
+  1349 ;;		_BCD_to_ASCII_Display
+  1350 ;;		_RTC_read
+  1351 ;;		_main
+  1352 ;;		_LCD_RAM_String
+  1353 ;; This function uses a non-reentrant model
+  1354 ;;
+  1355                           
+  1356                           	psect	text8
+  1357   0068BE                     __ptext8:
+  1358                           	callstack 0
+  1359   0068BE                     _LCD_Data:
+  1360                           	callstack 29
+  1361                           
+  1362                           ;incstack = 0
+  1363                           ;LCD_Data@data stored from wreg
+  1364   0068BE  6E29               	movwf	LCD_Data@data^0,c
+  1365   0068C0                     
+  1366                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 42: void LCD_Data(unsigned char data);C:/
+      +                          Users/DELL/Downloads/PIC18F_Library/LCD.c: 43: {;C:/Users/DELL/Downloads/PIC18F_Library/
+      +                          LCD.c: 44:     LATD = data;
+  1367   0068C0  C029  FF8C         	movff	LCD_Data@data,3980	;volatile
+  1368   0068C4                     
+  1369                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 45:     LATCbits.LATC1 = 1;
+  1370   0068C4  828B               	bsf	139,1,c	;volatile
+  1371   0068C6                     
+  1372                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 46:     LATCbits.LATC0 = 0;
+  1373   0068C6  908B               	bcf	139,0,c	;volatile
+  1374   0068C8                     
+  1375                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 47:     LATCbits.LATC2 = 1;
+  1376   0068C8  848B               	bsf	139,2,c	;volatile
+  1377   0068CA                     
+  1378                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 48:    _delay((unsigned long)((15)*(20000
+      +                          000/4000.0)));
+  1379   0068CA  0E62               	movlw	98
+  1380   0068CC  6E28               	movwf	??_LCD_Data^0,c
+  1381   0068CE  0E66               	movlw	102
+  1382   0068D0                     u927:
+  1383   0068D0  2EE8               	decfsz	wreg,f,c
+  1384   0068D2  D7FE               	bra	u927
+  1385   0068D4  2E28               	decfsz	??_LCD_Data^0,f,c
+  1386   0068D6  D7FC               	bra	u927
+  1387   0068D8                     
+  1388                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 49:     LATCbits.LATC2 = 0;
+  1389   0068D8  948B               	bcf	139,2,c	;volatile
+  1390   0068DA  0012               	return		;funcret
+  1391   0068DC                     __end_of_LCD_Data:
+  1392                           	callstack 0
+  1393                           
+  1394 ;; *************** function _LCD_Init *****************
+  1395 ;; Defined at:
+  1396 ;;		line 13 in file "C:/Users/DELL/Downloads/PIC18F_Library/LCD.c"
+  1397 ;; Parameters:    Size  Location     Type
+  1398 ;;		None
+  1399 ;; Auto vars:     Size  Location     Type
+  1400 ;;		None
+  1401 ;; Return value:  Size  Location     Type
+  1402 ;;                  1    wreg      void 
+  1403 ;; Registers used:
+  1404 ;;		wreg, status,2, cstack
+  1405 ;; Tracked objects:
+  1406 ;;		On entry : 0/0
+  1407 ;;		On exit  : 0/0
+  1408 ;;		Unchanged: 0/0
+  1409 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1410 ;;      Params:         0       0       0       0       0       0       0
+  1411 ;;      Locals:         0       0       0       0       0       0       0
+  1412 ;;      Temps:          1       0       0       0       0       0       0
+  1413 ;;      Totals:         1       0       0       0       0       0       0
+  1414 ;;Total ram usage:        1 bytes
+  1415 ;; Hardware stack levels used: 1
+  1416 ;; Hardware stack levels required when called: 1
+  1417 ;; This function calls:
+  1418 ;;		_LCD_Command
+  1419 ;; This function is called by:
+  1420 ;;		_main
+  1421 ;; This function uses a non-reentrant model
+  1422 ;;
+  1423                           
+  1424                           	psect	text9
+  1425   006AF0                     __ptext9:
+  1426                           	callstack 0
+  1427   006AF0                     _LCD_Init:
+  1428                           	callstack 29
+  1429   006AF0                     
+  1430                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 15:     TRISD = 0;
+  1431   006AF0  0E00               	movlw	0
+  1432   006AF2  6E95               	movwf	149,c	;volatile
+  1433   006AF4                     
+  1434                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 16:     TRISCbits.RC1 = 0;
+  1435   006AF4  9294               	bcf	148,1,c	;volatile
+  1436   006AF6                     
+  1437                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 17:     TRISCbits.RC0 = 0;
+  1438   006AF6  9094               	bcf	148,0,c	;volatile
+  1439   006AF8                     
+  1440                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 18:     TRISCbits.RC2 = 0;
+  1441   006AF8  9494               	bcf	148,2,c	;volatile
+  1442   006AFA                     
+  1443                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 20:     LCD_Command(0x38);
+  1444   006AFA  0E38               	movlw	56
+  1445   006AFC  EC50  F034         	call	_LCD_Command
+  1446   006B00                     
+  1447                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 21:     _delay((unsigned long)((15)*(2000
+      +                          0000/4000.0)));
+  1448   006B00  0E62               	movlw	98
+  1449   006B02  6E2A               	movwf	??_LCD_Init^0,c
+  1450   006B04  0E66               	movlw	102
+  1451   006B06                     u937:
+  1452   006B06  2EE8               	decfsz	wreg,f,c
+  1453   006B08  D7FE               	bra	u937
+  1454   006B0A  2E2A               	decfsz	??_LCD_Init^0,f,c
+  1455   006B0C  D7FC               	bra	u937
+  1456   006B0E                     
+  1457                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 22:     LCD_Command(0x06);
+  1458   006B0E  0E06               	movlw	6
+  1459   006B10  EC50  F034         	call	_LCD_Command
+  1460   006B14                     
+  1461                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 23:     _delay((unsigned long)((15)*(2000
+      +                          0000/4000.0)));
+  1462   006B14  0E62               	movlw	98
+  1463   006B16  6E2A               	movwf	??_LCD_Init^0,c
+  1464   006B18  0E66               	movlw	102
+  1465   006B1A                     u947:
+  1466   006B1A  2EE8               	decfsz	wreg,f,c
+  1467   006B1C  D7FE               	bra	u947
+  1468   006B1E  2E2A               	decfsz	??_LCD_Init^0,f,c
+  1469   006B20  D7FC               	bra	u947
+  1470   006B22                     
+  1471                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 24:     LCD_Command(0x0C);
+  1472   006B22  0E0C               	movlw	12
+  1473   006B24  EC50  F034         	call	_LCD_Command
+  1474   006B28                     
+  1475                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 25:     _delay((unsigned long)((15)*(2000
+      +                          0000/4000.0)));
+  1476   006B28  0E62               	movlw	98
+  1477   006B2A  6E2A               	movwf	??_LCD_Init^0,c
+  1478   006B2C  0E66               	movlw	102
+  1479   006B2E                     u957:
+  1480   006B2E  2EE8               	decfsz	wreg,f,c
+  1481   006B30  D7FE               	bra	u957
+  1482   006B32  2E2A               	decfsz	??_LCD_Init^0,f,c
+  1483   006B34  D7FC               	bra	u957
+  1484   006B36                     
+  1485                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 26:     LCD_Command(0x01);
+  1486   006B36  0E01               	movlw	1
+  1487   006B38  EC50  F034         	call	_LCD_Command
+  1488   006B3C                     
+  1489                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 27:     _delay((unsigned long)((15)*(2000
+      +                          0000/4000.0)));
+  1490   006B3C  0E62               	movlw	98
+  1491   006B3E  6E2A               	movwf	??_LCD_Init^0,c
+  1492   006B40  0E66               	movlw	102
+  1493   006B42                     u967:
+  1494   006B42  2EE8               	decfsz	wreg,f,c
+  1495   006B44  D7FE               	bra	u967
+  1496   006B46  2E2A               	decfsz	??_LCD_Init^0,f,c
+  1497   006B48  D7FC               	bra	u967
+  1498   006B4A                     
+  1499                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 28:     LCD_Command(0x80);
+  1500   006B4A  0E80               	movlw	128
+  1501   006B4C  EC50  F034         	call	_LCD_Command
+  1502   006B50                     
+  1503                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 29:     _delay((unsigned long)((15)*(2000
+      +                          0000/4000.0)));
+  1504   006B50  0E62               	movlw	98
+  1505   006B52  6E2A               	movwf	??_LCD_Init^0,c
+  1506   006B54  0E66               	movlw	102
+  1507   006B56                     u977:
+  1508   006B56  2EE8               	decfsz	wreg,f,c
+  1509   006B58  D7FE               	bra	u977
+  1510   006B5A  2E2A               	decfsz	??_LCD_Init^0,f,c
+  1511   006B5C  D7FC               	bra	u977
+  1512   006B5E  0012               	return		;funcret
+  1513   006B60                     __end_of_LCD_Init:
+  1514                           	callstack 0
+  1515                           
+  1516 ;; *************** function _LCD_Command *****************
+  1517 ;; Defined at:
+  1518 ;;		line 32 in file "C:/Users/DELL/Downloads/PIC18F_Library/LCD.c"
+  1519 ;; Parameters:    Size  Location     Type
+  1520 ;;  cmd             1    wreg     unsigned char 
+  1521 ;; Auto vars:     Size  Location     Type
+  1522 ;;  cmd             1    1[COMRAM] unsigned char 
+  1523 ;; Return value:  Size  Location     Type
+  1524 ;;                  1    wreg      void 
+  1525 ;; Registers used:
+  1526 ;;		wreg, status,2, cstack
+  1527 ;; Tracked objects:
+  1528 ;;		On entry : 0/0
+  1529 ;;		On exit  : 0/0
+  1530 ;;		Unchanged: 0/0
+  1531 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1532 ;;      Params:         0       0       0       0       0       0       0
+  1533 ;;      Locals:         1       0       0       0       0       0       0
+  1534 ;;      Temps:          1       0       0       0       0       0       0
+  1535 ;;      Totals:         2       0       0       0       0       0       0
+  1536 ;;Total ram usage:        2 bytes
+  1537 ;; Hardware stack levels used: 1
+  1538 ;; This function calls:
+  1539 ;;		Nothing
+  1540 ;; This function is called by:
+  1541 ;;		_LCD_Init
+  1542 ;;		_RTC_read
+  1543 ;;		_main
+  1544 ;; This function uses a non-reentrant model
+  1545 ;;
+  1546                           
+  1547                           	psect	text10
+  1548   0068A0                     __ptext10:
+  1549                           	callstack 0
+  1550   0068A0                     _LCD_Command:
+  1551                           	callstack 29
+  1552                           
+  1553                           ;incstack = 0
+  1554                           ;LCD_Command@cmd stored from wreg
+  1555   0068A0  6E29               	movwf	LCD_Command@cmd^0,c
+  1556   0068A2                     
+  1557                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 32: void LCD_Command(unsigned char cmd);C
+      +                          :/Users/DELL/Downloads/PIC18F_Library/LCD.c: 33: {;C:/Users/DELL/Downloads/PIC18F_Librar
+      +                          y/LCD.c: 34:     LATD = cmd;
+  1558   0068A2  C029  FF8C         	movff	LCD_Command@cmd,3980	;volatile
+  1559   0068A6                     
+  1560                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 35:     LATCbits.LATC1 = 0;
+  1561   0068A6  928B               	bcf	139,1,c	;volatile
+  1562   0068A8                     
+  1563                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 36:     LATCbits.LATC0 = 0;
+  1564   0068A8  908B               	bcf	139,0,c	;volatile
+  1565   0068AA                     
+  1566                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 37:     LATCbits.LATC2 = 1;
+  1567   0068AA  848B               	bsf	139,2,c	;volatile
+  1568   0068AC                     
+  1569                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 38:     _delay((unsigned long)((15)*(2000
+      +                          0000/4000.0)));
+  1570   0068AC  0E62               	movlw	98
+  1571   0068AE  6E28               	movwf	??_LCD_Command^0,c
+  1572   0068B0  0E66               	movlw	102
+  1573   0068B2                     u987:
+  1574   0068B2  2EE8               	decfsz	wreg,f,c
+  1575   0068B4  D7FE               	bra	u987
+  1576   0068B6  2E28               	decfsz	??_LCD_Command^0,f,c
+  1577   0068B8  D7FC               	bra	u987
+  1578   0068BA                     
+  1579                           ;C:/Users/DELL/Downloads/PIC18F_Library/LCD.c: 39:     LATCbits.LATC2 = 0;
+  1580   0068BA  948B               	bcf	139,2,c	;volatile
+  1581   0068BC  0012               	return		;funcret
+  1582   0068BE                     __end_of_LCD_Command:
+  1583                           	callstack 0
+  1584                           
+  1585 ;; *************** function _Keypad_Init *****************
+  1586 ;; Defined at:
+  1587 ;;		line 4 in file "../PIC18F_Library/Keypad.c"
+  1588 ;; Parameters:    Size  Location     Type
+  1589 ;;		None
+  1590 ;; Auto vars:     Size  Location     Type
+  1591 ;;		None
+  1592 ;; Return value:  Size  Location     Type
+  1593 ;;                  1    wreg      void 
+  1594 ;; Registers used:
+  1595 ;;		wreg, status,2
+  1596 ;; Tracked objects:
+  1597 ;;		On entry : 0/0
+  1598 ;;		On exit  : 0/0
+  1599 ;;		Unchanged: 0/0
+  1600 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1601 ;;      Params:         0       0       0       0       0       0       0
+  1602 ;;      Locals:         0       0       0       0       0       0       0
+  1603 ;;      Temps:          0       0       0       0       0       0       0
+  1604 ;;      Totals:         0       0       0       0       0       0       0
+  1605 ;;Total ram usage:        0 bytes
+  1606 ;; Hardware stack levels used: 1
+  1607 ;; This function calls:
+  1608 ;;		Nothing
+  1609 ;; This function is called by:
+  1610 ;;		_main
+  1611 ;; This function uses a non-reentrant model
+  1612 ;;
+  1613                           
+  1614                           	psect	text11
+  1615   006880                     __ptext11:
+  1616                           	callstack 0
+  1617   006880                     _Keypad_Init:
+  1618                           	callstack 30
+  1619   006880                     
+  1620                           ;../PIC18F_Library/Keypad.c: 6:     ADCON1 = 0x0F;
+  1621   006880  0E0F               	movlw	15
+  1622   006882  6EC1               	movwf	193,c	;volatile
+  1623   006884                     
+  1624                           ;../PIC18F_Library/Keypad.c: 7:     INTCON2bits.RBPU=0;
+  1625   006884  9EF1               	bcf	241,7,c	;volatile
+  1626                           
+  1627                           ;../PIC18F_Library/Keypad.c: 8:     TRISB = 0x1F;
+  1628   006886  0E1F               	movlw	31
+  1629   006888  6E93               	movwf	147,c	;volatile
+  1630   00688A  0012               	return		;funcret
+  1631   00688C                     __end_of_Keypad_Init:
+  1632                           	callstack 0
+  1633                           
+  1634 ;; *************** function _I2C_Init *****************
+  1635 ;; Defined at:
+  1636 ;;		line 5 in file "C:/Users/DELL/Downloads/PIC18F_Library/I2C.c"
+  1637 ;; Parameters:    Size  Location     Type
+  1638 ;;		None
+  1639 ;; Auto vars:     Size  Location     Type
+  1640 ;;		None
+  1641 ;; Return value:  Size  Location     Type
+  1642 ;;                  1    wreg      void 
+  1643 ;; Registers used:
+  1644 ;;		wreg, status,2
+  1645 ;; Tracked objects:
+  1646 ;;		On entry : 0/0
+  1647 ;;		On exit  : 0/0
+  1648 ;;		Unchanged: 0/0
+  1649 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1650 ;;      Params:         0       0       0       0       0       0       0
+  1651 ;;      Locals:         0       0       0       0       0       0       0
+  1652 ;;      Temps:          0       0       0       0       0       0       0
+  1653 ;;      Totals:         0       0       0       0       0       0       0
+  1654 ;;Total ram usage:        0 bytes
+  1655 ;; Hardware stack levels used: 1
+  1656 ;; This function calls:
+  1657 ;;		Nothing
+  1658 ;; This function is called by:
+  1659 ;;		_main
+  1660 ;; This function uses a non-reentrant model
+  1661 ;;
+  1662                           
+  1663                           	psect	text12
+  1664   00688C                     __ptext12:
+  1665                           	callstack 0
+  1666   00688C                     _I2C_Init:
+  1667                           	callstack 30
+  1668   00688C                     
+  1669                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 7:     TRISCbits.TRISC3=1;
+  1670   00688C  8694               	bsf	148,3,c	;volatile
+  1671                           
+  1672                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 8:     TRISCbits.TRISC4=1;
+  1673   00688E  8894               	bsf	148,4,c	;volatile
+  1674                           
+  1675                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 12:     SSPCON1bits.SSPM3=1;
+  1676   006890  86C6               	bsf	198,3,c	;volatile
+  1677                           
+  1678                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 13:     SSPCON1bits.SSPM2=0;
+  1679   006892  94C6               	bcf	198,2,c	;volatile
+  1680                           
+  1681                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 14:     SSPCON1bits.SSPM1=0;
+  1682   006894  92C6               	bcf	198,1,c	;volatile
+  1683                           
+  1684                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 15:     SSPCON1bits.SSPM0=0;
+  1685   006896  90C6               	bcf	198,0,c	;volatile
+  1686   006898                     
+  1687                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 22:     SSPADD = 49;
+  1688   006898  0E31               	movlw	49
+  1689   00689A  6EC8               	movwf	200,c	;volatile
+  1690   00689C                     
+  1691                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 23:     SSPCON1bits.SSPEN=1;
+  1692   00689C  8AC6               	bsf	198,5,c	;volatile
+  1693   00689E  0012               	return		;funcret
+  1694   0068A0                     __end_of_I2C_Init:
+  1695                           	callstack 0
+  1696                           
+  1697 ;; *************** function _I2C_Byte_Read *****************
+  1698 ;; Defined at:
+  1699 ;;		line 79 in file "C:/Users/DELL/Downloads/PIC18F_Library/I2C.c"
+  1700 ;; Parameters:    Size  Location     Type
+  1701 ;;  DevAddr         1    wreg     unsigned char 
+  1702 ;;  RegAddr         1    0[COMRAM] unsigned char 
+  1703 ;; Auto vars:     Size  Location     Type
+  1704 ;;  DevAddr         1    2[COMRAM] unsigned char 
+  1705 ;;  data            1    1[COMRAM] unsigned char 
+  1706 ;; Return value:  Size  Location     Type
+  1707 ;;                  1    wreg      unsigned char 
+  1708 ;; Registers used:
+  1709 ;;		wreg, status,2, status,0
+  1710 ;; Tracked objects:
+  1711 ;;		On entry : 0/0
+  1712 ;;		On exit  : 0/0
+  1713 ;;		Unchanged: 0/0
+  1714 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1715 ;;      Params:         1       0       0       0       0       0       0
+  1716 ;;      Locals:         2       0       0       0       0       0       0
+  1717 ;;      Temps:          0       0       0       0       0       0       0
+  1718 ;;      Totals:         3       0       0       0       0       0       0
+  1719 ;;Total ram usage:        3 bytes
+  1720 ;; Hardware stack levels used: 1
+  1721 ;; This function calls:
+  1722 ;;		Nothing
+  1723 ;; This function is called by:
+  1724 ;;		_main
+  1725 ;; This function uses a non-reentrant model
+  1726 ;;
+  1727                           
+  1728                           	psect	text13
+  1729   006BEE                     __ptext13:
+  1730                           	callstack 0
+  1731   006BEE                     _I2C_Byte_Read:
+  1732                           	callstack 30
+  1733                           
+  1734                           ;incstack = 0
+  1735                           ;I2C_Byte_Read@DevAddr stored from wreg
+  1736   006BEE  6E2A               	movwf	I2C_Byte_Read@DevAddr^0,c
+  1737   006BF0                     
+  1738                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 79: unsigned char I2C_Byte_Read(unsigned 
+      +                          char DevAddr,unsigned char RegAddr);C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 80: {;
+      +                          C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 81:     unsigned char data;;C:/Users/DELL/
+      +                          Downloads/PIC18F_Library/I2C.c: 82:     SSPCON2bits.SEN=1;
+  1739   006BF0  80C5               	bsf	197,0,c	;volatile
+  1740   006BF2                     l56:
+  1741   006BF2  A69E               	btfss	158,3,c	;volatile
+  1742   006BF4  EFFE  F035         	goto	u781
+  1743   006BF8  EF00  F036         	goto	u780
+  1744   006BFC                     u781:
+  1745   006BFC  EFF9  F035         	goto	l56
+  1746   006C00                     u780:
+  1747   006C00                     
+  1748                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 84:     PIR1bits.SSPIF=0;
+  1749   006C00  969E               	bcf	158,3,c	;volatile
+  1750   006C02                     
+  1751                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 86:     SSPBUF = DevAddr & 0xFE;
+  1752   006C02  502A               	movf	I2C_Byte_Read@DevAddr^0,w,c
+  1753   006C04  0BFE               	andlw	254
+  1754   006C06  6EC9               	movwf	201,c	;volatile
+  1755   006C08                     l59:
+  1756   006C08  A69E               	btfss	158,3,c	;volatile
+  1757   006C0A  EF09  F036         	goto	u791
+  1758   006C0E  EF0B  F036         	goto	u790
+  1759   006C12                     u791:
+  1760   006C12  EF04  F036         	goto	l59
+  1761   006C16                     u790:
+  1762   006C16                     
+  1763                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 88:     PIR1bits.SSPIF=0;
+  1764   006C16  969E               	bcf	158,3,c	;volatile
+  1765                           
+  1766                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 90:     SSPBUF = RegAddr;
+  1767   006C18  C028  FFC9         	movff	I2C_Byte_Read@RegAddr,4041	;volatile
+  1768   006C1C                     l62:
+  1769   006C1C  A69E               	btfss	158,3,c	;volatile
+  1770   006C1E  EF13  F036         	goto	u801
+  1771   006C22  EF15  F036         	goto	u800
+  1772   006C26                     u801:
+  1773   006C26  EF0E  F036         	goto	l62
+  1774   006C2A                     u800:
+  1775   006C2A                     
+  1776                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 92:     PIR1bits.SSPIF=0;
+  1777   006C2A  969E               	bcf	158,3,c	;volatile
+  1778                           
+  1779                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 94:     SSPCON2bits.RSEN=1;
+  1780   006C2C  82C5               	bsf	197,1,c	;volatile
+  1781   006C2E                     l65:
+  1782   006C2E  A69E               	btfss	158,3,c	;volatile
+  1783   006C30  EF1C  F036         	goto	u811
+  1784   006C34  EF1E  F036         	goto	u810
+  1785   006C38                     u811:
+  1786   006C38  EF17  F036         	goto	l65
+  1787   006C3C                     u810:
+  1788   006C3C                     
+  1789                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 96:     PIR1bits.SSPIF=0;
+  1790   006C3C  969E               	bcf	158,3,c	;volatile
+  1791   006C3E                     
+  1792                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 100:     SSPBUF = DevAddr|0x01;
+  1793   006C3E  502A               	movf	I2C_Byte_Read@DevAddr^0,w,c
+  1794   006C40  0901               	iorlw	1
+  1795   006C42  6EC9               	movwf	201,c	;volatile
+  1796   006C44                     l68:
+  1797   006C44  A69E               	btfss	158,3,c	;volatile
+  1798   006C46  EF27  F036         	goto	u821
+  1799   006C4A  EF29  F036         	goto	u820
+  1800   006C4E                     u821:
+  1801   006C4E  EF22  F036         	goto	l68
+  1802   006C52                     u820:
+  1803   006C52                     
+  1804                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 102:     PIR1bits.SSPIF=0;
+  1805   006C52  969E               	bcf	158,3,c	;volatile
+  1806                           
+  1807                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 104:     SSPCON2bits.RCEN=1;
+  1808   006C54  86C5               	bsf	197,3,c	;volatile
+  1809   006C56                     l71:
+  1810   006C56  A69E               	btfss	158,3,c	;volatile
+  1811   006C58  EF30  F036         	goto	u831
+  1812   006C5C  EF32  F036         	goto	u830
+  1813   006C60                     u831:
+  1814   006C60  EF2B  F036         	goto	l71
+  1815   006C64                     u830:
+  1816   006C64                     
+  1817                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 106:     PIR1bits.SSPIF=0;
+  1818   006C64  969E               	bcf	158,3,c	;volatile
+  1819                           
+  1820                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 108:     data=SSPBUF;
+  1821   006C66  CFC9 F029          	movff	4041,I2C_Byte_Read@data	;volatile
+  1822                           
+  1823                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 110:     SSPCON2bits.PEN=1;
+  1824   006C6A  84C5               	bsf	197,2,c	;volatile
+  1825   006C6C                     l74:
+  1826   006C6C  A69E               	btfss	158,3,c	;volatile
+  1827   006C6E  EF3B  F036         	goto	u841
+  1828   006C72  EF3D  F036         	goto	u840
+  1829   006C76                     u841:
+  1830   006C76  EF36  F036         	goto	l74
+  1831   006C7A                     u840:
+  1832   006C7A                     
+  1833                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 112:     PIR1bits.SSPIF=0;
+  1834   006C7A  969E               	bcf	158,3,c	;volatile
+  1835   006C7C                     
+  1836                           ;C:/Users/DELL/Downloads/PIC18F_Library/I2C.c: 113:     return data;
+  1837   006C7C  5029               	movf	I2C_Byte_Read@data^0,w,c
+  1838   006C7E  0012               	return		;funcret
+  1839   006C80                     __end_of_I2C_Byte_Read:
+  1840                           	callstack 0
+  1841                           
+  1842 ;; *************** function _Get_Key *****************
+  1843 ;; Defined at:
+  1844 ;;		line 53 in file "../PIC18F_Library/Keypad.c"
+  1845 ;; Parameters:    Size  Location     Type
+  1846 ;;		None
+  1847 ;; Auto vars:     Size  Location     Type
+  1848 ;;  but1            1    4[COMRAM] unsigned char 
+  1849 ;;  Key             1    3[COMRAM] unsigned char 
+  1850 ;;  but2            1    0        unsigned char 
+  1851 ;; Return value:  Size  Location     Type
+  1852 ;;                  1    wreg      unsigned char 
+  1853 ;; Registers used:
+  1854 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+  1855 ;; Tracked objects:
+  1856 ;;		On entry : 0/0
+  1857 ;;		On exit  : 0/0
+  1858 ;;		Unchanged: 0/0
+  1859 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1860 ;;      Params:         0       0       0       0       0       0       0
+  1861 ;;      Locals:         2       0       0       0       0       0       0
+  1862 ;;      Temps:          2       0       0       0       0       0       0
+  1863 ;;      Totals:         4       0       0       0       0       0       0
+  1864 ;;Total ram usage:        4 bytes
+  1865 ;; Hardware stack levels used: 1
+  1866 ;; Hardware stack levels required when called: 1
+  1867 ;; This function calls:
+  1868 ;;		_Keypad_Scan
+  1869 ;; This function is called by:
+  1870 ;;		_main
+  1871 ;; This function uses a non-reentrant model
+  1872 ;;
+  1873                           
+  1874                           	psect	text14
+  1875   006968                     __ptext14:
+  1876                           	callstack 0
+  1877   006968                     _Get_Key:
+  1878                           	callstack 29
+  1879   006968                     
+  1880                           ;../PIC18F_Library/Keypad.c: 55:     unsigned char but1, but2, Key;;../PIC18F_Library/Ke
+      +                          ypad.c: 56:  but1 = Keypad_Scan();
+  1881   006968  EC38  F037         	call	_Keypad_Scan	;wreg free
+  1882   00696C  6E2C               	movwf	Get_Key@but1^0,c
+  1883   00696E                     
+  1884                           ;../PIC18F_Library/Keypad.c: 57:     _delay((unsigned long)((50)*(20000000/4000.0)));
+  1885   00696E  0E02               	movlw	2
+  1886   006970  6E2A               	movwf	(??_Get_Key+1)^0,c
+  1887   006972  0E45               	movlw	69
+  1888   006974  6E29               	movwf	??_Get_Key^0,c
+  1889   006976  0EAA               	movlw	170
+  1890   006978                     u997:
+  1891   006978  2EE8               	decfsz	wreg,f,c
+  1892   00697A  D7FE               	bra	u997
+  1893   00697C  2E29               	decfsz	??_Get_Key^0,f,c
+  1894   00697E  D7FC               	bra	u997
+  1895   006980  2E2A               	decfsz	(??_Get_Key+1)^0,f,c
+  1896   006982  D7FA               	bra	u997
+  1897   006984  EC38  F037         	call	_Keypad_Scan	;wreg free
+  1898   006988                     
+  1899                           ;../PIC18F_Library/Keypad.c: 61:     {;../PIC18F_Library/Keypad.c: 62:         Key = Key
+      +                          Val[but1];
+  1900   006988  0E01               	movlw	low _KeyVal
+  1901   00698A  242C               	addwf	Get_Key@but1^0,w,c
+  1902   00698C  6ED9               	movwf	fsr2l,c
+  1903   00698E  6ADA               	clrf	fsr2h,c
+  1904   006990  0E00               	movlw	high _KeyVal
+  1905   006992  22DA               	addwfc	fsr2h,f,c
+  1906   006994  50DF               	movf	indf2,w,c
+  1907   006996  6E2B               	movwf	Get_Key@Key^0,c
+  1908   006998                     
+  1909                           ;../PIC18F_Library/Keypad.c: 63:         return(Key);
+  1910   006998  502B               	movf	Get_Key@Key^0,w,c
+  1911   00699A  0012               	return		;funcret
+  1912   00699C                     __end_of_Get_Key:
+  1913                           	callstack 0
+  1914                           
+  1915 ;; *************** function _Keypad_Scan *****************
+  1916 ;; Defined at:
+  1917 ;;		line 10 in file "../PIC18F_Library/Keypad.c"
+  1918 ;; Parameters:    Size  Location     Type
+  1919 ;;		None
+  1920 ;; Auto vars:     Size  Location     Type
+  1921 ;;  button          1    0[COMRAM] unsigned char 
+  1922 ;; Return value:  Size  Location     Type
+  1923 ;;                  1    wreg      unsigned char 
+  1924 ;; Registers used:
+  1925 ;;		wreg, status,2, status,0
+  1926 ;; Tracked objects:
+  1927 ;;		On entry : 0/0
+  1928 ;;		On exit  : 0/0
+  1929 ;;		Unchanged: 0/0
+  1930 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1931 ;;      Params:         0       0       0       0       0       0       0
+  1932 ;;      Locals:         1       0       0       0       0       0       0
+  1933 ;;      Temps:          0       0       0       0       0       0       0
+  1934 ;;      Totals:         1       0       0       0       0       0       0
+  1935 ;;Total ram usage:        1 bytes
+  1936 ;; Hardware stack levels used: 1
+  1937 ;; This function calls:
+  1938 ;;		Nothing
+  1939 ;; This function is called by:
+  1940 ;;		_Get_Key
+  1941 ;; This function uses a non-reentrant model
+  1942 ;;
+  1943                           
+  1944                           	psect	text15
+  1945   006E70                     __ptext15:
+  1946                           	callstack 0
+  1947   006E70                     _Keypad_Scan:
+  1948                           	callstack 29
+  1949   006E70                     
+  1950                           ;../PIC18F_Library/Keypad.c: 12:     unsigned char button = 0;
+  1951   006E70  0E00               	movlw	0
+  1952   006E72  6E28               	movwf	Keypad_Scan@button^0,c
+  1953                           
+  1954                           ;../PIC18F_Library/Keypad.c: 15:     LATB = 0xC0;
+  1955   006E74  0EC0               	movlw	192
+  1956   006E76  6E8A               	movwf	138,c	;volatile
+  1957   006E78                     
+  1958                           ;../PIC18F_Library/Keypad.c: 16:     _delay((unsigned long)((1)*(20000000/4000000.0)));
+  1959   006E78  D000               	nop2		;2 cycle nop
+  1960   006E7A  D000               	nop2		;2 cycle nop
+  1961   006E7C  F000               	nop	
+  1962   006E7E                     
+  1963                           ;../PIC18F_Library/Keypad.c: 17:  if ((PORTB & 0x1E) != 0x1E)
+  1964   006E7E  5081               	movf	129,w,c	;volatile
+  1965   006E80  0B1E               	andlw	30
+  1966   006E82  0A1E               	xorlw	30
+  1967   006E84  B4D8               	btfsc	status,2,c
+  1968   006E86  EF47  F037         	goto	u231
+  1969   006E8A  EF49  F037         	goto	u230
+  1970   006E8E                     u231:
+  1971   006E8E  EF7C  F037         	goto	l1044
+  1972   006E92                     u230:
+  1973   006E92                     
+  1974                           ;../PIC18F_Library/Keypad.c: 18:     {;../PIC18F_Library/Keypad.c: 19:         if((PORTB
+      +                           & 0x1E) == 0x1C) button = 1;
+  1975   006E92  5081               	movf	129,w,c	;volatile
+  1976   006E94  0B1E               	andlw	30
+  1977   006E96  0A1C               	xorlw	28
+  1978   006E98  A4D8               	btfss	status,2,c
+  1979   006E9A  EF51  F037         	goto	u241
+  1980   006E9E  EF53  F037         	goto	u240
+  1981   006EA2                     u241:
+  1982   006EA2  EF55  F037         	goto	l1030
+  1983   006EA6                     u240:
+  1984   006EA6  0E01               	movlw	1
+  1985   006EA8  6E28               	movwf	Keypad_Scan@button^0,c
+  1986   006EAA                     l1030:
+  1987                           
+  1988                           ;../PIC18F_Library/Keypad.c: 20:         if((PORTB & 0x1E) == 0x1A) button = 2;
+  1989   006EAA  5081               	movf	129,w,c	;volatile
+  1990   006EAC  0B1E               	andlw	30
+  1991   006EAE  0A1A               	xorlw	26
+  1992   006EB0  A4D8               	btfss	status,2,c
+  1993   006EB2  EF5D  F037         	goto	u251
+  1994   006EB6  EF5F  F037         	goto	u250
+  1995   006EBA                     u251:
+  1996   006EBA  EF61  F037         	goto	l1034
+  1997   006EBE                     u250:
+  1998   006EBE  0E02               	movlw	2
+  1999   006EC0  6E28               	movwf	Keypad_Scan@button^0,c
+  2000   006EC2                     l1034:
+  2001                           
+  2002                           ;../PIC18F_Library/Keypad.c: 21:         if((PORTB & 0x1E) == 0x16) button = 3;
+  2003   006EC2  5081               	movf	129,w,c	;volatile
+  2004   006EC4  0B1E               	andlw	30
+  2005   006EC6  0A16               	xorlw	22
+  2006   006EC8  A4D8               	btfss	status,2,c
+  2007   006ECA  EF69  F037         	goto	u261
+  2008   006ECE  EF6B  F037         	goto	u260
+  2009   006ED2                     u261:
+  2010   006ED2  EF6D  F037         	goto	l1038
+  2011   006ED6                     u260:
+  2012   006ED6  0E03               	movlw	3
+  2013   006ED8  6E28               	movwf	Keypad_Scan@button^0,c
+  2014   006EDA                     l1038:
+  2015                           
+  2016                           ;../PIC18F_Library/Keypad.c: 22:         if((PORTB & 0x1E) == 0x0E) button = 4;
+  2017   006EDA  5081               	movf	129,w,c	;volatile
+  2018   006EDC  0B1E               	andlw	30
+  2019   006EDE  0A0E               	xorlw	14
+  2020   006EE0  A4D8               	btfss	status,2,c
+  2021   006EE2  EF75  F037         	goto	u271
+  2022   006EE6  EF77  F037         	goto	u270
+  2023   006EEA                     u271:
+  2024   006EEA  EF79  F037         	goto	l254
+  2025   006EEE                     u270:
+  2026   006EEE  0E04               	movlw	4
+  2027   006EF0  6E28               	movwf	Keypad_Scan@button^0,c
+  2028   006EF2                     l254:
+  2029                           
+  2030                           ;../PIC18F_Library/Keypad.c: 23:         return button;
+  2031   006EF2  5028               	movf	Keypad_Scan@button^0,w,c
+  2032   006EF4  EFFF  F037         	goto	l255
+  2033   006EF8                     l1044:
+  2034                           
+  2035                           ;../PIC18F_Library/Keypad.c: 27:     LATB = 0xA0;
+  2036   006EF8  0EA0               	movlw	160
+  2037   006EFA  6E8A               	movwf	138,c	;volatile
+  2038   006EFC                     
+  2039                           ;../PIC18F_Library/Keypad.c: 28:     _delay((unsigned long)((1)*(20000000/4000000.0)));
+  2040   006EFC  D000               	nop2		;2 cycle nop
+  2041   006EFE  D000               	nop2		;2 cycle nop
+  2042   006F00  F000               	nop	
+  2043   006F02                     
+  2044                           ;../PIC18F_Library/Keypad.c: 29:     if ((PORTB & 0x1E) != 0x1E)
+  2045   006F02  5081               	movf	129,w,c	;volatile
+  2046   006F04  0B1E               	andlw	30
+  2047   006F06  0A1E               	xorlw	30
+  2048   006F08  B4D8               	btfsc	status,2,c
+  2049   006F0A  EF89  F037         	goto	u281
+  2050   006F0E  EF8B  F037         	goto	u280
+  2051   006F12                     u281:
+  2052   006F12  EFBD  F037         	goto	l1068
+  2053   006F16                     u280:
+  2054   006F16                     
+  2055                           ;../PIC18F_Library/Keypad.c: 30:     {;../PIC18F_Library/Keypad.c: 31:         if((PORTB
+      +                           & 0x1E) == 0x1C) button = 5;
+  2056   006F16  5081               	movf	129,w,c	;volatile
+  2057   006F18  0B1E               	andlw	30
+  2058   006F1A  0A1C               	xorlw	28
+  2059   006F1C  A4D8               	btfss	status,2,c
+  2060   006F1E  EF93  F037         	goto	u291
+  2061   006F22  EF95  F037         	goto	u290
+  2062   006F26                     u291:
+  2063   006F26  EF97  F037         	goto	l1054
+  2064   006F2A                     u290:
+  2065   006F2A  0E05               	movlw	5
+  2066   006F2C  6E28               	movwf	Keypad_Scan@button^0,c
+  2067   006F2E                     l1054:
+  2068                           
+  2069                           ;../PIC18F_Library/Keypad.c: 32:         if((PORTB & 0x1E) == 0x1A) button = 6;
+  2070   006F2E  5081               	movf	129,w,c	;volatile
+  2071   006F30  0B1E               	andlw	30
+  2072   006F32  0A1A               	xorlw	26
+  2073   006F34  A4D8               	btfss	status,2,c
+  2074   006F36  EF9F  F037         	goto	u301
+  2075   006F3A  EFA1  F037         	goto	u300
+  2076   006F3E                     u301:
+  2077   006F3E  EFA3  F037         	goto	l1058
+  2078   006F42                     u300:
+  2079   006F42  0E06               	movlw	6
+  2080   006F44  6E28               	movwf	Keypad_Scan@button^0,c
+  2081   006F46                     l1058:
+  2082                           
+  2083                           ;../PIC18F_Library/Keypad.c: 33:         if((PORTB & 0x1E) == 0x16) button = 7;
+  2084   006F46  5081               	movf	129,w,c	;volatile
+  2085   006F48  0B1E               	andlw	30
+  2086   006F4A  0A16               	xorlw	22
+  2087   006F4C  A4D8               	btfss	status,2,c
+  2088   006F4E  EFAB  F037         	goto	u311
+  2089   006F52  EFAD  F037         	goto	u310
+  2090   006F56                     u311:
+  2091   006F56  EFAF  F037         	goto	l1062
+  2092   006F5A                     u310:
+  2093   006F5A  0E07               	movlw	7
+  2094   006F5C  6E28               	movwf	Keypad_Scan@button^0,c
+  2095   006F5E                     l1062:
+  2096                           
+  2097                           ;../PIC18F_Library/Keypad.c: 34:         if((PORTB & 0x1E) == 0x0E) button = 8;
+  2098   006F5E  5081               	movf	129,w,c	;volatile
+  2099   006F60  0B1E               	andlw	30
+  2100   006F62  0A0E               	xorlw	14
+  2101   006F64  A4D8               	btfss	status,2,c
+  2102   006F66  EFB7  F037         	goto	u321
+  2103   006F6A  EFB9  F037         	goto	u320
+  2104   006F6E                     u321:
+  2105   006F6E  EF79  F037         	goto	l254
+  2106   006F72                     u320:
+  2107   006F72  0E08               	movlw	8
+  2108   006F74  6E28               	movwf	Keypad_Scan@button^0,c
+  2109   006F76  EF79  F037         	goto	l254
+  2110   006F7A                     l1068:
+  2111                           
+  2112                           ;../PIC18F_Library/Keypad.c: 39:     LATB = 0x60;
+  2113   006F7A  0E60               	movlw	96
+  2114   006F7C  6E8A               	movwf	138,c	;volatile
+  2115   006F7E                     
+  2116                           ;../PIC18F_Library/Keypad.c: 40:     _delay((unsigned long)((1)*(20000000/4000000.0)));
+  2117   006F7E  D000               	nop2		;2 cycle nop
+  2118   006F80  D000               	nop2		;2 cycle nop
+  2119   006F82  F000               	nop	
+  2120   006F84                     
+  2121                           ;../PIC18F_Library/Keypad.c: 41:     if ((PORTB & 0x1E) != 0x1E)
+  2122   006F84  5081               	movf	129,w,c	;volatile
+  2123   006F86  0B1E               	andlw	30
+  2124   006F88  0A1E               	xorlw	30
+  2125   006F8A  B4D8               	btfsc	status,2,c
+  2126   006F8C  EFCA  F037         	goto	u331
+  2127   006F90  EFCC  F037         	goto	u330
+  2128   006F94                     u331:
+  2129   006F94  EFFE  F037         	goto	l1092
+  2130   006F98                     u330:
+  2131   006F98                     
+  2132                           ;../PIC18F_Library/Keypad.c: 42:     {;../PIC18F_Library/Keypad.c: 43:         if((PORTB
+      +                           & 0x1E) == 0x1C) button = 9;
+  2133   006F98  5081               	movf	129,w,c	;volatile
+  2134   006F9A  0B1E               	andlw	30
+  2135   006F9C  0A1C               	xorlw	28
+  2136   006F9E  A4D8               	btfss	status,2,c
+  2137   006FA0  EFD4  F037         	goto	u341
+  2138   006FA4  EFD6  F037         	goto	u340
+  2139   006FA8                     u341:
+  2140   006FA8  EFD8  F037         	goto	l1078
+  2141   006FAC                     u340:
+  2142   006FAC  0E09               	movlw	9
+  2143   006FAE  6E28               	movwf	Keypad_Scan@button^0,c
+  2144   006FB0                     l1078:
+  2145                           
+  2146                           ;../PIC18F_Library/Keypad.c: 44:         if((PORTB & 0x1E) == 0x1A) button = 10;
+  2147   006FB0  5081               	movf	129,w,c	;volatile
+  2148   006FB2  0B1E               	andlw	30
+  2149   006FB4  0A1A               	xorlw	26
+  2150   006FB6  A4D8               	btfss	status,2,c
+  2151   006FB8  EFE0  F037         	goto	u351
+  2152   006FBC  EFE2  F037         	goto	u350
+  2153   006FC0                     u351:
+  2154   006FC0  EFE4  F037         	goto	l1082
+  2155   006FC4                     u350:
+  2156   006FC4  0E0A               	movlw	10
+  2157   006FC6  6E28               	movwf	Keypad_Scan@button^0,c
+  2158   006FC8                     l1082:
+  2159                           
+  2160                           ;../PIC18F_Library/Keypad.c: 45:         if((PORTB & 0x1E) == 0x16) button = 11;
+  2161   006FC8  5081               	movf	129,w,c	;volatile
+  2162   006FCA  0B1E               	andlw	30
+  2163   006FCC  0A16               	xorlw	22
+  2164   006FCE  A4D8               	btfss	status,2,c
+  2165   006FD0  EFEC  F037         	goto	u361
+  2166   006FD4  EFEE  F037         	goto	u360
+  2167   006FD8                     u361:
+  2168   006FD8  EFF0  F037         	goto	l1086
+  2169   006FDC                     u360:
+  2170   006FDC  0E0B               	movlw	11
+  2171   006FDE  6E28               	movwf	Keypad_Scan@button^0,c
+  2172   006FE0                     l1086:
+  2173                           
+  2174                           ;../PIC18F_Library/Keypad.c: 46:         if((PORTB & 0x1E) == 0x0E) button = 12;
+  2175   006FE0  5081               	movf	129,w,c	;volatile
+  2176   006FE2  0B1E               	andlw	30
+  2177   006FE4  0A0E               	xorlw	14
+  2178   006FE6  A4D8               	btfss	status,2,c
+  2179   006FE8  EFF8  F037         	goto	u371
+  2180   006FEC  EFFA  F037         	goto	u370
+  2181   006FF0                     u371:
+  2182   006FF0  EF79  F037         	goto	l254
+  2183   006FF4                     u370:
+  2184   006FF4  0E0C               	movlw	12
+  2185   006FF6  6E28               	movwf	Keypad_Scan@button^0,c
+  2186   006FF8  EF79  F037         	goto	l254
+  2187   006FFC                     l1092:
+  2188                           
+  2189                           ;../PIC18F_Library/Keypad.c: 49:     return button;
+  2190   006FFC  0E00               	movlw	0
+  2191   006FFE                     l255:
+  2192   006FFE  0012               	return		;funcret
+  2193   007000                     __end_of_Keypad_Scan:
+  2194                           	callstack 0
+  2195   000000                     
+  2196                           	psect	rparam
+  2197   000000                     
+  2198                           	psect	idloc
+  2199                           
+  2200                           ;Config register IDLOC0 @ 0x200000
+  2201                           ;	unspecified, using default values
+  2202   200000                     	org	2097152
+  2203   200000  FF                 	db	255
+  2204                           
+  2205                           ;Config register IDLOC1 @ 0x200001
+  2206                           ;	unspecified, using default values
+  2207   200001                     	org	2097153
+  2208   200001  FF                 	db	255
+  2209                           
+  2210                           ;Config register IDLOC2 @ 0x200002
+  2211                           ;	unspecified, using default values
+  2212   200002                     	org	2097154
+  2213   200002  FF                 	db	255
+  2214                           
+  2215                           ;Config register IDLOC3 @ 0x200003
+  2216                           ;	unspecified, using default values
+  2217   200003                     	org	2097155
+  2218   200003  FF                 	db	255
+  2219                           
+  2220                           ;Config register IDLOC4 @ 0x200004
+  2221                           ;	unspecified, using default values
+  2222   200004                     	org	2097156
+  2223   200004  FF                 	db	255
+  2224                           
+  2225                           ;Config register IDLOC5 @ 0x200005
+  2226                           ;	unspecified, using default values
+  2227   200005                     	org	2097157
+  2228   200005  FF                 	db	255
+  2229                           
+  2230                           ;Config register IDLOC6 @ 0x200006
+  2231                           ;	unspecified, using default values
+  2232   200006                     	org	2097158
+  2233   200006  FF                 	db	255
+  2234                           
+  2235                           ;Config register IDLOC7 @ 0x200007
+  2236                           ;	unspecified, using default values
+  2237   200007                     	org	2097159
+  2238   200007  FF                 	db	255
+  2239                           
+  2240                           	psect	config
+  2241                           
+  2242                           ; Padding undefined space
+  2243   300000                     	org	3145728
+  2244   300000  FF                 	db	255
+  2245                           
+  2246                           ;Config register CONFIG1H @ 0x300001
+  2247                           ;	Oscillator Selection bits
+  2248                           ;	OSC = HS, HS oscillator
+  2249                           ;	Fail-Safe Clock Monitor Enable bit
+  2250                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  2251                           ;	Internal/External Oscillator Switchover bit
+  2252                           ;	IESO = OFF, Oscillator Switchover mode disabled
+  2253   300001                     	org	3145729
+  2254   300001  02                 	db	2
+  2255                           
+  2256                           ;Config register CONFIG2L @ 0x300002
+  2257                           ;	Power-up Timer Enable bit
+  2258                           ;	PWRT = OFF, PWRT disabled
+  2259                           ;	Brown-out Reset Enable bits
+  2260                           ;	BOREN = SBORDIS, Brown-out Reset enabled in hardware only (SBOREN is disabled)
+  2261                           ;	Brown Out Reset Voltage bits
+  2262                           ;	BORV = 3, Minimum setting
+  2263   300002                     	org	3145730
+  2264   300002  1F                 	db	31
+  2265                           
+  2266                           ;Config register CONFIG2H @ 0x300003
+  2267                           ;	Watchdog Timer Enable bit
+  2268                           ;	WDT = ON, WDT enabled
+  2269                           ;	Watchdog Timer Postscale Select bits
+  2270                           ;	WDTPS = 32768, 1:32768
+  2271   300003                     	org	3145731
+  2272   300003  1F                 	db	31
+  2273                           
+  2274                           ; Padding undefined space
+  2275   300004                     	org	3145732
+  2276   300004  FF                 	db	255
+  2277                           
+  2278                           ;Config register CONFIG3H @ 0x300005
+  2279                           ;	CCP2 MUX bit
+  2280                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+  2281                           ;	PORTB A/D Enable bit
+  2282                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+  2283                           ;	Low-Power Timer1 Oscillator Enable bit
+  2284                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  2285                           ;	MCLR Pin Enable bit
+  2286                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+  2287   300005                     	org	3145733
+  2288   300005  81                 	db	129
+  2289                           
+  2290                           ;Config register CONFIG4L @ 0x300006
+  2291                           ;	Stack Full/Underflow Reset Enable bit
+  2292                           ;	STVREN = ON, Stack full/underflow will cause Reset
+  2293                           ;	Single-Supply ICSP Enable bit
+  2294                           ;	LVP = OFF, Single-Supply ICSP disabled
+  2295                           ;	Extended Instruction Set Enable bit
+  2296                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+  2297                           ;	Background Debugger Enable bit
+  2298                           ;	DEBUG = 0x1, unprogrammed default
+  2299   300006                     	org	3145734
+  2300   300006  81                 	db	129
+  2301                           
+  2302                           ; Padding undefined space
+  2303   300007                     	org	3145735
+  2304   300007  FF                 	db	255
+  2305                           
+  2306                           ;Config register CONFIG5L @ 0x300008
+  2307                           ;	Code Protection bit
+  2308                           ;	CP0 = OFF, Block 0 (000800-001FFFh) not code-protected
+  2309                           ;	Code Protection bit
+  2310                           ;	CP1 = OFF, Block 1 (002000-003FFFh) not code-protected
+  2311                           ;	Code Protection bit
+  2312                           ;	CP2 = OFF, Block 2 (004000-005FFFh) not code-protected
+  2313                           ;	Code Protection bit
+  2314                           ;	CP3 = OFF, Block 3 (006000-007FFFh) not code-protected
+  2315   300008                     	org	3145736
+  2316   300008  0F                 	db	15
+  2317                           
+  2318                           ;Config register CONFIG5H @ 0x300009
+  2319                           ;	Boot Block Code Protection bit
+  2320                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+  2321                           ;	Data EEPROM Code Protection bit
+  2322                           ;	CPD = OFF, Data EEPROM not code-protected
+  2323   300009                     	org	3145737
+  2324   300009  C0                 	db	192
+  2325                           
+  2326                           ;Config register CONFIG6L @ 0x30000A
+  2327                           ;	Write Protection bit
+  2328                           ;	WRT0 = OFF, Block 0 (000800-001FFFh) not write-protected
+  2329                           ;	Write Protection bit
+  2330                           ;	WRT1 = OFF, Block 1 (002000-003FFFh) not write-protected
+  2331                           ;	Write Protection bit
+  2332                           ;	WRT2 = OFF, Block 2 (004000-005FFFh) not write-protected
+  2333                           ;	Write Protection bit
+  2334                           ;	WRT3 = OFF, Block 3 (006000-007FFFh) not write-protected
+  2335   30000A                     	org	3145738
+  2336   30000A  0F                 	db	15
+  2337                           
+  2338                           ;Config register CONFIG6H @ 0x30000B
+  2339                           ;	Configuration Register Write Protection bit
+  2340                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  2341                           ;	Boot Block Write Protection bit
+  2342                           ;	WRTB = OFF, Boot block (000000-0007FFh) not write-protected
+  2343                           ;	Data EEPROM Write Protection bit
+  2344                           ;	WRTD = OFF, Data EEPROM not write-protected
+  2345   30000B                     	org	3145739
+  2346   30000B  E0                 	db	224
+  2347                           
+  2348                           ;Config register CONFIG7L @ 0x30000C
+  2349                           ;	Table Read Protection bit
+  2350                           ;	EBTR0 = OFF, Block 0 (000800-001FFFh) not protected from table reads executed in other
+      +                           blocks
+  2351                           ;	Table Read Protection bit
+  2352                           ;	EBTR1 = OFF, Block 1 (002000-003FFFh) not protected from table reads executed in other
+      +                           blocks
+  2353                           ;	Table Read Protection bit
+  2354                           ;	EBTR2 = OFF, Block 2 (004000-005FFFh) not protected from table reads executed in other
+      +                           blocks
+  2355                           ;	Table Read Protection bit
+  2356                           ;	EBTR3 = OFF, Block 3 (006000-007FFFh) not protected from table reads executed in other
+      +                           blocks
+  2357   30000C                     	org	3145740
+  2358   30000C  0F                 	db	15
+  2359                           
+  2360                           ;Config register CONFIG7H @ 0x30000D
+  2361                           ;	Boot Block Table Read Protection bit
+  2362                           ;	EBTRB = OFF, Boot block (000000-0007FFh) not protected from table reads executed in ot
+      +                          her blocks
+  2363   30000D                     	org	3145741
+  2364   30000D  40                 	db	64
+  2365                           tosu	equ	0xFFF
+  2366                           tosh	equ	0xFFE
+  2367                           tosl	equ	0xFFD
+  2368                           stkptr	equ	0xFFC
+  2369                           pclatu	equ	0xFFB
+  2370                           pclath	equ	0xFFA
+  2371                           pcl	equ	0xFF9
+  2372                           tblptru	equ	0xFF8
+  2373                           tblptrh	equ	0xFF7
+  2374                           tblptrl	equ	0xFF6
+  2375                           tablat	equ	0xFF5
+  2376                           prodh	equ	0xFF4
+  2377                           prodl	equ	0xFF3
+  2378                           indf0	equ	0xFEF
+  2379                           postinc0	equ	0xFEE
+  2380                           postdec0	equ	0xFED
+  2381                           preinc0	equ	0xFEC
+  2382                           plusw0	equ	0xFEB
+  2383                           fsr0h	equ	0xFEA
+  2384                           fsr0l	equ	0xFE9
+  2385                           wreg	equ	0xFE8
+  2386                           indf1	equ	0xFE7
+  2387                           postinc1	equ	0xFE6
+  2388                           postdec1	equ	0xFE5
+  2389                           preinc1	equ	0xFE4
+  2390                           plusw1	equ	0xFE3
+  2391                           fsr1h	equ	0xFE2
+  2392                           fsr1l	equ	0xFE1
+  2393                           bsr	equ	0xFE0
+  2394                           indf2	equ	0xFDF
+  2395                           postinc2	equ	0xFDE
+  2396                           postdec2	equ	0xFDD
+  2397                           preinc2	equ	0xFDC
+  2398                           plusw2	equ	0xFDB
+  2399                           fsr2h	equ	0xFDA
+  2400                           fsr2l	equ	0xFD9
+  2401                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        39
+    BSS         9
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     13      61
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    LCD_ROM_String@str	PTR const unsigned char  size(2) Largest target is 6
+		 -> time(COMRAM[6]), date(COMRAM[6]), 
+
+    I2C_Page_Read@data	PTR unsigned char  size(2) Largest target is 7
+		 -> RTCTime(COMRAM[7]), 
+
+    I2C_Page_Write@data	PTR unsigned char  size(2) Largest target is 7
+		 -> userTime(COMRAM[7]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_I2C_Page_Read
+    _RTC_read->_I2C_Page_Read
+    _BCD_to_ASCII_Display->_LCD_Data
+    _RTC_init->_I2C_Page_Write
+    _LCD_ROM_String->_LCD_Data
+    _LCD_Init->_LCD_Command
+    _Get_Key->_Keypad_Scan
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0    2841
+                                             11 COMRAM     2     2      0
+                            _Get_Key
+                      _I2C_Byte_Read
+                           _I2C_Init
+                      _I2C_Page_Read
+                        _Keypad_Init
+                        _LCD_Command
+                           _LCD_Data
+                           _LCD_Init
+                     _LCD_ROM_String
+                           _RTC_init
+                           _RTC_read
+ ---------------------------------------------------------------------------------
+ (1) _RTC_read                                             0     0      0     821
+               _BCD_to_ASCII_Display
+                      _I2C_Page_Read
+                        _LCD_Command
+                           _LCD_Data
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Page_Read                                       11     7      4     656
+                                              0 COMRAM    11     7      4
+ ---------------------------------------------------------------------------------
+ (2) _BCD_to_ASCII_Display                                 2     2      0     135
+                                              2 COMRAM     2     2      0
+                           _LCD_Data
+ ---------------------------------------------------------------------------------
+ (1) _RTC_init                                             1     1      0     580
+                                              6 COMRAM     1     1      0
+                     _I2C_Byte_Write
+                     _I2C_Page_Write
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Page_Write                                       6     2      4     362
+                                              0 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Byte_Write                                       3     1      2     218
+                                              0 COMRAM     3     1      2
+ ---------------------------------------------------------------------------------
+ (1) _LCD_ROM_String                                       5     3      2     257
+                                              2 COMRAM     5     3      2
+                           _LCD_Data
+ ---------------------------------------------------------------------------------
+ (2) _LCD_Data                                             2     2      0      15
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _LCD_Init                                             1     1      0      15
+                                              2 COMRAM     1     1      0
+                        _LCD_Command
+ ---------------------------------------------------------------------------------
+ (2) _LCD_Command                                          2     2      0      15
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _Keypad_Init                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Init                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Byte_Read                                        3     2      1     241
+                                              0 COMRAM     3     2      1
+ ---------------------------------------------------------------------------------
+ (1) _Get_Key                                              5     5      0     150
+                                              1 COMRAM     4     4      0
+                        _Keypad_Scan
+ ---------------------------------------------------------------------------------
+ (2) _Keypad_Scan                                          1     1      0      60
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Get_Key
+     _Keypad_Scan
+   _I2C_Byte_Read
+   _I2C_Init
+   _I2C_Page_Read
+   _Keypad_Init
+   _LCD_Command
+   _LCD_Data
+   _LCD_Init
+     _LCD_Command
+   _LCD_ROM_String
+     _LCD_Data
+   _RTC_init
+     _I2C_Byte_Write
+     _I2C_Page_Write
+   _RTC_read
+     _BCD_to_ASCII_Display
+       _LCD_Data
+     _I2C_Page_Read
+     _LCD_Command
+     _LCD_Data
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      26        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F      D      3D       1       48.0%
+BITBIGSFRhhhl       27      0       0      17        0.0%
+BITBIGSFRhlhl       22      0       0      20        0.0%
+BITBIGSFRhhhh        E      0       0      16        0.0%
+BITBIGSFRllh         8      0       0      23        0.0%
+BITBIGSFRhll         8      0       0      21        0.0%
+BITBIGSFRlh          6      0       0      22        0.0%
+BITBIGSFRhlhh        3      0       0      19        0.0%
+BITBIGSFRhhl         1      0       0      18        0.0%
+BITBIGSFRlll         1      0       0      24        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      3D      25        0.0%
+DATA                 0      0      3D       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
+Symbol Table                                                                                   Sun Dec 18 13:58:45 2022
+
+                ?_LCD_Command 0028                            l15 689E                            l40 6A36  
+                          l41 6A3E                            l50 6A78                            l43 6A4C  
+                          l52 6A86                            l44 6A52                            l61 6C16  
+                          l53 6A88                            l70 6C52                            l62 6C1C  
+                          l46 6A60                            l38 6A28                            l71 6C56  
+                          l47 6A66                            l64 6C2A                            l56 6BF2  
+                          l80 6B64                            l73 6C64                            l65 6C2E  
+                          l49 6A74                            l74 6C6C                            l58 6C00  
+                          l82 6B72                            l67 6C3C                            l59 6C08  
+                          l91 6BB6                            l83 6B7A                            l76 6C7A  
+                          l68 6C44                            l77 6C7E                            l93 6BC4  
+                          l85 6B88                            l94 6BDA                            l86 6B8E  
+                          l95 6BDC                            l88 6B9C                            l97 6BEA  
+                          l98 6BEC                           l101 6D54                           l110 6D90  
+                         l103 6D62                           l120 6DCE                           l112 6D9E  
+                         l104 6D6A                           l121 6DD4                           l113 6DA6  
+                         l210 6934                           l130 6E4A                           l106 6D78  
+                         l131 6E5E                           l123 6DE2                           l115 6DB4  
+                         l107 6D7E                           l124 6E26                           l213 69D4  
+                         l133 6E6C                           l125 6E28                           l117 6DBE  
+                         l109 6D8C                           l221 6CCA                           l134 6E6E  
+                         l118 6DC0                           l127 6E36                           l152 68BC  
+                         l128 6E3C                           l216 6AEE                           l155 68DA  
+                         l149 6B5E                           l254 6EF2                           l255 6FFE  
+                         l247 688A                           l167 6A22                           l269 699A  
+                         l950 68C6                           l952 68C8                           l954 68CA  
+                         l946 68C0                           l956 68D8                           l948 68C4  
+                         l992 68A2                           l994 68A6                           l996 68A8  
+                         l998 68AA                           u300 6F42                           u301 6F3E  
+                         u310 6F5A                           u230 6E92                           u311 6F56  
+                         u231 6E8E                           u320 6F72                           u240 6EA6  
+                         u321 6F6E                           u241 6EA2                           u330 6F98  
+                         u250 6EBE                           u331 6F94                           u251 6EBA  
+                         u340 6FAC                           u260 6ED6                           u341 6FA8  
+                         u261 6ED2                           u350 6FC4                           u270 6EEE  
+                         u351 6FC0                           u271 6EEA                           u360 6FDC  
+                         u280 6F16                           u600 6A86                           u361 6FD8  
+                         u281 6F12                           u601 6A82                           u370 6FF4  
+                         u290 6F2A                           u610 6B72                           u371 6FF0  
+                         u291 6F26                           u611 6B6E                           u620 6B88  
+                         u700 6D9E                           u621 6B84                           u701 6D9A  
+                         u630 6B9C                           u710 6DB4                           u631 6B98  
+                         u711 6DB0                           u800 6C2A                           u560 6A36  
+                         u640 6BC4                           u720 6DCE                           u801 6C26  
+                         u561 6A32                           u641 6BC0                           u721 6DCA  
+                         u810 6C3C                           u570 6A4C                           u650 6BDA  
+                         u730 6DE2                           u811 6C38                           u571 6A48  
+                         u651 6BD6                           u731 6DDE                           u820 6C52  
+                         u580 6A60                           u660 6BEA                           u740 6E26  
+                         u821 6C4E                           u581 6A5C                           u661 6BE6  
+                         u741 6E22                           u830 6C64                           u590 6A74  
+                         u750 6E36                           u670 6D62                           u831 6C60  
+                         u591 6A70                           u751 6E32                           u671 6D5E  
+                         u840 6C7A                           u760 6E4A                           u680 6D78  
+                         u841 6C76                           u761 6E46                           u681 6D74  
+                         u850 6A22                           u770 6E6C                           u690 6D8C  
+                         u851 6A1E                           u907 69CA                           u771 6E68  
+                         u691 6D88                           u780 6C00                           u860 6CB6  
+                         u781 6BFC                           u917 69FA                           u861 6CB2  
+                         u790 6C16                           u870 6CC6                           u791 6C12  
+                         u927 68D0                           u871 6CC2                           u880 6D26  
+                         u937 6B06                           u881 6D22                           u890 6D48  
+                         u947 6B1A                           u891 6D44                           u957 6B2E  
+                         u967 6B42                           u977 6B56                           u987 68B2  
+                         u997 6978                           wreg 000FE8                          l1000 68AC  
+                        l1002 68BA                          l1010 6918                          l1020 6E70  
+                        l1100 689C                          l1012 691E                          l1004 6906  
+                        l1030 6EAA                          l1022 6E78                          l1014 6922  
+                        l1006 690A                          l1040 6EEE                          l1032 6EBE  
+                        l1024 6E7E                          l1200 6998                          l1120 6AFA  
+                        l1112 6AF0                          l1016 6928                          l1008 6912  
+                        l1050 6F16                          l1034 6EC2                          l1026 6E92  
+                        l1130 6B28                          l1122 6B00                          l1114 6AF4  
+                        l1018 692E                          l1060 6F5A                          l1052 6F2A  
+                        l1036 6ED6                          l1028 6EA6                          l1044 6EF8  
+                        l1132 6B36                          l1124 6B0E                          l1116 6AF6  
+                        l1300 6E5C                          l1070 6F7E                          l1062 6F5E  
+                        l1054 6F2E                          l1046 6EFC                          l1038 6EDA  
+                        l1302 6BF0                          l1134 6B3C                          l1126 6B14  
+                        l1118 6AF8                          l1080 6FC4                          l1072 6F84  
+                        l1064 6F72                          l1056 6F42                          l1048 6F02  
+                        l1304 6C02                          l1136 6B4A                          l1128 6B22  
+                        l1320 6A06                          l1312 69D6                          l1082 6FC8  
+                        l1074 6F98                          l1058 6F46                          l1306 6C3E  
+                        l1138 6B50                          l1314 69E2                          l1322 699C  
+                        l1330 6A8A                          l1084 6FDC                          l1076 6FAC  
+                        l1092 6FFC                          l1068 6F7A                          l1308 6C7C  
+                        l1316 69F4                          l1324 69A0                          l1340 6AB8  
+                        l1332 6AA0                          l1086 6FE0                          l1078 6FB0  
+                        l1190 6968                          l1318 6A02                          l1270 6A38  
+                        l1326 69AE                          l1350 6AD6                          l1342 6ABE  
+                        l1334 6AA6                          l1088 6FF4                          l1192 696E  
+                        l1096 688C                          l1280 6BC6                          l1272 6B62  
+                        l1328 69C4                          l1352 6ADC                          l1344 6AC4  
+                        l1336 6AAC                          l1360 6C88                          l1194 6984  
+                        l1098 6898                          l1186 6880                          l1282 6BC8  
+                        l1274 6B74                          l1290 6DB6                          l1354 6AE2  
+                        l1346 6ACA                          l1338 6AB2                          l1370 6CC6  
+                        l1362 6C94                          l1188 6884                          l1268 6A26  
+                        l1276 6B9E                          l1292 6DE4                          l1284 6D52  
+                        l1356 6AE8                          l1348 6AD0                          l1380 6D06  
+                        l1372 6CD6                          l1364 6C9A                          l1198 6988  
+                        l1278 6BA6                          l1294 6DF4                          l1286 6D64  
+                        l1390 6D14                          l1382 6D0A                          l1374 6CDC  
+                        l1366 6CA6                          l1358 6C80                          l1296 6DF6  
+                        l1288 6DA0                          l1392 6D26                          l1376 6CE8  
+                        l1368 6CB6                          l1298 6E4C                          l1394 6D36  
+                        l1378 6CEC                          l1396 6D38                          l1388 6D0E  
+                        _LATB 000F8A                          _LATD 000F8C                          _date 0022  
+                        _main 6C80              __end_of_I2C_Init 68A0                          _time 001C  
+                        indf2 000FDF                          fsr1l 000FE1                          fsr2l 000FD9  
+                        start 0000               __end_of_Get_Key 699C        I2C_Page_Write@no_bytes 002B  
+                ___param_bank 000000     BCD_to_ASCII_Display@Digit 002A              __end_of_LCD_Data 68DC  
+            __end_of_LCD_Init 6B60                  LCD_Data@data 0029                         ?_main 0028  
+               ??_Keypad_Init 0028                 ??_Keypad_Scan 0028                         _PORTB 000F81  
+                       _TRISB 000F93                         _TRISD 000F95                         _month 000E  
+                       main@i 0034              __end_of_RTC_init 69D6              __end_of_RTC_read 6AF0  
+                       tablat 000FF5                         status 000FD8               __initialization 6936  
+                __end_of_main 6D50             LCD_ROM_String@str 002A                        ??_main 0033  
+               __activetblptr 000000          I2C_Page_Read@DevAddr 0031          I2C_Page_Read@RegAddr 0028  
+                      _ADCON1 000FC1           __end_of_Keypad_Init 688C           __end_of_Keypad_Scan 7000  
+                   ??_Get_Key 0029                        _SSPADD 000FC8                        _SSPBUF 000FC9  
+          I2C_Page_Write@data 0029         I2C_Byte_Write@DevAddr 002A                 _I2C_Page_Read 6D50  
+                      _KeyVal 0001                 _I2C_Byte_Read 6BEE         I2C_Byte_Write@RegAddr 0028  
+                      clear_0 695C                        isa$std 000001                  __pdataCOMRAM 0001  
+                   ?_I2C_Init 0028                        tblptrh 000FF7                        tblptrl 000FF6  
+                      tblptru 000FF8              ??_LCD_ROM_String 002C      BCD_to_ASCII_Display@temp 002B  
+                   ?_LCD_Data 0028                    __accesstop 0080       __end_of__initialization 6962  
+                   ?_LCD_Init 0028                ?_I2C_Page_Read 0028                 ___rparam_used 000001  
+              ?_I2C_Byte_Read 0028                __pcstackCOMRAM 0028                     ?_RTC_init 0028  
+                   ?_RTC_read 0028                    ??_I2C_Init 0028                   _Keypad_Init 6880  
+                 _Keypad_Scan 6E70                I2C_Page_Read@i 0032                    ??_LCD_Data 0028  
+                  ??_LCD_Init 002A                    ??_RTC_init 002E                    ??_RTC_read 0033  
+                     _RTCTime 0037               ??_I2C_Page_Read 002C                       _Get_Key 6968  
+             ??_I2C_Byte_Read 0029                _I2C_Page_Write 6B60                       __Hparam 0000  
+                     __Lparam 0000                _I2C_Byte_Write 6A24                       __pcinit 6936  
+                     __ramtop 0600                       __ptext0 6C80                       __ptext1 6A8A  
+                     __ptext2 6D50                       __ptext3 6904                       __ptext4 699C  
+                     __ptext5 6B60                       __ptext6 6A24                       __ptext7 69D6  
+                     __ptext8 68BE                       __ptext9 6AF0         I2C_Page_Read@no_bytes 002B  
+                     main@Key 0033          end_of_initialization 6962        __end_of_I2C_Page_Write 6BEE  
+              LCD_Command@cmd 0029        __end_of_I2C_Byte_Write 6A8A                       postdec1 000FE5  
+                     postinc0 000FEE         I2C_Page_Write@DevAddr 002C         I2C_Page_Write@RegAddr 0028  
+                   _TRISCbits 000F94                     _RTC_start 0035          I2C_Byte_Read@DevAddr 002A  
+             ?_I2C_Page_Write 0028             I2C_Page_Read@data 0029          I2C_Byte_Read@RegAddr 0028  
+          I2C_Byte_Write@data 0029               ?_I2C_Byte_Write 0028               LCD_ROM_String@i 002D  
+               ??_LCD_Command 0028                 __pidataCOMRAM 68DD                  ?_Keypad_Init 0028  
+                ?_Keypad_Scan 0028           start_initialization 6936  __end_of_BCD_to_ASCII_Display 6936  
+         __end_of_LCD_Command 68BE                   __pbssCOMRAM 0035               I2C_Page_Write@i 002D  
+                    ?_Get_Key 0028             I2C_Byte_Read@data 0029                      _I2C_Init 688C  
+                    _LCD_Data 68BE                      _LCD_Init 6AF0                      _LATCbits 000F8B  
+       __end_of_I2C_Page_Read 6E70         __end_of_I2C_Byte_Read 6C80                      _PIR1bits 000F9E  
+                 _LCD_Command 68A0                      _RTC_flag 0036                      _RTC_init 699C  
+                    _RTC_read 6A8A          _BCD_to_ASCII_Display 6904              ??_I2C_Page_Write 002C  
+                 _INTCON2bits 000FF1                     copy_data0 694A              ??_I2C_Byte_Write 002A  
+                    __Hrparam 0000                      __Lrparam 0000         ?_BCD_to_ASCII_Display 0028  
+                    __ptext10 68A0                      __ptext11 6880                      __ptext12 688C  
+                    __ptext13 6BEE                      __ptext14 6968                      __ptext15 6E70  
+              _LCD_ROM_String 69D6                      isa$xinst 000000                   Get_Key@but1 002C  
+                    _userTime 0015        __end_of_LCD_ROM_String 6A24                    Get_Key@Key 002B  
+      ??_BCD_to_ASCII_Display 002A                   _SSPCON1bits 000FC6                   _SSPCON2bits 000FC5  
+             ?_LCD_ROM_String 002A             Keypad_Scan@button 0028  
