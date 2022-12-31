@@ -1,0 +1,259 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4520 ]
+[d frameptr 4065 ]
+"9 D:\mx_lab\compiler\my_pic_projects\ADC_module.X\ADC_module.c
+[v _ADC_init ADC_init `(v  1 e 1 0 ]
+"19
+[v _ADC_convertion ADC_convertion `(ui  1 e 2 0 ]
+"37
+[v _Hex_to_bcd Hex_to_bcd `(v  1 e 1 0 ]
+"50
+[v _tx_data tx_data `(v  1 e 1 0 ]
+"57
+[v _tx_string tx_string `(v  1 e 1 0 ]
+"74
+[v _uart_init uart_init `(v  1 e 1 0 ]
+"92
+[v _main main `(v  1 e 1 0 ]
+"4 D:\mx_lab\compiler\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 D:\mx_lab\compiler\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 D:\mx_lab\compiler\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 D:\mx_lab\compiler\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 D:\mx_lab\compiler\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 D:\mx_lab\compiler\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"7 D:\mx_lab\compiler\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"7 D:\mx_lab\compiler\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 D:\mx_lab\compiler\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 D:\mx_lab\compiler\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 D:\mx_lab\compiler\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 D:\mx_lab\compiler\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 D:\mx_lab\compiler\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"1090 D:/mx_lab/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4520.h
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"1700
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S206 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1954
+[s S215 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S224 . 1 `S206 1 . 1 0 `S215 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES224  1 e 1 @3988 ]
+[s S149 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3152
+[s S158 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S161 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S164 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S167 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S170 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S172 . 1 `S149 1 . 1 0 `S158 1 . 1 0 `S161 1 . 1 0 `S164 1 . 1 0 `S167 1 . 1 0 `S170 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES172  1 e 1 @4011 ]
+[s S96 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"3360
+[s S105 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S114 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S117 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S119 . 1 `S96 1 . 1 0 `S105 1 . 1 0 `S114 1 . 1 0 `S117 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES119  1 e 1 @4012 ]
+"3577
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"3601
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"3613
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
+"4222
+[v _BAUDCON BAUDCON `VEuc  1 e 1 @4024 ]
+"4620
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"4691
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+[s S26 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4820
+[s S29 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S33 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S40 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S43 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S46 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S49 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S52 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S55 . 1 `S26 1 . 1 0 `S29 1 . 1 0 `S33 1 . 1 0 `S40 1 . 1 0 `S43 1 . 1 0 `S46 1 . 1 0 `S49 1 . 1 0 `S52 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES55  1 e 1 @4034 ]
+"4902
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"4909
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+"92 D:\mx_lab\compiler\my_pic_projects\ADC_module.X\ADC_module.c
+[v _main main `(v  1 e 1 0 ]
+{
+"100
+[v main@msg1 msg1 `[18]uc  1 a 18 15 ]
+"101
+[v main@msg2 msg2 `[17]uc  1 a 17 33 ]
+"95
+[v main@ADC_string ADC_string `[4]uc  1 a 4 52 ]
+"94
+[v main@ADC_result ADC_result `ui  1 a 2 50 ]
+"99
+[v main@F2586 F2586 `[18]uc  1 s 18 F2586 ]
+"100
+[v main@F2588 F2588 `[17]uc  1 s 17 F2588 ]
+"115
+} 0
+"74
+[v _uart_init uart_init `(v  1 e 1 0 ]
+{
+"90
+} 0
+"57
+[v _tx_string tx_string `(v  1 e 1 0 ]
+{
+[v tx_string@ptr ptr `*.39uc  1 p 2 1 ]
+"64
+} 0
+"50
+[v _tx_data tx_data `(v  1 e 1 0 ]
+{
+[v tx_data@data data `uc  1 a 1 wreg ]
+[v tx_data@data data `uc  1 a 1 wreg ]
+[v tx_data@data data `uc  1 a 1 0 ]
+"55
+} 0
+"37
+[v _Hex_to_bcd Hex_to_bcd `(v  1 e 1 0 ]
+{
+"39
+[v Hex_to_bcd@i i `ui  1 a 2 11 ]
+"37
+[v Hex_to_bcd@count count `ui  1 p 2 7 ]
+[v Hex_to_bcd@BCDNum BCDNum `*.39uc  1 p 2 9 ]
+"48
+} 0
+"7 D:\mx_lab\compiler\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___lwmod@dividend dividend `ui  1 p 2 0 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 2 ]
+"25
+} 0
+"7 D:\mx_lab\compiler\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 4 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 6 ]
+"7
+[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
+"30
+} 0
+"9 D:\mx_lab\compiler\my_pic_projects\ADC_module.X\ADC_module.c
+[v _ADC_init ADC_init `(v  1 e 1 0 ]
+{
+"16
+} 0
+"19
+[v _ADC_convertion ADC_convertion `(ui  1 e 2 0 ]
+{
+[v ADC_convertion@channel_no channel_no `uc  1 a 1 wreg ]
+"21
+[v ADC_convertion@temph temph `ui  1 a 2 8 ]
+[v ADC_convertion@templ templ `ui  1 a 2 5 ]
+[v ADC_convertion@res_val res_val `ui  1 a 2 3 ]
+"19
+[v ADC_convertion@channel_no channel_no `uc  1 a 1 wreg ]
+"22
+[v ADC_convertion@channel_no channel_no `uc  1 a 1 7 ]
+"35
+} 0
